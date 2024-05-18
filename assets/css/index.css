@@ -33,14 +33,20 @@ body {
 .sidebar-sticky {
     position: relative;
     top: 0;
-    height: calc(100vh - 48px);
+    height: calc(100% - 48px);
     padding-top: 0.5rem;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
-main{
+main {
+    margin-top: 60px;
+    min-height: calc(100vh - 60px);
     background-color: #E9ECEF;
 }
 .equal-height {
     height: 400px; /* Set a fixed height for both the image and canvas */
+}
+html{
+    height: 100%;
+    margin: 0;
 }
