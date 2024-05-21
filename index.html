@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello shoe Pvt LTD</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -17,17 +18,17 @@
     <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
         <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
-                <a href="#" class="list-group-item list-group-item-action py-2 ripple active" aria-current="true">
+                <a href="#dashboard" class="list-group-item list-group-item-action py-2 ripple active" aria-current="true">
                     <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
+                <a href="#sales" class="list-group-item list-group-item-action py-2 ripple ">
                     <i class="fas fa-chart-area fa-fw me-3"></i><span>Sales</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+                <a href="#suppliers" class="list-group-item list-group-item-action py-2 ripple"><i
                         class="fas fa-truck-field fa-fw me-3"></i><span>Suppliers</span></a>
-                <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+                <a href="#customers" class="list-group-item list-group-item-action py-2 ripple"><i
                         class="fas fa-users fa-fw me-3"></i><span>Customers</span></a>
-                <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                <a href="#employee" class="list-group-item list-group-item-action py-2 ripple">
                     <i class="fas fa-user fa-fw me-3"></i><span>Employee</span>
                 </a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
@@ -231,7 +232,7 @@
                     <div class="card-body p-4">
                         <div class="row">
                             <div class="col-12">
-                                <h5>Most Sailed Item</h5>
+                                <h5>Sales</h5>
                             </div>
                         </div>
                         <div class="row">
@@ -244,12 +245,645 @@
             </div>
         </div>
     </div>
+    <div class="container pt-5" id="sales">
+        <div class="row">
+
+        </div>
+    </div>
+    <div class="container pt-5" id="suppliers">
+        <h2 class="mb-4">Supplier</h2>
+        <div class="row  border-light shadow-sm rounded-3 foamBackground" >
+            <div class="container p-4">
+                <div class="row ">
+                    <div class="col-12 col-lg-8">
+                        <div class="d-flex flex-wrap align-items-center">
+                            <div class="flex-grow-1 me-2 mb-2 mb-lg-0">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                                </div>
+                            </div>
+                            <div class="mb-2 mb-lg-0 me-2">
+                                <button type="button" class="btn btn-success" id="addSupplierButton" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Supplier</button>
+                            </div>
+                            <div class="mb-2 mb-lg-0 me-2">
+                                <button type="button" class="btn btn-warning disabled" id="updateSupplierButton">Update Supplier</button>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-danger disabled" id="deleteSupplierButton">Delete Supplier</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-12 p-4">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Supplier Code</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Country</th>
+                        <th scope="col">Mobile number</th>
+                        <th scope="col">Landline number</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">#</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr class="border-5 border-top border-black" />
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="supplierFoam" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content p-4">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="supplierFoam">Save Supplier</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form class="row g-3 needs-validation mt-3" novalidate>
+                        <div class="col-md-6">
+                            <label for="supplierName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="supplierName" required>
+                            <div class="invalid-feedback">
+                                name can't be empty!
+                            </div>
+                        </div>
+                        <div class="col-md-4 mt-5  ms-3">
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="supplierInternational" name="radio-stacked" required>
+                                <label class="form-check-label" for="supplierInternational">International</label>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input type="radio" class="form-check-input" id="supplierLocal" name="radio-stacked" required>
+                                <label class="form-check-label" for="supplierLocal">Local</label>
+                                <div class="invalid-feedback">Select Category! </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="supplierAddressNo" class="form-label">Address no</label>
+                            <input type="text" class="form-control" id="supplierAddressNo" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid Address no!
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <label for="supplierMainCity" class="form-label">Main city</label>
+                            <input type="text" class="form-control" id="supplierMainCity" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid Main city!
+                            </div>
+                        </div>
+
+                        <div class="col-md-8">
+                            <label for="supplierMainState" class="form-label">Main State</label>
+                            <input type="text" class="form-control" id="supplierMainState" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid Main State!
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="supplierPostalCode" class="form-label">Postal Code</label>
+                            <input type="text" class="form-control" id="supplierPostalCode" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid Postal Code!
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="SupplierCountry" class="form-label">Country</label>
+                            <input type="text" class="form-control" id="SupplierCountry" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid Country!
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="supplierMobileNumber" class="form-label">Mobile Number</label>
+                            <input type="text" class="form-control" id="supplierMobileNumber" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid Mobile number!
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="supplierLandlineNumber" class="form-label">Landline Number</label>
+                            <input type="text" class="form-control" id="supplierLandlineNumber" required>
+                            <div class="invalid-feedback">
+                                Please provide a Landline number!
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="supplierEmail" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="supplierEmail" required>
+                            <div class="invalid-feedback">
+                                Please provide a Email!
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container pt-5" id="customers">
+        <h2 class="mb-4">Customers</h2>
+        <div class="row  border-light shadow-sm rounded-3 foamBackground" >
+            <div class="container p-4">
+                <div class="row ">
+                    <div class="col-12 col-lg-8">
+                        <div class="d-flex flex-wrap align-items-center">
+                            <div class="flex-grow-1 me-2 mb-2 mb-lg-0">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                                    <button class="btn btn-outline-secondary" type="button" id="button-addon3">Search</button>
+                                </div>
+                            </div>
+                            <div class="mb-2 mb-lg-0 me-2">
+                                <button type="button" class="btn btn-success" id="addCustomerButton" data-bs-toggle="modal" data-bs-target="#customerModal">Add Customer</button>
+                            </div>
+                            <div class="mb-2 mb-lg-0 me-2">
+                                <button type="button" class="btn btn-warning disabled" id="updateCustomerButton">Update Customer</button>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-danger disabled" id="deleteCustomerButton">Delete Customer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-12 p-4">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Customer Code</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Join date</th>
+                        <th scope="col">Level</th>
+                        <th scope="col">Total points</th>
+                        <th scope="col">Date of birth</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Contact No</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Recent purchased date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr class="border-5 border-top border-black" />
+        </div>
+        <div class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="customerFormLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content p-4">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="customerFormLabel">Save Customer</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form class="row g-3 needs-validation mt-3" novalidate>
+                    <div class="col-md-12">
+                        <label for="customerName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="customerName" required minlength="2" maxlength="100">
+                        <div class="invalid-feedback">
+                            Please provide a valid name between 2 and 100 characters.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="genderS" class="form-label">Gender</label>
+                        <select class="form-select" id="genderS" required>
+                            <option selected disabled value="">Gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a gender.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="joinDate" class="form-label">Join Date</label>
+                        <input type="date" class="form-control" id="joinDate" required>
+                        <div class="invalid-feedback">
+                            Join date must be in the past or present.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="level" class="form-label">Level</label>
+                        <select class="form-select" id="level"  disabled>
+                            <option selected disabled value=""></option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a level.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="totalPoints" class="form-label">Total Points</label>
+                        <input type="number" class="form-control" id="totalPoints" min="0" value="0" disabled >
+                        <div class="invalid-feedback">
+                            Total points must be zero or positive.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="dob" class="form-label">Date of Birth</label>
+                        <input type="date" class="form-control" id="dob" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid date of birth.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="addressNo" class="form-label">Address No</label>
+                        <input type="text" class="form-control" id="addressNo" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid address number.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="lane" class="form-label">Street</label>
+                        <input type="text" class="form-control" id="lane" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid street.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="mainCity" class="form-label">City</label>
+                        <input type="text" class="form-control" id="mainCity" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid city.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="mainState" class="form-label">State</label>
+                        <input type="text" class="form-control" id="mainState" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid state.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="postalCode" class="form-label">Postal Code</label>
+                        <input type="text" class="form-control" id="postalCode" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid postal code.
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="contactNumber" class="form-label">Contact Number</label>
+                        <input type="text" class="form-control" id="contactNumber" required pattern="^\+?[0-9\-\\s]+$">
+                        <div class="invalid-feedback">
+                            Please provide a valid contact number.
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid email address.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="recentPurchaseDate" class="form-label">Recent Purchase Date</label>
+                        <input type="datetime-local" class="form-control" id="recentPurchaseDate" disabled>
+                        <div class="invalid-feedback">
+                            Please provide a valid recent purchase date.
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="container pt-5" id="employee">
+        <h2 class="mb-4">Employee</h2>
+        <div class="row  border-light shadow-sm rounded-3 foamBackground" >
+                    <div class="col-12 col-lg-8 mt-3">
+                        <div class="d-flex flex-wrap align-items-center">
+                            <div class="flex-grow-1 me-2 mb-2 mb-lg-0">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                                    <button class="btn btn-outline-secondary" type="button" id="button-addon4">Search</button>
+                                </div>
+                            </div>
+                            <div class="mb-2 mb-lg-0 me-2">
+                                <button type="button" class="btn btn-success" id="addEmployeeButton" data-bs-toggle="modal" data-bs-target="#employeeModal">Add Employee</button>
+                            </div>
+                            <div class="mb-2 mb-lg-0 me-2">
+                                <button type="button" class="btn btn-warning disabled" id="updateEmployeeButton">Update Employee</button>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-danger disabled" id="deleteEmployeeButton">Delete Employee</button>
+                            </div>
+                        </div>
+                    </div>
+            <div class="col-12 col-lg-12 p-4">
+                <table class="table table-hover table-fixed">
+                    <thead>
+                    <tr>
+                        <th scope="col">Employee Code</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Civil Status</th>
+                        <th scope="col">Designation</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Date of Birth</th>
+                        <th scope="col">Joined Date</th>
+                        <th scope="col">Attached Branch</th>
+                        <th scope="col">Main City</th>
+                        <th scope="col">Contact Number</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Guardian Name</th>
+                        <th scope="col">Guardian Contact</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-toggle="collapse" data-target="#row1" class="accordion-toggle">
+                        <th scope="row">1</th>
+                        <td>Mark Otto</td>
+                        <td>Male</td>
+                        <td>Single</td>
+                        <td>Software Engineer</td>
+                        <td>Developer</td>
+                        <td>1985-01-01</td>
+                        <td>2010-06-15</td>
+                        <td>New York</td>
+                        <td>New York</td>
+                        <td>(555) 123-4567</td>
+                        <td>mark@example.com</td>
+                        <td>John Otto</td>
+                        <td>(555) 765-4321</td>
+                    </tr>
+                    <tr class="accordian-body collapse" id="row1">
+                        <td colspan="14">
+                            <div>
+                                <strong>Additional details for Mark Otto:</strong>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr data-toggle="collapse" data-target="#row2" class="accordion-toggle">
+                        <th scope="row">2</th>
+                        <td>Jacob Thornton</td>
+                        <td>Male</td>
+                        <td>Married</td>
+                        <td>Project Manager</td>
+                        <td>Manager</td>
+                        <td>1980-03-22</td>
+                        <td>2008-11-01</td>
+                        <td>San Francisco</td>
+                        <td>San Francisco</td>
+                        <td>(555) 234-5678</td>
+                        <td>jacob@example.com</td>
+                        <td>Emily Thornton</td>
+                        <td>(555) 876-5432</td>
+                    </tr>
+                    <tr class="accordian-body collapse" id="row2">
+                        <td colspan="14">
+                            <div>
+                                <strong>Additional details for Jacob Thornton:</strong>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr data-toggle="collapse" data-target="#row3" class="accordion-toggle">
+                        <th scope="row">3</th>
+                        <td>Larry Bird</td>
+                        <td>Male</td>
+                        <td>Single</td>
+                        <td>Designer</td>
+                        <td>Creative</td>
+                        <td>1990-07-15</td>
+                        <td>2015-05-20</td>
+                        <td>Boston</td>
+                        <td>Boston</td>
+                        <td>(555) 345-6789</td>
+                        <td>larry@example.com</td>
+                        <td>Alice Bird</td>
+                        <td>(555) 987-6543</td>
+                    </tr>
+                    <tr class="accordian-body collapse" id="row3">
+                        <td colspan="14">
+                            <div>
+                                <strong>Additional details for Larry Bird:</strong>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+
+            <hr class="border-5 border-top border-black" />
+        <div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="employeeFormLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content p-4">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="employeeFormLabel">Save Employee</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form class="row g-3 needs-validation mt-3" novalidate>
+                        <div class="col-md-6">
+                            <label for="employeeCode" class="form-label">Employee Code</label>
+                            <input type="text" class="form-control" id="employeeCode" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                            <div class="invalid-feedback">
+                                Name cannot be blank.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="profilePicture" class="form-label">Profile Picture</label>
+                            <input type="file" class="form-control" id="profilePicture">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="gender" class="form-label">Gender</label>
+                            <select class="form-select" id="gender" required>
+                                <option selected disabled value="">Choose...</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Gender cannot be null.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="civilStatus" class="form-label">Civil Status</label>
+                            <input type="text" class="form-control" id="civilStatus" required>
+                            <div class="invalid-feedback">
+                                Civil status cannot be blank.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="Designation" class="form-label">Designation</label>
+                            <input type="text" class="form-control" id="Designation" required>
+                            <div class="invalid-feedback">
+                                Designation cannot be blank.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="role" class="form-label">Role</label>
+                            <select class="form-select" id="role" required>
+                                <option selected disabled value="">Choose...</option>
+                                <option >ADMIN</option>
+                                <option >USER</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Role cannot be null.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="dobC" class="form-label">Date of Birth</label>
+                            <input type="date" class="form-control" id="dobC" required>
+                            <div class="invalid-feedback">
+                                Date of birth cannot be null.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="joinedDate" class="form-label">Joined Date</label>
+                            <input type="date" class="form-control" id="joinedDate" required>
+                            <div class="invalid-feedback">
+                                Joined date cannot be null.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="attachedBranch" class="form-label">Attached Branch</label>
+                            <input type="text" class="form-control" id="attachedBranch" required>
+                            <div class="invalid-feedback">
+                                Attached branch cannot be blank.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="addressNoC" class="form-label">Address No</label>
+                            <input type="text" class="form-control" id="addressNoC" required>
+                            <div class="invalid-feedback">
+                                Address no cannot be blank.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="laneC" class="form-label">Lane</label>
+                            <input type="text" class="form-control" id="laneC" required>
+                            <div class="invalid-feedback">
+                                Lane cannot be blank.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="mainCityC" class="form-label">Main City</label>
+                            <input type="text" class="form-control" id="mainCityC" required>
+                            <div class="invalid-feedback">
+                                Main city cannot be blank.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="mainStateC" class="form-label">Main State</label>
+                            <input type="text" class="form-control" id="mainStateC" required>
+                            <div class="invalid-feedback">
+                                Main state cannot be blank.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="postalCodeC" class="form-label">Postal Code</label>
+                            <input type="text" class="form-control" id="postalCodeC" required>
+                            <div class="invalid-feedback">
+                                Postal code cannot be blank.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="contactNumberC" class="form-label">Contact Number</label>
+                            <input type="text" class="form-control" id="contactNumberC" required pattern="^\+?[0-9\-\\s]+$">
+                            <div class="invalid-feedback">
+                                Invalid contact number format.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="emailC" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="emailC" required>
+                            <div class="invalid-feedback">
+                                Invalid email format.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="guardianName" class="form-label">Guardian Name</label>
+                            <input type="text" class="form-control" id="guardianName" required>
+                            <div class="invalid-feedback">
+                                Guardian name cannot be blank.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="guardianContact" class="form-label">Guardian Contact</label>
+                            <input type="text" class="form-control" id="guardianContact" required pattern="^\+?[0-9\-\\s]+$">
+                            <div class="invalid-feedback">
+                                Invalid guardian contact format.
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+
 </main>
 <script src="js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="util/Chart.js">
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="util/Chart.js"></script>
+<script src="controller/IndexController.js"></script>
+
 
 </body>
 </html>
