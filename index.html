@@ -12,7 +12,136 @@
 </head>
 
 <body>
-<!--Main Navigation-->
+<section class="bg-info py-3 py-md-5 py-xl-8 vh-100 " id="login_section">
+    <div class="container mt-5">
+        <div class="row gy-4 justify-content-center">
+            <div class="col-12 col-md-6 col-xl-5">
+                <div class="card border-0 rounded-4">
+                    <div class="card-body p-3 p-md-4 p-xl-5">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mb-4">
+                                    <h3>Sign in</h3>
+                                    <p>Don't have an account? <a href="#" id="registerButton">Sign up</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <form action="#!" class="needs-validation" novalidate>
+                            <div class="row gy-3 overflow-hidden">
+
+
+                                <div class="col-12">
+                                    <div class="form-floating mb-3">
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required >
+                                        <label for="email" class="form-label">Email</label>
+                                        <div class="invalid-feedback">
+                                            Please enter a valid email address.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                                        <label for="password" class="form-label">Password</label>
+                                        <div class="invalid-feedback">
+                                            Please enter a password.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="d-grid">
+                                        <button class="btn btn-primary btn-lg" type="submit" id="loginButton">Log in now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-info py-3 py-md-5 py-xl-8 vh-100 " id="sign_section">
+    <div class="container mt-5">
+        <div class="row gy-4 justify-content-center">
+            <div class="col-12 col-md-6 col-xl-5">
+                <div class="card border-0 rounded-4">
+                    <div class="card-body p-3 p-md-4 p-xl-5">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mb-4">
+                                    <h3>Sign up</h3>
+                                    <p>Have an account? <a href="#!" id="login">Login</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <form action="#!" class="needs-validation" novalidate>
+                            <div class="row gy-3 overflow-hidden">
+                                <div class="col-12">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name" required>
+                                        <label for="firstName" class="form-label">First Name</label>
+                                        <div class="invalid-feedback">
+                                            Please enter your first name.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name" required>
+                                        <label for="lastName" class="form-label">Last Name</label>
+                                        <div class="invalid-feedback">
+                                            Please enter your last name.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating mb-3">
+                                        <input type="email" class="form-control" name="email" id="signInEmail" placeholder="Email" required >
+                                        <label for="signInEmail" class="form-label">Email</label>
+                                        <div class="invalid-feedback">
+                                            Please enter a valid email address.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control" name="password" id="signInPassword" placeholder="Password" required>
+                                        <label for="signInPassword" class="form-label">Password</label>
+                                        <div class="invalid-feedback">
+                                            Please enter a password.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <select class="form-select" aria-label="Default select example" id="roleSelector" required>
+                                        <option selected disabled value="">Select Role</option>
+                                        <option value="ADMIN">ADMIN</option>
+                                        <option value="USER">USER</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a role.
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="d-grid">
+                                        <button class="btn btn-primary btn-lg" type="submit" id="signInButton">Sign In now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 <header>
     <!-- Sidebar -->
     <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
@@ -26,7 +155,7 @@
                 </a>
                 <a href="#suppliers" class="list-group-item list-group-item-action py-2 ripple"><i
                         class="fas fa-truck-field fa-fw me-3"></i><span>Suppliers</span></a>
-                <a href="#customers" class="list-group-item list-group-item-action py-2 ripple"><i
+                <a href="#customers" id="customerLink" class="list-group-item list-group-item-action py-2 ripple"><i
                         class="fas fa-users fa-fw me-3"></i><span>Customers</span></a>
                 <a href="#employee" class="list-group-item list-group-item-action py-2 ripple">
                     <i class="fas fa-user fa-fw me-3"></i><span>Employee</span>
@@ -105,9 +234,7 @@
     </nav>
     <!-- Navbar -->
 </header>
-<!--Main Navigation-->
 
-<!--Main layout-->
 <main style="margin-top: 60px;">
     <div class="container pt-5" id="dashboard">
         <h2 class="mb-4">Dashboard</h2>
@@ -428,18 +555,12 @@
                             <div class="mb-2 mb-lg-0 me-2">
                                 <button type="button" class="btn btn-success" id="addCustomerButton" data-bs-toggle="modal" data-bs-target="#customerModal">Add Customer</button>
                             </div>
-                            <div class="mb-2 mb-lg-0 me-2">
-                                <button type="button" class="btn btn-warning disabled" id="updateCustomerButton">Update Customer</button>
-                            </div>
-                            <div>
-                                <button type="button" class="btn btn-danger disabled" id="deleteCustomerButton">Delete Customer</button>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-lg-12 p-4">
-                <table class="table table-hover">
+                <table class="table table-hover table-bordered" id="customerTable">
                     <thead>
                     <tr>
                         <th scope="col">Customer Code</th>
@@ -455,25 +576,7 @@
                         <th scope="col">Recent purchased date</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+                    <tbody id="customerTableBody">
                     </tbody>
                 </table>
             </div>
@@ -484,9 +587,16 @@
                 <div class="modal-content p-4">
                     <div class="modal-header">
                         <h5 class="modal-title" id="customerFormLabel">Save Customer</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" id="customerFoamCloseButton" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form class="row g-3 needs-validation mt-3" novalidate>
+                    <form class="row g-3 needs-validation mt-3" id="customerFoam" novalidate>
+                        <div class="col-md-12" id="customerCodeField">
+                            <label for="customerCode" class="form-label">Customer Code</label>
+                            <input type="text" class="form-control" id="customerCode" disabled>
+                            <div class="invalid-feedback">
+                                Please provide a valid name between 2 and 100 characters.
+                            </div>
+                        </div>
                     <div class="col-md-12">
                         <label for="customerName" class="form-label">Name</label>
                         <input type="text" class="form-control" id="customerName" required minlength="2" maxlength="100">
@@ -498,8 +608,8 @@
                         <label for="genderS" class="form-label">Gender</label>
                         <select class="form-select" id="genderS" required>
                             <option selected disabled value="">Gender</option>
-                            <option>Male</option>
-                            <option>Female</option>
+                            <option value="MALE">Male</option>
+                            <option value="FEMALE">Female</option>
                             <option>Other</option>
                         </select>
                         <div class="invalid-feedback">
@@ -516,7 +626,7 @@
                     <div class="col-md-6">
                         <label for="level" class="form-label">Level</label>
                         <select class="form-select" id="level"  disabled>
-                            <option selected disabled value=""></option>
+                            <option selected disabled value="NEW">new</option>
                         </select>
                         <div class="invalid-feedback">
                             Please select a level.
@@ -579,8 +689,8 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" required>
+                        <label for="customerEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="customerEmail" required>
                         <div class="invalid-feedback">
                             Please provide a valid email address.
                         </div>
@@ -593,7 +703,9 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <button class="btn btn-primary" type="submit">Submit</button>
+                        <button class="btn btn-primary" type="submit" id="customerSaveSubmit">Submit</button>
+                        <button type="button" class="btn btn-warning " id="updateCustomerButton">Update Customer</button>
+                        <button type="button" class="btn btn-danger  ms-3" id="deleteCustomerButton">Delete Customer</button>
                     </div>
                 </form>
                 </div>
@@ -877,12 +989,19 @@
         </div>
 
 </main>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="util/Chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="controller/IndexController.js"></script>
+<script src="controller/CustomerController.js"></script>
+<script src="controller/LoginController.js"></script>
+<script src="controller/SignInController.js"></script>
+<script src="dto/CustomerDTO.js"></script>
 
 
 </body>
