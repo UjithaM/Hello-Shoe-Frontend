@@ -1,5 +1,16 @@
+const namePattern = /^[A-Za-z\s]+$/;            // Letters and spaces
+const datePattern = /^\d{4}-\d{2}-\d{2}$/;      // Date in YYYY-MM-DD format
+const pointsPattern = /^\d+$/;                  // Digits only
+const dobPattern = /^\d{4}-\d{2}-\d{2}$/;       // Date in YYYY-MM-DD format
+const addressPattern = /^[A-Za-z0-9\s,.'-]+$/;  // Alphanumeric and basic punctuation
+const cityPattern = /^[A-Za-z\s]+$/;            // Letters and spaces
+const statePattern = /^[A-Za-z\s]+$/;           // Letters and spaces
+const postalCodePattern = /^\d{5}(-\d{4})?$/;   // 5 digits or 5+4 digits (US ZIP code)
+const phonePattern = /^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/; // Phone number (US format)
+
 
 $(document).ready(function() {
+    $("#customerSaveSubmit").addClass('disabled');
     $("#addCustomerButton").click(function (e) {
         $('#customerFoam').get(0).reset();
         $("#customerSaveSubmit").show();
@@ -174,6 +185,85 @@ $(document).ready(function() {
         searchCustomer(rowData[0]);
         $('#customerModal').modal('show');
     });
+
+
+    $('#customerName').on('input', function() {
+        validateField($(this), namePattern);
+    });
+
+    $('#joinDate').on('input', function() {
+        validateField($(this), datePattern);
+    });
+
+    $('#totalPoints').on('input', function() {
+        validateField($(this), pointsPattern);
+    });
+
+    $('#dob').on('input', function() {
+        validateField($(this), dobPattern);
+    });
+
+    $('#addressNo').on('input', function() {
+        validateField($(this), addressPattern);
+    });
+
+    $('#lane').on('input', function() {
+        validateField($(this), addressPattern);
+    });
+
+    $('#mainCity').on('input', function() {
+        validateField($(this), cityPattern);
+    });
+
+    $('#mainState').on('input', function() {
+        validateField($(this), statePattern);
+    });
+
+    $('#postalCode').on('input', function() {
+        validateField($(this), postalCodePattern);
+    });
+
+    $('#contactNumber').on('input', function() {
+        validateField($(this), phonePattern);
+    });
+
+    $('#customerEmail').on('input', function() {
+        validateField($(this), emailPattern);
+    });
+    
+    $('#customerFoam').on('input', function() {
+        if ($('#customerName').hasClass('is-valid') &&
+            $('#joinDate').hasClass('is-valid') &&
+            $('#dob').hasClass('is-valid') &&
+            $('#addressNo').hasClass('is-valid') &&
+            $('#lane').hasClass('is-valid') &&
+            $('#mainCity').hasClass('is-valid') &&
+            $('#mainState').hasClass('is-valid') &&
+            $('#postalCode').hasClass('is-valid') &&
+            $('#contactNumber').hasClass('is-valid') &&
+            $('#customerEmail').hasClass('is-valid') && 
+            $('#genderS').find(":selected").val() !== "" ) {
+            submitButtonHandle(true);
+        }
+    });
+
+    $("#customerFoamCloseButton").click(function() {
+        $('#customerFoam').get(0).reset();
+        $('#customerName').removeClass('is-invalid').removeClass('is-valid');
+        $('#genderS').removeClass('is-invalid').removeClass('is-valid');
+        $('#joinDate').removeClass('is-invalid').removeClass('is-valid');
+        $('#level').removeClass('is-invalid').removeClass('is-valid');
+        $('#totalPoints').removeClass('is-invalid').removeClass('is-valid');
+        $('#dob').removeClass('is-invalid').removeClass('is-valid');
+        $('#addressNo').removeClass('is-invalid').removeClass('is-valid');
+        $('#lane').removeClass('is-invalid').removeClass('is-valid');
+        $('#mainCity').removeClass('is-invalid').removeClass('is-valid');
+        $('#mainState').removeClass('is-invalid').removeClass('is-valid');
+        $('#postalCode').removeClass('is-invalid').removeClass('is-valid');
+        $('#contactNumber').removeClass('is-invalid').removeClass('is-valid');
+        $('#customerEmail').removeClass('is-invalid').removeClass('is-valid');
+        submitButtonHandle(false);
+    });
 });
 
 const loadCustomers = () => {
@@ -346,5 +436,19 @@ function formatDateTime(dateTimeString) {
     let hours = dateTime.getHours().toString().padStart(2, '0');
     let minutes = dateTime.getMinutes().toString().padStart(2, '0');
     return `${year}-${month}-${day}T${hours}:${minutes}`;
+}
+
+function validateField($field, pattern) {
+    const value = $field.val().trim();
+    if (pattern.test(value)) {
+        $field.removeClass('is-invalid').addClass('is-valid');
+    } else {
+        $field.removeClass('is-valid').addClass('is-invalid');
+    }
+}
+
+function submitButtonHandle(status) {
+    if (status) $("#customerSaveSubmit").removeClass('disabled');
+    else $("#customerSaveSubmit").addClass('disabled');
 }
 
