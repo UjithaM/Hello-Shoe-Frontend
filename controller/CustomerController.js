@@ -12,14 +12,13 @@ const phonePattern = /^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/; /
 $(document).ready(function() {
     $("#customerSaveSubmit").addClass('disabled');
     $("#addCustomerButton").click(function (e) {
-        $('#customerFoam').get(0).reset();
+        clearFields();
         $("#customerSaveSubmit").show();
         $("#updateCustomerButton").hide();
         $("#deleteCustomerButton").hide();
         $("#customerCodeField").hide();
     })
     $("#customerSaveSubmit").click(function(event) {
-        console.log("clicked");
         try {
             const customerName = $("#customerName").val();
             const genderS = $("#genderS").find(":selected").val();
@@ -247,22 +246,19 @@ $(document).ready(function() {
         }
     });
 
-    $("#customerFoamCloseButton").click(function() {
-        $('#customerFoam').get(0).reset();
-        $('#customerName').removeClass('is-invalid').removeClass('is-valid');
-        $('#genderS').removeClass('is-invalid').removeClass('is-valid');
-        $('#joinDate').removeClass('is-invalid').removeClass('is-valid');
-        $('#level').removeClass('is-invalid').removeClass('is-valid');
-        $('#totalPoints').removeClass('is-invalid').removeClass('is-valid');
-        $('#dob').removeClass('is-invalid').removeClass('is-valid');
-        $('#addressNo').removeClass('is-invalid').removeClass('is-valid');
-        $('#lane').removeClass('is-invalid').removeClass('is-valid');
-        $('#mainCity').removeClass('is-invalid').removeClass('is-valid');
-        $('#mainState').removeClass('is-invalid').removeClass('is-valid');
-        $('#postalCode').removeClass('is-invalid').removeClass('is-valid');
-        $('#contactNumber').removeClass('is-invalid').removeClass('is-valid');
-        $('#customerEmail').removeClass('is-invalid').removeClass('is-valid');
-        submitButtonHandle(false);
+    $("#customerFoamCloseButton").click(clearFields());
+
+    var today = new Date().toISOString().split('T')[0];
+    
+    $('#joinDate').attr('max', today);
+    $('#dob').attr('max', today);
+
+    $('#searchInput').on('keyup', function() {
+        var value = $(this).val().toLowerCase();
+        $('#customerTableBody tr').filter(function() {
+            var name = $(this).find('td:eq(1)').text().toLowerCase(); 
+            $(this).toggle(name.indexOf(value) > -1); 
+        });
     });
 });
 
@@ -450,5 +446,11 @@ function validateField($field, pattern) {
 function submitButtonHandle(status) {
     if (status) $("#customerSaveSubmit").removeClass('disabled');
     else $("#customerSaveSubmit").addClass('disabled');
+}
+
+function clearFields() {
+    console.log("Clearing fields");
+    $('#customerFoam').get(0).reset();
+    submitButtonHandle(false);
 }
 
