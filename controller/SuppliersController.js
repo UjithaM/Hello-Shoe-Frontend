@@ -40,7 +40,11 @@ $(document).ready(function() {
             alert("Error adding supplier");
         }
     });
-  
+
+    $('#supplierLink').click(async function () {
+        loadSuppliers();
+    })
+    
     $('#supplierName').on('input', function() {
         validateField($(this), namePattern);
     });
@@ -130,6 +134,7 @@ async function saveSupplier(supplier) {
             text: response.name + " has been saved successfully!",
             icon: "success"
         });
+        loadSuppliers();
     } catch (error) {
         console.error(error);
         Swal.fire({
@@ -143,4 +148,45 @@ async function saveSupplier(supplier) {
 function supplierSaveButtonHandle(status) {
     if (status) $("#supplierSaveButton").removeClass('disabled');
     else $("#supplierSaveButton").addClass('disabled');
+}
+
+const loadSuppliers = () => {
+    const refreshToken = localStorage.getItem('refreshToken');
+
+    $('#supplierTableBody').empty();
+    $.ajax({
+        type:"GET",
+        url: "http://localhost:8080/api/v1/supplier",
+        headers: {
+            "Authorization": "Bearer " + refreshToken
+        },
+        contentType: "application/json",
+
+        success: function (response) {
+
+
+            response.map((supplier, index) => {
+
+                addRowSupplier(supplier.supplierCode, supplier.name, supplier.category, supplier.country, supplier.mobileNumber, supplier.landlineNumber, supplier.email);
+            });
+
+        },
+        error: function (xhr, status, error) {
+            console.error('Something Error');
+        }
+    });
+};
+
+function addRowSupplier(supplierCode, supplierName, supplierCategory, supplierCountry, supplierMobile, supplierLandline, supplierEmail) {
+    var newRow = $('<tr>');
+    newRow.append($('<td>').text(supplierCode));
+    newRow.append($('<td>').text(supplierName));
+    newRow.append($('<td>').text(supplierCategory));
+    newRow.append($('<td>').text(supplierCountry));
+    newRow.append($('<td>').text(supplierMobile));
+    newRow.append($('<td>').text(supplierLandline));
+    newRow.append($('<td>').text(supplierEmail));
+
+    $('#supplierTableBody').append(newRow);
+
 }
