@@ -153,7 +153,7 @@
                 <a href="#sales" class="list-group-item list-group-item-action py-2 ripple ">
                     <i class="fas fa-chart-area fa-fw me-3"></i><span>Sales</span>
                 </a>
-                <a href="#suppliers" class="list-group-item list-group-item-action py-2 ripple"><i
+                <a href="#suppliers" id="supplierLink" class="list-group-item list-group-item-action py-2 ripple"><i
                         class="fas fa-truck-field fa-fw me-3"></i><span>Suppliers</span></a>
                 <a href="#customers" id="customerLink" class="list-group-item list-group-item-action py-2 ripple"><i
                         class="fas fa-users fa-fw me-3"></i><span>Customers</span></a>
@@ -387,17 +387,10 @@
                             <div class="flex-grow-1 me-2 mb-2 mb-lg-0">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
-                                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
                                 </div>
                             </div>
                             <div class="mb-2 mb-lg-0 me-2">
-                                <button type="button" class="btn btn-success" id="addSupplierButton" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Supplier</button>
-                            </div>
-                            <div class="mb-2 mb-lg-0 me-2">
-                                <button type="button" class="btn btn-warning disabled" id="updateSupplierButton">Update Supplier</button>
-                            </div>
-                            <div>
-                                <button type="button" class="btn btn-danger disabled" id="deleteSupplierButton">Delete Supplier</button>
+                                <button type="button" class="btn btn-success" id="addSupplierButton" data-bs-toggle="modal" data-bs-target="#supplierModel">Add Supplier</button>
                             </div>
                         </div>
                     </div>
@@ -405,7 +398,7 @@
             </div>
 
             <div class="col-12 col-lg-12 p-4">
-                <table class="table table-hover">
+                <table class="table table-hover table-bordered" id="supplierTable">
                     <thead>
                     <tr>
                         <th scope="col">Supplier Code</th>
@@ -415,56 +408,41 @@
                         <th scope="col">Mobile number</th>
                         <th scope="col">Landline number</th>
                         <th scope="col">Email</th>
-                        <th scope="col">#</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+                    <tbody id="supplierTableBody">
                     </tbody>
                 </table>
             </div>
             <hr class="border-5 border-top border-black" />
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="supplierFoam" aria-hidden="true">
+        <div class="modal fade" id="supplierModel" tabindex="-1" aria-labelledby="supplierFoam" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content p-4">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="supplierFoam">Save Supplier</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h5 class="modal-title" id="">Save Supplier</h5>
+                        <button type="button" class="btn-close" id="supplierCloseButton" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form class="row g-3 needs-validation mt-3" novalidate>
+                    <form class="row g-3 needs-validation mt-3" novalidate id="supplierFoam">
+                        <div class="col-md-12" id="supplierCodeField">
+                            <label for="supplierCode" class="form-label">Supplier Code</label>
+                            <input type="text" class="form-control" id="supplierCode" disabled>
+                        </div>
                         <div class="col-md-6">
                             <label for="supplierName" class="form-label">Name</label>
                             <input type="text" class="form-control" id="supplierName" required>
                             <div class="invalid-feedback">
-                                name can't be empty!
+                                Please provide a valid name!
                             </div>
                         </div>
                         <div class="col-md-4 mt-5  ms-3">
                             <div class="form-check">
-                                <input type="radio" class="form-check-input" id="supplierInternational" name="radio-stacked" required>
+                                <input type="radio" class="form-check-input" id="supplierInternational" name="supplierCategory" value="INTERNATIONAL" required>
                                 <label class="form-check-label" for="supplierInternational">International</label>
                             </div>
                             <div class="form-check mb-3">
-                                <input type="radio" class="form-check-input" id="supplierLocal" name="radio-stacked" required>
-                                <label class="form-check-label" for="supplierLocal">Local</label>
+                                <input type="radio" class="form-check-input" id="supplierLocal" name="supplierCategory" value="LOCAL" required>
+                                <label class="form-check-label" for="supplierLocal" >Local</label>
                                 <div class="invalid-feedback">Select Category! </div>
                             </div>
                         </div>
@@ -473,6 +451,13 @@
                             <input type="text" class="form-control" id="supplierAddressNo" required>
                             <div class="invalid-feedback">
                                 Please provide a valid Address no!
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="supplierLane" class="form-label">Lane</label>
+                            <input type="text" class="form-control" id="supplierLane" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid Lane!
                             </div>
                         </div>
                         <div class="col-md-8">
@@ -532,7 +517,9 @@
                         </div>
 
                         <div class="col-12">
-                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <button class="btn btn-primary" type="submit" id="supplierSaveButton">Submit</button>
+                            <button type="button" class="btn btn-warning" id="supplierUpdateButton">Update Supplier</button>
+                            <button type="button" class="btn btn-danger" id="supplierDeleteButton">Delete Supplier</button>
                         </div>
                     </form>
                 </div>
@@ -592,9 +579,6 @@
                         <div class="col-md-12" id="customerCodeField">
                             <label for="customerCode" class="form-label">Customer Code</label>
                             <input type="text" class="form-control" id="customerCode" disabled>
-                            <div class="invalid-feedback">
-                                Please provide a valid name between 2 and 100 characters.
-                            </div>
                         </div>
                     <div class="col-md-12">
                         <label for="customerName" class="form-label">Name</label>
@@ -996,9 +980,13 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="controller/IndexController.js"></script>
 <script src="controller/CustomerController.js"></script>
+<script src="controller/SuppliersController.js"></script>
+<script src="controller/EmployeeController.js"></script>
 <script src="controller/LoginController.js"></script>
 <script src="controller/SignInController.js"></script>
 <script src="dto/CustomerDTO.js"></script>
+<script src="dto/SupplierDTO.js"></script>
+<script src="dto/EmployeeDTO.js"></script>
 
 
 </body>
