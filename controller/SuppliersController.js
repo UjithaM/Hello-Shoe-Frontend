@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    // $("#supplierSaveButton").addClass('disabled');
+    supplierSaveButtonHandle(false);
     $("#addSupplierButton").click(function (e) {
         $("#supplierUpdateButton").hide();
         $("#supplierDeleteButton").hide();
@@ -45,6 +45,72 @@ $(document).ready(function() {
         validateField($(this), namePattern);
     });
     
+    $('#supplierAddressNo').on('input', function() {
+        validateField($(this), addressPattern);
+        console.log()
+        if ($('input[name="supplierCategory"]:checked').val() !== undefined) {
+            $('input[name="supplierCategory"]').removeClass('is-invalid').addClass('is-valid');
+        }else {
+            $('input[name="supplierCategory"]').removeClass('is-valid').addClass('is-invalid');
+        }
+    });
+    
+    $('input[name="supplierCategory"]').change(function() {
+        if ($('input[name="supplierCategory"]:checked').val() !== undefined) {
+            $('input[name="supplierCategory"]').removeClass('is-invalid').addClass('is-valid');
+        }else {
+            $('input[name="supplierCategory"]').removeClass('is-valid').addClass('is-invalid');
+        }
+    });
+    
+    $('#supplierLane').on('input', function() {
+        validateField($(this), addressPattern);
+    });
+
+    $('#supplierMainCity').on('input', function() {
+        validateField($(this), cityPattern);
+    });
+
+    $('#supplierMainState').on('input', function() {
+        validateField($(this), statePattern);
+    });
+
+    $('#supplierPostalCode').on('input', function() {
+        validateField($(this), postalCodePattern);
+    });
+
+    $('#SupplierCountry').on('input', function() {
+        validateField($(this), namePattern);
+    });
+
+    $('#supplierMobileNumber').on('input', function() {
+        validateField($(this), phonePattern);
+    });
+
+    $('#supplierLandlineNumber').on('input', function() {
+        validateField($(this), phonePattern);
+    });
+
+    $('#supplierEmail').on('input', function() {
+        validateField($(this), emailPattern);
+    });
+
+    $('#supplierFoam').on('input', function() {
+        console.log("input")
+        if ($('#supplierName').hasClass('is-valid') &&
+            $('#supplierAddressNo').hasClass('is-valid') &&
+            $('#supplierLane').hasClass('is-valid') &&
+            $('#supplierMainCity').hasClass('is-valid') &&
+            $('#supplierMainState').hasClass('is-valid') &&
+            $('#supplierPostalCode').hasClass('is-valid') &&
+            $('#supplierMobileNumber').hasClass('is-valid') &&
+            $('#supplierLandlineNumber').hasClass('is-valid') &&
+            $('#supplierEmail').hasClass('is-valid') &&
+            $('input[name="supplierCategory"]:checked').val() !== undefined ) {
+            supplierSaveButtonHandle(true);
+        }
+    });
+    
 });
 async function saveSupplier(supplier) {
     try {
@@ -72,4 +138,9 @@ async function saveSupplier(supplier) {
             text: error.responseText,
         });
     }
+}
+
+function supplierSaveButtonHandle(status) {
+    if (status) $("#supplierSaveButton").removeClass('disabled');
+    else $("#supplierSaveButton").addClass('disabled');
 }
