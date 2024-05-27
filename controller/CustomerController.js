@@ -286,7 +286,7 @@ const loadCustomers = () => {
                 
                 const dobDate = new Date(customer.dob);
                 const formattedDobDate = `${dobDate.getFullYear()}-${dobDate.getMonth() + 1}-${dobDate.getDate()}`;
-                addRow(customer.customerCode, customer.name, customer.gender, formattedJoinedDate, customer.level, customer.totalPoints, formattedDobDate, customer.mainCity, customer.contactNumber, customer.email, customer.recentPurchaseDate)
+                addRowCustomer(customer.customerCode, customer.name, customer.gender, formattedJoinedDate, customer.level, customer.totalPoints, formattedDobDate, customer.mainCity, customer.contactNumber, customer.email, customer.recentPurchaseDate)
 
             });
             
@@ -297,7 +297,7 @@ const loadCustomers = () => {
     });
     
 };
-function addRow(customerCode, name, gender, joinDate, level, totalPoints, dob, city, contactNo, email, recentPurchaseDate) {
+function addRowCustomer(customerCode, name, gender, joinDate, level, totalPoints, dob, city, contactNo, email, recentPurchaseDate) {
 
     var newRow = $('<tr>');
     newRow.append($('<td>').text(customerCode));
