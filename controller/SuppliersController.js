@@ -130,6 +130,89 @@ $(document).ready(function() {
         $('#supplierModel').modal('show');
     });
     
+    $("#supplierUpdateButton").click(function (e) {
+        try {
+            const supplierCode = $("#supplierCode").val();
+            const supplierName = $("#supplierName").val();
+            const supplierCategory = $('input[name="supplierCategory"]:checked').val();
+            const supplierAddressNo = $("#supplierAddressNo").val();
+            const supplierMainCity = $("#supplierMainCity").val();
+            const supplierLane = $("#supplierLane").val();
+            const supplierMainState = $("#supplierMainState").val();
+            const supplierPostalCode = $("#supplierPostalCode").val();
+            const supplierCountry = $("#SupplierCountry").val();
+            const supplierMobileNumber = $("#supplierMobileNumber").val();
+            const supplierLandLineNumber = $("#supplierLandlineNumber").val();
+            const supplierEmail = $("#supplierEmail").val();
+
+            const Supplier = new SupplierDTO(
+                supplierCode, 
+                supplierName, 
+                supplierCategory, 
+                supplierAddressNo, 
+                supplierLane, 
+                supplierMainCity, 
+                supplierMainState, 
+                supplierPostalCode, 
+                supplierCountry, 
+                supplierMobileNumber, 
+                supplierLandLineNumber, 
+                supplierEmail);
+            updateSupplier(Supplier, supplierCode);
+        } catch (e) {
+            console.log(e)
+            alert("Error adding supplier");
+        }
+    });
+    
+    $("#supplierDeleteButton").click(function (e) {
+        Swal.fire({
+            title: "Do you want to delete " + $("#supplierName").val() + "?",
+            showDenyButton: true,
+            showCancelButton: true,
+            denyButtonText: `Delete`,
+            confirmButtonText: "Don't  Delete",
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                Swal.fire("Supplier is not deleted", "", "info");
+            } else if (result.isDenied) {
+                try {
+                    const supplierCode = $("#supplierCode").val();
+                    const refreshToken = localStorage.getItem('refreshToken');
+                    $.ajax({
+                        type: "DELETE",
+                        url: "http://localhost:8080/api/v1/supplier/" + supplierCode,
+                        headers: {
+                            "Authorization": "Bearer " + refreshToken
+                        },
+                        contentType: "application/json",
+                        success: function (response) {
+                            $("#supplierCloseButton").click();
+                            Swal.fire({
+                                title: "Success!",
+                                text: "Supplier has been deleted successfully!",
+                                icon: "success"
+                            });
+                            loadSuppliers();
+                        },
+                        error: function (xhr, status, error) {
+                            console.error('Something Error');
+                        }
+                    });
+                }catch (error) {
+                    console.error("Error creating Customer object:", error);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: error.responseText,
+                    });
+                }
+            }
+        });
+
+
+    });
 });
 async function saveSupplier(supplier) {
     try {
@@ -241,3 +324,34 @@ async function searchSupplier(supplierId) {
         });
     }
 }
+
+async function updateSupplier(supplier, supplierId) {
+    try {
+        const refreshToken = localStorage.getItem('refreshToken');
+        const response = await $.ajax({
+            type: "PUT",
+            url: "http://localhost:8080/api/v1/supplier/" + supplierId,
+            headers: {
+                "Authorization": "Bearer " + refreshToken
+            },
+            data: JSON.stringify(supplier),
+            contentType: "application/json"
+        });
+        $("#supplierCloseButton").click();
+        Swal.fire({
+            title: "Success!",
+            text: supplier.name + " has been update successfully!",
+            icon: "success"
+        });
+        loadSuppliers();
+    } catch (error) {
+        console.error(error);
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error.responseText,
+        });
+    }
+}
+
+
