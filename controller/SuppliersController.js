@@ -5,6 +5,7 @@ $(document).ready(function() {
         $("#supplierDeleteButton").hide();
         $("#supplierCodeField").hide();
     });
+    
     $("#supplierSaveButton").click(function (e) {
         
         try {
@@ -114,6 +115,20 @@ $(document).ready(function() {
             supplierSaveButtonHandle(true);
         }
     });
+
+    $('#supplierTable tbody').on('click', 'tr', function() {
+        var rowData = [];
+        $("#supplierSaveButton").hide();
+        $("#supplierUpdateButton").show();
+        $("#supplierDeleteButton").show();
+        $("#supplierCodeField").show();
+        $(this).find('td').each(function() {
+            rowData.push($(this).text());
+        });
+
+        searchSupplier(rowData[0]);
+        $('#supplierModel').modal('show');
+    });
     
 });
 async function saveSupplier(supplier) {
@@ -189,4 +204,40 @@ function addRowSupplier(supplierCode, supplierName, supplierCategory, supplierCo
 
     $('#supplierTableBody').append(newRow);
 
+}
+
+async function searchSupplier(supplierId) {
+
+
+    const refreshToken = localStorage.getItem('refreshToken');
+
+    try {
+        const response = await $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/v1/supplier/" + supplierId,
+            headers: {
+                "Authorization": "Bearer " + refreshToken
+            },
+            contentType: "application/json"
+        });
+        $("#supplierCode").val(response.supplierCode);
+        $("#supplierName").val(response.name);
+        $('input[name="supplierCategory"][value="' + response.category + '"]').prop('checked', true);
+        $("#supplierAddressNo").val(response.addressNo);
+        $("#supplierMainCity").val(response.mainCity);
+        $("#supplierLane").val(response.lane);
+        $("#supplierMainState").val(response.mainState);
+        $("#supplierPostalCode").val(response.postalCode);
+        $("#SupplierCountry").val(response.country);
+        $("#supplierMobileNumber").val(response.mobileNumber);
+        $("#supplierLandlineNumber").val(response.landlineNumber);
+        $("#supplierEmail").val(response.email);
+    } catch (error) {
+        console.error("Request failed:", error);
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Customer not found!",
+        });
+    }
 }
