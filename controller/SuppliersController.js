@@ -1,9 +1,11 @@
 $(document).ready(function() {
-    supplierSaveButtonHandle(false);
+    supplierButtonsHandle(false);
     $("#addSupplierButton").click(function (e) {
+        $("#supplierSaveButton").show();
         $("#supplierUpdateButton").hide();
         $("#supplierDeleteButton").hide();
         $("#supplierCodeField").hide();
+        clearSupplierFields();
     });
     
     $("#supplierSaveButton").click(function (e) {
@@ -112,7 +114,7 @@ $(document).ready(function() {
             $('#supplierLandlineNumber').hasClass('is-valid') &&
             $('#supplierEmail').hasClass('is-valid') &&
             $('input[name="supplierCategory"]:checked').val() !== undefined ) {
-            supplierSaveButtonHandle(true);
+            supplierButtonsHandle(true);
         }
     });
 
@@ -213,6 +215,8 @@ $(document).ready(function() {
 
 
     });
+
+    $("#supplierCloseButton").click(clearSupplierFields());
 });
 async function saveSupplier(supplier) {
     try {
@@ -243,9 +247,12 @@ async function saveSupplier(supplier) {
     }
 }
 
-function supplierSaveButtonHandle(status) {
-    if (status) $("#supplierSaveButton").removeClass('disabled');
-    else $("#supplierSaveButton").addClass('disabled');
+function supplierButtonsHandle(status) {
+    if (status) {
+        $("#supplierSaveButton").removeClass('disabled');
+    }else {
+        $("#supplierSaveButton").addClass('disabled');
+    }
 }
 
 const loadSuppliers = () => {
@@ -352,6 +359,12 @@ async function updateSupplier(supplier, supplierId) {
             text: error.responseText,
         });
     }
+}
+
+function clearSupplierFields() {
+    console.log("Clearing fields");
+    $("#supplierFoam").get(0).reset();
+    supplierButtonsHandle(false);
 }
 
 
