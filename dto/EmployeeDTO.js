@@ -1,11 +1,11 @@
 class EmployeeDTO {
-    constructor(employeeCode, name, profilePicture, gender, civilStatus, Designation, role, dob, joinedDate, attachedBranch, addressNo, lane, mainCity, mainState, postalCode, contactNumber, email, guardianName, guardianContact) {
+    constructor(employeeCode, name, profilePicture, gender, civilStatus, designation, role, dob, joinedDate, attachedBranch, addressNo, lane, mainCity, mainState, postalCode, contactNumber, email, guardianName, guardianContact) {
         this.employeeCode = employeeCode;
         this.name = name;
         this.profilePicture = profilePicture;
         this.gender = gender;
         this.civilStatus = civilStatus;
-        this.Designation = Designation;
+        this.designation = designation;
         this.role = role;
         this.dob = new Date(dob);
         this.joinedDate = new Date(joinedDate);
