@@ -280,13 +280,7 @@ const loadCustomers = () => {
             response.map((customer, index) => {
 
                 
-                const joinedDate = new Date(customer.joinDate);
-                const formattedJoinedDate = `${joinedDate.getFullYear()}-${joinedDate.getMonth() + 1}-${joinedDate.getDate()}`;
-
-                
-                const dobDate = new Date(customer.dob);
-                const formattedDobDate = `${dobDate.getFullYear()}-${dobDate.getMonth() + 1}-${dobDate.getDate()}`;
-                addRowCustomer(customer.customerCode, customer.name, customer.gender, formattedJoinedDate, customer.level, customer.totalPoints, formattedDobDate, customer.mainCity, customer.contactNumber, customer.email, customer.recentPurchaseDate)
+                addRowCustomer(customer.customerCode, customer.name, customer.gender, formatDate(customer.joinDate), customer.level, customer.totalPoints, formatDate(customer.dob), customer.mainCity, customer.contactNumber, customer.email, customer.recentPurchaseDate)
 
             });
             
