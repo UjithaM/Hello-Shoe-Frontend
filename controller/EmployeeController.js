@@ -119,6 +119,7 @@ $(document).ready(function() {
         updateEmployee(employee, employeeCode);
         loadEmployee();
     });
+    
     $('#employeeTable tbody').on('click', 'tr', function() {
         var rowData = [];
         $("#employeeSaveButton").hide();
@@ -131,6 +132,52 @@ $(document).ready(function() {
 
         searchEmployee(rowData[0]);
         $('#employeeModal').modal('show');
+    });
+    
+    $("#employeeDeleteButton").click(function (e) {
+        Swal.fire({
+            title: "Do you want to delete " + $("#customerName").val() + "?",
+            showDenyButton: true,
+            showCancelButton: true,
+            denyButtonText: `Delete`,
+            confirmButtonText: "Don't  Delete",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire("Employee is not deleted", "", "info");
+            } else if (result.isDenied) {
+                try {
+                    const employeeCode = $("#employeeCode").val();
+                    const refreshToken = localStorage.getItem('refreshToken');
+                    $.ajax({
+                        type: "DELETE",
+                        url: "http://localhost:8080/api/v1/employee/" + employeeCode,
+                        headers: {
+                            "Authorization": "Bearer " + refreshToken
+                        },
+                        contentType: "application/json",
+                        success: function (response) {
+                            Swal.fire({
+                                title: "Success!",
+                                text: "Employee has been deleted successfully!",
+                                icon: "success"
+                            });
+                            $("#employeeCloseButton").click();
+                            loadEmployee();
+                        },
+                        error: function (xhr, status, error) {
+                            console.error('Something Error');
+                        }
+                    });
+                }catch (error) {
+                    console.error("Error creating Customer object:", error);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: error.responseText,
+                    });
+                }
+            }
+        });
     });
 });
 function employeeButtonsHandle(status) {
