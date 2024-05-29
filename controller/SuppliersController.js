@@ -230,7 +230,7 @@ async function saveSupplier(supplier) {
             data: JSON.stringify(supplier),
             contentType: "application/json"
         });
-        $("#customerFoamCloseButton").click();
+        $("#supplierCloseButton").click();
         Swal.fire({
             title: "Success!",
             text: response.name + " has been saved successfully!",
