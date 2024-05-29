@@ -135,7 +135,7 @@ $(document).ready(function() {
                     const refreshToken = localStorage.getItem('refreshToken');
                     $.ajax({
                         type: "DELETE",
-                        url: "http://localhost:8080/api/v1/customer/" + customerCode,
+                        url: "http://localhost:8080/helloShoes/api/v1/customer/" + customerCode,
                         headers: {
                             "Authorization": "Bearer " + refreshToken
                         },
@@ -270,7 +270,7 @@ const loadCustomers = () => {
     $('#customerTableBody').empty();
     $.ajax({
         type:"GET",
-        url: "http://localhost:8080/api/v1/customer",
+        url: "http://localhost:8080/helloShoes/api/v1/customer",
         headers: {
             "Authorization": "Bearer " + refreshToken
         },
@@ -317,7 +317,7 @@ async function saveCustomer(customer) {
         const refreshToken = localStorage.getItem('refreshToken');
         const response = await $.ajax({
             type: "POST",
-            url: "http://localhost:8080/api/v1/customer",
+            url: "http://localhost:8080/helloShoes/api/v1/customer",
             headers: {
                 "Authorization": "Bearer " + refreshToken
             },
@@ -345,7 +345,7 @@ async function updateCustomer(customer, customerId) {
         const refreshToken = localStorage.getItem('refreshToken');
         const response = await $.ajax({
             type: "PUT",
-            url: "http://localhost:8080/api/v1/customer/" + customerId,
+            url: "http://localhost:8080/helloShoes/api/v1/customer/" + customerId,
             headers: {
                 "Authorization": "Bearer " + refreshToken
             },
@@ -378,7 +378,7 @@ async function searchCustomer(customerId) {
     try {
         const response = await $.ajax({
             type: "GET",
-            url: "http://localhost:8080/api/v1/customer/" + customerId,
+            url: "http://localhost:8080/helloShoes/api/v1/customer/" + customerId,
             headers: {
                 "Authorization": "Bearer " + refreshToken
             },

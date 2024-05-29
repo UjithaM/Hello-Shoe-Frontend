@@ -18,7 +18,7 @@ $("#loginButton").click(async function () {
             try {
                 const response = await $.ajax({
                     type: "POST",
-                    url: "http://localhost:8080/api/v1/auth/signin",
+                    url: "http://localhost:8080/helloShoes/api/v1/auth/signin",
                     data: JSON.stringify({
                         email: userName,
                         password: password
