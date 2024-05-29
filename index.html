@@ -157,7 +157,7 @@
                         class="fas fa-truck-field fa-fw me-3"></i><span>Suppliers</span></a>
                 <a href="#customers" id="customerLink" class="list-group-item list-group-item-action py-2 ripple"><i
                         class="fas fa-users fa-fw me-3"></i><span>Customers</span></a>
-                <a href="#employee" class="list-group-item list-group-item-action py-2 ripple">
+                <a href="#employee" id="employeeLink" class="list-group-item list-group-item-action py-2 ripple">
                     <i class="fas fa-user fa-fw me-3"></i><span>Employee</span>
                 </a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
@@ -584,7 +584,7 @@
                         <label for="customerName" class="form-label">Name</label>
                         <input type="text" class="form-control" id="customerName" required minlength="2" maxlength="100">
                         <div class="invalid-feedback">
-                            Please provide a valid name between 2 and 100 characters.
+                            Please provide a valid name
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -704,22 +704,15 @@
                             <div class="flex-grow-1 me-2 mb-2 mb-lg-0">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
-                                    <button class="btn btn-outline-secondary" type="button" id="button-addon4">Search</button>
                                 </div>
                             </div>
                             <div class="mb-2 mb-lg-0 me-2">
                                 <button type="button" class="btn btn-success" id="addEmployeeButton" data-bs-toggle="modal" data-bs-target="#employeeModal">Add Employee</button>
                             </div>
-                            <div class="mb-2 mb-lg-0 me-2">
-                                <button type="button" class="btn btn-warning disabled" id="updateEmployeeButton">Update Employee</button>
-                            </div>
-                            <div>
-                                <button type="button" class="btn btn-danger disabled" id="deleteEmployeeButton">Delete Employee</button>
-                            </div>
                         </div>
                     </div>
             <div class="col-12 col-lg-12 p-4">
-                <table class="table table-hover table-fixed">
+                <table class="table table-hover table-bordered" id="employeeTable">
                     <thead>
                     <tr>
                         <th scope="col">Employee Code</th>
@@ -738,79 +731,7 @@
                         <th scope="col">Guardian Contact</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr data-toggle="collapse" data-target="#row1" class="accordion-toggle">
-                        <th scope="row">1</th>
-                        <td>Mark Otto</td>
-                        <td>Male</td>
-                        <td>Single</td>
-                        <td>Software Engineer</td>
-                        <td>Developer</td>
-                        <td>1985-01-01</td>
-                        <td>2010-06-15</td>
-                        <td>New York</td>
-                        <td>New York</td>
-                        <td>(555) 123-4567</td>
-                        <td>mark@example.com</td>
-                        <td>John Otto</td>
-                        <td>(555) 765-4321</td>
-                    </tr>
-                    <tr class="accordian-body collapse" id="row1">
-                        <td colspan="14">
-                            <div>
-                                <strong>Additional details for Mark Otto:</strong>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr data-toggle="collapse" data-target="#row2" class="accordion-toggle">
-                        <th scope="row">2</th>
-                        <td>Jacob Thornton</td>
-                        <td>Male</td>
-                        <td>Married</td>
-                        <td>Project Manager</td>
-                        <td>Manager</td>
-                        <td>1980-03-22</td>
-                        <td>2008-11-01</td>
-                        <td>San Francisco</td>
-                        <td>San Francisco</td>
-                        <td>(555) 234-5678</td>
-                        <td>jacob@example.com</td>
-                        <td>Emily Thornton</td>
-                        <td>(555) 876-5432</td>
-                    </tr>
-                    <tr class="accordian-body collapse" id="row2">
-                        <td colspan="14">
-                            <div>
-                                <strong>Additional details for Jacob Thornton:</strong>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr data-toggle="collapse" data-target="#row3" class="accordion-toggle">
-                        <th scope="row">3</th>
-                        <td>Larry Bird</td>
-                        <td>Male</td>
-                        <td>Single</td>
-                        <td>Designer</td>
-                        <td>Creative</td>
-                        <td>1990-07-15</td>
-                        <td>2015-05-20</td>
-                        <td>Boston</td>
-                        <td>Boston</td>
-                        <td>(555) 345-6789</td>
-                        <td>larry@example.com</td>
-                        <td>Alice Bird</td>
-                        <td>(555) 987-6543</td>
-                    </tr>
-                    <tr class="accordian-body collapse" id="row3">
-                        <td colspan="14">
-                            <div>
-                                <strong>Additional details for Larry Bird:</strong>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-                            </div>
-                        </td>
-                    </tr>
+                    <tbody id="employeeTableBody">
                     </tbody>
                 </table>
                 </div>
@@ -822,149 +743,155 @@
                 <div class="modal-content p-4">
                     <div class="modal-header">
                         <h5 class="modal-title" id="employeeFormLabel">Save Employee</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="employeeCloseButton"></button>
                     </div>
-                    <form class="row g-3 needs-validation mt-3" novalidate>
-                        <div class="col-md-6">
+                    <form class="row g-3 needs-validation mt-3 " id="employeeFoam" novalidate>
+                        <div class="col-md-12 d-flex align-items-center justify-content-center">
+                            <img id="employeeProfilePicturePreview" src="" alt="Profile Picture" style="display:none; height: 250px">
+                        </div>
+                        <div class="col-md-12" id="employeeCodeField">
                             <label for="employeeCode" class="form-label">Employee Code</label>
-                            <input type="text" class="form-control" id="employeeCode" readonly>
+                            <input type="text" class="form-control" id="employeeCode" disabled>
                         </div>
-                        <div class="col-md-6">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" required>
+                        <div class="col-md-12">
+                            <label for="employeeName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="employeeName" required>
                             <div class="invalid-feedback">
-                                Name cannot be blank.
+                                Please provide a valid name.
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="profilePicture" class="form-label">Profile Picture</label>
-                            <input type="file" class="form-control" id="profilePicture">
+                            <label for="employeeProfilePicture" class="form-label" >Profile Picture</label>
+                            <input type="file" class="form-control" id="employeeProfilePicture" accept="image/*">
+
                         </div>
                         <div class="col-md-6">
-                            <label for="gender" class="form-label">Gender</label>
-                            <select class="form-select" id="gender" required>
+                            <label for="employeeGender" class="form-label">Gender</label>
+                            <select class="form-select" id="employeeGender" required>
                                 <option selected disabled value="">Choose...</option>
-                                <option>Male</option>
-                                <option>Female</option>
-                                <option>Other</option>
+                                <option value="MALE">Male</option>
+                                <option value="FEMALE">Female</option>
                             </select>
                             <div class="invalid-feedback">
-                                Gender cannot be null.
+                                Please select a valid gender.
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="civilStatus" class="form-label">Civil Status</label>
-                            <input type="text" class="form-control" id="civilStatus" required>
+                            <label for="employeeCivilStatus" class="form-label">Civil Status</label>
+                            <input type="text" class="form-control" id="employeeCivilStatus" required>
                             <div class="invalid-feedback">
-                                Civil status cannot be blank.
+                                Please provide a valid civil status.
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="Designation" class="form-label">Designation</label>
-                            <input type="text" class="form-control" id="Designation" required>
+                            <label for="employeeDesignation" class="form-label">Designation</label>
+                            <input type="text" class="form-control" id="employeeDesignation" required>
                             <div class="invalid-feedback">
-                                Designation cannot be blank.
+                                Please provide a valid designation.
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="role" class="form-label">Role</label>
-                            <select class="form-select" id="role" required>
+                            <label for="employeeRole" class="form-label">Role</label>
+                            <select class="form-select" id="employeeRole" required>
                                 <option selected disabled value="">Choose...</option>
-                                <option >ADMIN</option>
-                                <option >USER</option>
+                                <option value="ADMIN">ADMIN</option>
+                                <option value="USER">USER</option>
                             </select>
                             <div class="invalid-feedback">
-                                Role cannot be null.
+                                Please select a valid role.
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="dobC" class="form-label">Date of Birth</label>
-                            <input type="date" class="form-control" id="dobC" required>
+                            <label for="employeeDob" class="form-label">Date of Birth</label>
+                            <input type="date" class="form-control" id="employeeDob" required>
                             <div class="invalid-feedback">
-                                Date of birth cannot be null.
+                                Please provide a valid date of birth.
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="joinedDate" class="form-label">Joined Date</label>
-                            <input type="date" class="form-control" id="joinedDate" required>
+                            <label for="employeeJoinedDate" class="form-label">Joined Date</label>
+                            <input type="date" class="form-control" id="employeeJoinedDate" required>
                             <div class="invalid-feedback">
-                                Joined date cannot be null.
+                                Please provide a valid joined date.
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="attachedBranch" class="form-label">Attached Branch</label>
-                            <input type="text" class="form-control" id="attachedBranch" required>
+                            <label for="employeeAttachedBranch" class="form-label">Attached Branch</label>
+                            <input type="text" class="form-control" id="employeeAttachedBranch" required>
                             <div class="invalid-feedback">
-                                Attached branch cannot be blank.
+                                Please provide a valid attached branch.
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="addressNoC" class="form-label">Address No</label>
-                            <input type="text" class="form-control" id="addressNoC" required>
+                            <label for="employeeAddressNo" class="form-label">Address No</label>
+                            <input type="text" class="form-control" id="employeeAddressNo" required>
                             <div class="invalid-feedback">
-                                Address no cannot be blank.
+                                Please provide a valid address number.
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="laneC" class="form-label">Lane</label>
-                            <input type="text" class="form-control" id="laneC" required>
+                            <label for="employeeLane" class="form-label">Lane</label>
+                            <input type="text" class="form-control" id="employeeLane" required>
                             <div class="invalid-feedback">
-                                Lane cannot be blank.
+                                Please provide a valid lane.
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="mainCityC" class="form-label">Main City</label>
-                            <input type="text" class="form-control" id="mainCityC" required>
+                            <label for="employeeMainCity" class="form-label">Main City</label>
+                            <input type="text" class="form-control" id="employeeMainCity" required>
                             <div class="invalid-feedback">
-                                Main city cannot be blank.
+                                Please provide a valid main city.
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="mainStateC" class="form-label">Main State</label>
-                            <input type="text" class="form-control" id="mainStateC" required>
+                            <label for="employeeMainState" class="form-label">Main State</label>
+                            <input type="text" class="form-control" id="employeeMainState" required>
                             <div class="invalid-feedback">
-                                Main state cannot be blank.
+                                Please provide a valid main state.
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="postalCodeC" class="form-label">Postal Code</label>
-                            <input type="text" class="form-control" id="postalCodeC" required>
+                            <label for="employeePostalCode" class="form-label">Postal Code</label>
+                            <input type="text" class="form-control" id="employeePostalCode" required>
                             <div class="invalid-feedback">
-                                Postal code cannot be blank.
+                                Please provide a valid postal code.
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="contactNumberC" class="form-label">Contact Number</label>
-                            <input type="text" class="form-control" id="contactNumberC" required pattern="^\+?[0-9\-\\s]+$">
+                            <label for="employeeContactNumber" class="form-label">Contact Number</label>
+                            <input type="text" class="form-control" id="employeeContactNumber" required pattern="^\+?[0-9\-\\s]+$">
                             <div class="invalid-feedback">
-                                Invalid contact number format.
+                                Please provide a valid contact number.
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="emailC" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="emailC" required>
+                            <label for="employeeEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="employeeEmail" required>
                             <div class="invalid-feedback">
-                                Invalid email format.
+                                Please provide a valid email address.
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="guardianName" class="form-label">Guardian Name</label>
-                            <input type="text" class="form-control" id="guardianName" required>
+                            <label for="employeeGuardianName" class="form-label">Guardian Name</label>
+                            <input type="text" class="form-control" id="employeeGuardianName" required>
                             <div class="invalid-feedback">
-                                Guardian name cannot be blank.
+                                Please provide a valid guardian name.
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="guardianContact" class="form-label">Guardian Contact</label>
-                            <input type="text" class="form-control" id="guardianContact" required pattern="^\+?[0-9\-\\s]+$">
+                            <label for="employeeGuardianContact" class="form-label">Guardian Contact</label>
+                            <input type="text" class="form-control" id="employeeGuardianContact" required pattern="^\+?[0-9\-\\s]+$">
                             <div class="invalid-feedback">
-                                Invalid guardian contact format.
+                                Please provide a valid guardian contact number.
                             </div>
                         </div>
                         <div class="col-12">
-                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <button class="btn btn-primary" type="submit" id="employeeSaveButton">Submit</button>
+                            <button type="button" class="btn btn-warning" id="employeeUpdateButton">Update Employee</button>
+                            <button type="button" class="btn btn-danger" id="employeeDeleteButton">Delete Employee</button>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>
