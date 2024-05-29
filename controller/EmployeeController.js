@@ -72,12 +72,13 @@ $(document).ready(function() {
         const employeeCode = $("#employeeCode").val();
         const employeeName = $("#employeeName").val();
         const srcBase64 = $('#employeeProfilePicturePreview').attr('src');
+        console.log(srcBase64)
         var employeeProfilePicture;
         if (srcBase64)
-        employeeProfilePicture = base64StringImage;
-        else if (srcBase64 === undefined) {
+        employeeProfilePicture = srcBase64;
+        else if (base64StringImage === undefined) {
             employeeProfilePicture = "";
-        }else employeeProfilePicture = srcBase64;
+        }else employeeProfilePicture = base64StringImage;
         const employeeGender = $("#employeeGender").val();
         const employeeCivilStatus = $("#employeeCivilStatus").val();
         const employeeDesignation = $("#employeeDesignation").val();
@@ -117,7 +118,9 @@ $(document).ready(function() {
             employeeGuardianContact);
         console.log(employee)
         updateEmployee(employee, employeeCode);
+        $("#employeeCloseButton").click();
         loadEmployee();
+        
     });
     
     $('#employeeTable tbody').on('click', 'tr', function() {
@@ -179,6 +182,75 @@ $(document).ready(function() {
             }
         });
     });
+    $("#employeeCloseButton").on('click', function(e) {
+        employeeClearFields();
+    });
+
+    // Attach event listeners for validation
+    $('#employeeName').on('input', function() {
+        employeeValidateField($(this), namePattern);
+    });
+    $('#employeeCivilStatus').on('input', function() {
+        employeeValidateField($(this), namePattern);
+    });
+    $('#employeeDesignation').on('input', function() {
+        employeeValidateField($(this), namePattern);
+    });
+    $('#employeeAttachedBranch').on('input', function() {
+        employeeValidateField($(this), namePattern);
+    });
+    $('#employeeAddressNo').on('input', function() {
+        employeeValidateField($(this), addressPattern); // Adjust pattern as necessary
+    });
+    $('#employeeLane').on('input', function() {
+        employeeValidateField($(this), namePattern); // Adjust pattern as necessary
+    });
+    $('#employeeMainCity').on('input', function() {
+        employeeValidateField($(this), cityPattern);
+    });
+    $('#employeeMainState').on('input', function() {
+        employeeValidateField($(this), namePattern);
+    });
+    $('#employeePostalCode').on('input', function() {
+        employeeValidateField($(this), postalCodePattern);
+    });
+    $('#employeeContactNumber').on('input', function() {
+        employeeValidateField($(this), phonePattern);
+    });
+    $('#employeeEmail').on('input', function() {
+        employeeValidateField($(this), emailPattern);
+    });
+    $('#employeeGuardianName').on('input', function() {
+        employeeValidateField($(this), namePattern);
+    });
+    $('#employeeGuardianContact').on('input', function() {
+        employeeValidateField($(this), phonePattern);
+    });
+    $('#employeeFoam').on('input', function() {
+        if ($('#employeeName').hasClass('is-valid') &&
+            $('#employeeCivilStatus').hasClass('is-valid') &&
+            $('#employeeDesignation').hasClass('is-valid') &&
+            $('#employeeAttachedBranch').hasClass('is-valid') &&
+            $('#employeeAddressNo').hasClass('is-valid') &&
+            $('#employeeLane').hasClass('is-valid') &&
+            $('#employeeMainCity').hasClass('is-valid') &&
+            $('#employeeMainState').hasClass('is-valid') &&
+            $('#employeePostalCode').hasClass('is-valid') &&
+            $('#employeeContactNumber').hasClass('is-valid') &&
+            $('#employeeEmail').hasClass('is-valid') &&
+            $('#employeeGuardianName').hasClass('is-valid') &&
+            $('#employeeGuardianContact').hasClass('is-valid') &&
+            $('#employeeProfilePicture').val() !== '' && 
+            $('#employeeDob').val() !== '' && 
+            $('#employeeJoinedDate').val() !== '' &&
+            $('#employeeRole').val() !== '' &&
+            $('#employeeGender').val() !== '' ){
+            employeeButtonsHandle(true);
+        }else {
+            employeeButtonsHandle(false);
+            
+        }
+    });
 });
 function employeeButtonsHandle(status) {
     if (status) {
@@ -208,12 +280,12 @@ async function saveEmployee(employee) {
             data: JSON.stringify(employee),
             contentType: "application/json"
         });
-        $("#customerFoamCloseButton").click();
         Swal.fire({
             title: "Success!",
             text: response.name + " has been saved successfully!",
             icon: "success"
         });
+        $("#employeeCloseButton").click();
         loadEmployee();
     } catch (error) {
         console.error(error);
@@ -347,3 +419,35 @@ async function searchEmployee(employeeId) {
     }
 }
 
+function employeeClearFields() {
+    $('#employeeName').val('').removeClass('is-valid is-invalid');
+    $('#employeeCivilStatus').val('').removeClass('is-valid is-invalid');
+    $('#employeeDesignation').val('').removeClass('is-valid is-invalid');
+    $('#employeeAttachedBranch').val('').removeClass('is-valid is-invalid');
+    $('#employeeAddressNo').val('').removeClass('is-valid is-invalid');
+    $('#employeeLane').val('').removeClass('is-valid is-invalid');
+    $('#employeeMainCity').val('').removeClass('is-valid is-invalid');
+    $('#employeeMainState').val('').removeClass('is-valid is-invalid');
+    $('#employeePostalCode').val('').removeClass('is-valid is-invalid');
+    $('#employeeContactNumber').val('').removeClass('is-valid is-invalid');
+    $('#employeeEmail').val('').removeClass('is-valid is-invalid');
+    $('#employeeGuardianName').val('').removeClass('is-valid is-invalid');
+    $('#employeeGuardianContact').val('').removeClass('is-valid is-invalid');
+    $('#employeeProfilePicture').val('').removeClass('is-valid is-invalid');
+    $('#employeeDob').val('').removeClass('is-valid is-invalid');
+    $('#employeeJoinedDate').val('').removeClass('is-valid is-invalid');
+    $('#employeeRole').val('').removeClass('is-valid is-invalid');
+    $('#employeeGender').val('').removeClass('is-valid is-invalid');
+    $('#employeeProfilePicturePreview').attr('src', '').hide();
+    employeeButtonsHandle(false);
+}
+function employeeValidateField($field, pattern) {
+    const value = $field.val().trim();
+    if (pattern.test(value)) {
+        $field.removeClass('is-invalid').addClass('is-valid');
+        $("#employeeUpdateButton").removeClass("disabled");
+    } else {
+        $field.removeClass('is-valid').addClass('is-invalid');
+        $("#employeeUpdateButton").addClass("disabled");
+    }
+}
