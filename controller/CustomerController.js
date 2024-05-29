@@ -246,7 +246,9 @@ $(document).ready(function() {
         }
     });
 
-    $("#customerFoamCloseButton").click(clearFields());
+    $("#customerFoamCloseButton").on('click', function(e) {
+        clearFields();
+    });
 
     var today = new Date().toISOString().split('T')[0];
     
@@ -443,7 +445,6 @@ function submitButtonHandle(status) {
 }
 
 function clearFields() {
-    console.log("Clearing fields");
     $('#customerFoam').get(0).reset();
     submitButtonHandle(false);
 }
