@@ -114,7 +114,51 @@ $(document).ready(function() {
         console.log(itemDTO);
         updateItem(itemDTO, itemCode);
     });
-
+    $("#itemDeleteButton").click(function (e) {
+        Swal.fire({
+            title: "Do you want to delete " + $("#itemDescription").val() + "?",
+            showDenyButton: true,
+            showCancelButton: true,
+            denyButtonText: `Delete`,
+            confirmButtonText: "Don't  Delete",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire("item is not deleted", "", "info");
+            } else if (result.isDenied) {
+                try {
+                    const employeeCode = $("#itemCode").val();
+                    const refreshToken = localStorage.getItem('refreshToken');
+                    $.ajax({
+                        type: "DELETE",
+                        url: "http://localhost:8080/helloShoes/api/v1/item/" + employeeCode,
+                        headers: {
+                            "Authorization": "Bearer " + refreshToken
+                        },
+                        contentType: "application/json",
+                        success: function (response) {
+                            Swal.fire({
+                                title: "Success!",
+                                text: "Item has been deleted successfully!",
+                                icon: "success"
+                            });
+                            $("#employeeCloseButton").click();
+                            loadEmployee();
+                        },
+                        error: function (xhr, status, error) {
+                            console.error('Something Error');
+                        }
+                    });
+                }catch (error) {
+                    console.error("Error creating Customer object:", error);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: error.responseText,
+                    });
+                }
+            }
+        });
+    });
 });
 function itemSaveButtonsHandle(status) {
     if (status) {
