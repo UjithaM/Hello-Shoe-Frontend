@@ -160,8 +160,9 @@
                 <a href="#employee" id="employeeLink" class="list-group-item list-group-item-action py-2 ripple">
                     <i class="fas fa-user fa-fw me-3"></i><span>Employee</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
-                        class="fas fa-warehouse fa-fw me-3"></i><span>Inventory</span></a>
+                <a href="#" id="itemLink" class="list-group-item list-group-item-action py-2 ripple"><i
+                        class="fas fa-warehouse fa-fw me-3"></i><span>Inventory</span>
+                </a>
             </div>
         </div>
     </nav>
@@ -478,7 +479,7 @@
 
                         <div class="col-md-4">
                             <label for="supplierPostalCode" class="form-label">Postal Code</label>
-                            <input type="text" class="form-control" id="supplierPostalCode" required>
+                            <input type="number" class="form-control" id="supplierPostalCode" required>
                             <div class="invalid-feedback">
                                 Please provide a valid Postal Code!
                             </div>
@@ -494,7 +495,7 @@
 
                         <div class="col-md-12">
                             <label for="supplierMobileNumber" class="form-label">Mobile Number</label>
-                            <input type="text" class="form-control" id="supplierMobileNumber" required>
+                            <input type="number" class="form-control" id="supplierMobileNumber" required>
                             <div class="invalid-feedback">
                                 Please provide a valid Mobile number!
                             </div>
@@ -502,7 +503,7 @@
 
                         <div class="col-md-12">
                             <label for="supplierLandlineNumber" class="form-label">Landline Number</label>
-                            <input type="text" class="form-control" id="supplierLandlineNumber" required>
+                            <input type="number" class="form-control" id="supplierLandlineNumber" required>
                             <div class="invalid-feedback">
                                 Please provide a Landline number!
                             </div>
@@ -658,14 +659,14 @@
                     </div>
                     <div class="col-md-6">
                         <label for="postalCode" class="form-label">Postal Code</label>
-                        <input type="text" class="form-control" id="postalCode" required>
+                        <input type="number" class="form-control" id="postalCode" required>
                         <div class="invalid-feedback">
                             Please provide a valid postal code.
                         </div>
                     </div>
                     <div class="col-md-12">
                         <label for="contactNumber" class="form-label">Contact Number</label>
-                        <input type="text" class="form-control" id="contactNumber" required pattern="^\+?[0-9\-\\s]+$">
+                        <input type="number" class="form-control" id="contactNumber" required pattern="^\+?[0-9\-\\s]+$">
                         <div class="invalid-feedback">
                             Please provide a valid contact number.
                         </div>
@@ -852,14 +853,14 @@
                         </div>
                         <div class="col-md-6">
                             <label for="employeePostalCode" class="form-label">Postal Code</label>
-                            <input type="text" class="form-control" id="employeePostalCode" required>
+                            <input type="number" class="form-control" id="employeePostalCode" required>
                             <div class="invalid-feedback">
                                 Please provide a valid postal code.
                             </div>
                         </div>
                         <div class="col-md-6">
                             <label for="employeeContactNumber" class="form-label">Contact Number</label>
-                            <input type="text" class="form-control" id="employeeContactNumber" required pattern="^\+?[0-9\-\\s]+$">
+                            <input type="number" class="form-control" id="employeeContactNumber" required pattern="^\+?[0-9\-\\s]+$">
                             <div class="invalid-feedback">
                                 Please provide a valid contact number.
                             </div>
@@ -880,7 +881,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="employeeGuardianContact" class="form-label">Guardian Contact</label>
-                            <input type="text" class="form-control" id="employeeGuardianContact" required pattern="^\+?[0-9\-\\s]+$">
+                            <input type="number" class="form-control" id="employeeGuardianContact" required pattern="^\+?[0-9\-\\s]+$">
                             <div class="invalid-feedback">
                                 Please provide a valid guardian contact number.
                             </div>
@@ -896,6 +897,319 @@
             </div>
         </div>
         </div>
+    <div class="container pt-5" id="inventory">
+        <h1>Inventory</h1>
+        <div class="row  border-light shadow-sm rounded-3 foamBackground" >
+            <div class="col-12 col-lg-12 mt-3">
+                <div class="d-flex flex-wrap align-items-center ">
+                    <div class="col-12 col-lg-8 mt-3 pb-4">
+                        <div class="mb-2 mb-lg-0 ">
+                            <button type="button" class="btn btn-primary me-2" id="itemToggle" >Item</button>
+                            <button type="button" class="btn btn-primary" id="accessoriesToggle">Accessories</button>
+                        </div>
+                    </div>
+                    <div id="itemSection" class="col-12">
+                        <h3>Item Section</h3>
+                    <div class="col-12 col-lg-6">
+                        <div class="d-flex flex-wrap align-items-center">
+                            <div class="flex-grow-1 me-2 mb-2 mb-lg-0">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                                </div>
+                            </div>
+                            <div class="mb-2 mb-lg-0 me-2">
+                                <button type="button" class="btn btn-success" id="addItemButton" data-bs-toggle="modal" data-bs-target="#itemModal">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 p-1 mt-3">
+                        <table class="table table-hover table-bordered" id="itemTable">
+                            <thead>
+                            <tr>
+                                <th scope="col">Item Code</th>
+                                <th scope="col">Item Description</th>
+                                <th scope="col">Item Category</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Unit Price Sell</th>
+                                <th scope="col">Unit Price Buy</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Item Status</th>
+                                <th scope="col">Supplier Code</th>
+                            </tr>
+                            </thead>
+                            <tbody id="itemTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                    <div id="accessoriesSection" style="display: none" class="col-12">
+                        <h3>Accessories Section</h3>
+                    <div class="col-12 col-lg-6">
+                        <div class="d-flex flex-wrap align-items-center">
+                            <div class="flex-grow-1 me-2 mb-2 mb-lg-0">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                                </div>
+                            </div>
+                            <div class="mb-2 mb-lg-0 me-2">
+                                <button type="button" class="btn btn-success" id="addAccessoriesButton" data-bs-toggle="modal" data-bs-target="#accessoriesModal">Add Accessories</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 p-1 mt-3">
+                        <table class="table table-hover table-bordered" id="accessoriesTable">
+                            <thead>
+                            <tr>
+                                <th scope="col">Accessories Code</th>
+                                <th scope="col">Accessories Description</th>
+                                <th scope="col">Unit Price Sell</th>
+                                <th scope="col">Unit Price Buy</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Accessories Verities</th>
+                                <th scope="col">Supplier Code</th>
+                            </tr>
+                            </thead>
+                            <tbody id="accessoriesTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="itemFormLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content p-4">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="itemFormLabel">Save Item</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="itemCloseButton"></button>
+                    </div>
+                    <form class="row g-3 needs-validation mt-3" id="itemForm" novalidate>
+                        <div class="col-md-12 d-flex align-items-center justify-content-center">
+                            <img id="itemPicturePreview" src="" alt="item picture" style="display:none; height: 250px">
+                        </div>
+                        <div class="col-md-12" id="itemCodeField">
+                            <label for="itemCode" class="form-label">Item Code</label>
+                            <input type="text" class="form-control" id="itemCode" disabled>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="itemDescription" class="form-label">Item Description</label>
+                            <input type="text" class="form-control" id="itemDescription" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid item description.
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="itemPicture" class="form-label">Item Picture</label>
+                            <input type="file" class="form-control" id="itemPicture" accept="image/*">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="itemCategory" class="form-label">Item Category</label>
+                            <input type="text" class="form-control" id="itemCategory" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid item category.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="itemSize" class="form-label">Size</label>
+                            <input type="number" class="form-control" id="itemSize" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid size.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="unitPriceSell" class="form-label">Unit Price Sell</label>
+                            <input type="number" step="0.01" class="form-control" id="unitPriceSell" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid unit price sell.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="unitPriceBuy" class="form-label">Unit Price Buy</label>
+                            <input type="number" step="0.01" class="form-control" id="unitPriceBuy" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid unit price buy.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="expectedProfit" class="form-label">Expected Profit</label>
+                            <input type="number" step="0.01" class="form-control" id="expectedProfit" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid expected profit.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="profitMargin" class="form-label">Profit Margin</label>
+                            <input type="number" step="0.01" class="form-control" id="profitMargin" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid profit margin.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="quantity" class="form-label">Quantity</label>
+                            <input type="number" class="form-control" id="quantity" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid quantity.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="itemStatus" class="form-label">Item Status</label>
+                            <input type="text" class="form-control" id="itemStatus" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid item status.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="occasion" class="form-label">Occasion</label>
+                            <select class="form-select" id="occasion" required>
+                                <option selected disabled value="">Choose...</option>
+                                <option value="FORMAL">Wedding</option>
+                                <option value="CASUAL">Casual</option>
+                                <option value="SPORTS">Sports</option>
+                                <option value="INDUSTRIAL">Industrial</option>
+                                <option value="OTHER">Other</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a valid occasion.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="verities" class="form-label">Verities</label>
+                            <select class="form-select" id="verities" required>
+                                <option selected disabled value="">Choose...</option>
+                                <option value="HEEL">Heel</option>
+                                <option value="FLAT">Flat</option>
+                                <option value="WEDGES">Wedges</option>
+                                <option value="FLIP_FLOP">Flip Flop</option>
+                                <option value="SANDALS">Sandals</option>
+                                <option value="SHOES">Shoes</option>
+                                <option value="SLIPPER">Slipper</option>
+                                <option value="OTHER">Other</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a valid verities.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="gender" class="form-label">Gender</label>
+                            <select class="form-select" id="gender" required>
+                                <option selected disabled value="">Choose...</option>
+                                <option value="MALE">Male</option>
+                                <option value="FEMALE">Female</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a valid gender.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="itemSupplierCode" class="form-label">Supplier Code</label>
+                            <select class="form-select" id="itemSupplierCode" required>
+                                <option selected disabled value="">Choose...</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please provide a valid supplier code.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="itemSupplierName" class="form-label">Supplier Name</label>
+                            <input type="text" class="form-control" id="itemSupplierName" readonly disabled>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit" id="itemSaveButton">Submit</button>
+                            <button type="button" class="btn btn-warning" id="itemUpdateButton">Update Item</button>
+                            <button type="button" class="btn btn-danger" id="itemDeleteButton">Delete Item</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="accessoriesModal" tabindex="-1" aria-labelledby="accessoriesFormLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content p-4">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="accessoriesFormLabel">Save Accessories</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="accessoriesCloseButton"></button>
+                    </div>
+                    <form class="row g-3 needs-validation mt-3" id="accessoriesForm" novalidate>
+                        <div class="col-md-12">
+                            <label for="accessoriesCode" class="form-label">Accessories Code</label>
+                            <input type="text" class="form-control" id="accessoriesCode" disabled>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="accessoriesDescription" class="form-label">Accessories Description</label>
+                            <input type="text" class="form-control" id="accessoriesDescription" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid accessories description.
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="accessoriesPicture" class="form-label">Accessories Picture</label>
+                            <input type="file" class="form-control" id="accessoriesPicture" accept="image/*">
+                            <div class="invalid-feedback">
+                                Please provide a valid accessories picture.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="accessoriesUnitPriceSell" class="form-label">Unit Price Sell</label>
+                            <input type="number" step="0.01" class="form-control" id="accessoriesUnitPriceSell" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid unit price sell.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="accessoriesUnitPriceBuy" class="form-label">Unit Price Buy</label>
+                            <input type="number" step="0.01" class="form-control" id="accessoriesUnitPriceBuy" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid unit price buy.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="accessoriesExpectedProfit" class="form-label">Expected Profit</label>
+                            <input type="number" step="0.01" class="form-control" id="accessoriesExpectedProfit" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid expected profit.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="accessoriesProfitMargin" class="form-label">Profit Margin</label>
+                            <input type="number" step="0.01" class="form-control" id="accessoriesProfitMargin" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid profit margin.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="accessoriesQuantity" class="form-label">Quantity</label>
+                            <input type="number" class="form-control" id="accessoriesQuantity" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid quantity.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="accessoriesVerities" class="form-label">Accessories Verities</label>
+                            <input type="text" class="form-control" id="accessoriesVerities" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid accessories verities.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="accessoriesSupplierCode" class="form-label">Supplier Code</label>
+                            <input type="text" class="form-control" id="accessoriesSupplierCode" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid supplier code.
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit" id="accessoriesSaveButton">Submit</button>
+                            <button type="button" class="btn btn-warning" id="accessoriesUpdateButton">Update Accessories</button>
+                            <button type="button" class="btn btn-danger" id="accessoriesDeleteButton">Delete Accessories</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 
 </main>
 
@@ -911,9 +1225,14 @@
 <script src="controller/EmployeeController.js"></script>
 <script src="controller/LoginController.js"></script>
 <script src="controller/SignInController.js"></script>
+<script src="controller/InventoryController.js"></script>
+<script src="controller/ItemController.js"></script>
+<script src="controller/AccessoriesController.js"></script>
 <script src="dto/CustomerDTO.js"></script>
 <script src="dto/SupplierDTO.js"></script>
 <script src="dto/EmployeeDTO.js"></script>
+<script src="dto/AccessoriesDTO.js"></script>
+<script src="dto/ItemDTO.js"></script>
 
 
 </body>
