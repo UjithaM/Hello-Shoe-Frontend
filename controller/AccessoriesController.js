@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    accessoriesButtonsHandle(false);
     $("#addAccessoriesButton").click(function (e) {
         $("#accessoriesSaveButton").show();
         $("#accessoriesUpdateButton").hide();
@@ -60,6 +61,126 @@ $(document).ready(function() {
         searchAccessories(rowData[0]);
         $('#accessoriesModal').modal('show');
     });
+
+    $("#accessoriesUpdateButton").click(function (e) {
+        const accessoriesCode = $("#accessoriesCode").val();
+        const accessoriesDescription = $("#accessoriesDescription").val();
+        if (base64StringAccessoriesImage === '') {
+            base64StringAccessoriesImage = $("#accessoriesImagePrv").attr("src");
+        }
+        const accessoriesPicture = base64StringAccessoriesImage;
+        const accessoriesUnitPriceSell = $("#accessoriesUnitPriceSell").val();
+        const accessoriesUnitPriceBuy = $("#accessoriesUnitPriceBuy").val();
+        const accessoriesExpectedProfit = $("#accessoriesExpectedProfit").val();
+        const accessoriesProfitMargin = $("#accessoriesProfitMargin").val();
+        const accessoriesQuantity = $("#accessoriesQuantity").val();
+        const accessoriesVerities = $("#accessoriesVerities").val();
+        const accessoriesSupplierCode = $("#accessoriesSupplierCode").val();
+
+        const accessoriesDTO = new AccessoriesDTO(
+            accessoriesCode,
+            accessoriesDescription,
+            accessoriesPicture,
+            accessoriesUnitPriceSell,
+            accessoriesUnitPriceBuy,
+            accessoriesExpectedProfit,
+            accessoriesProfitMargin,
+            accessoriesQuantity,
+            accessoriesVerities,
+            accessoriesSupplierCode
+        );
+        console.log(accessoriesDTO);
+        updateAccessories(accessoriesDTO, accessoriesCode);
+    });
+    $('#accessoriesCloseButton').on('click', function() {
+        clearAccessoriesFields()
+    });
+    $('#accessoriesDescription').on('input', function() {
+        validateField($(this), namePattern);
+    });
+
+
+    $('#accessoriesUnitPriceSell').on('input', function() {
+        validateField($(this), digitPattern);
+    });
+
+    $('#accessoriesUnitPriceBuy').on('input', function() {
+        validateField($(this), digitPattern);
+    });
+
+    $('#accessoriesExpectedProfit').on('input', function() {
+        validateField($(this), digitPattern);
+    });
+
+    $('#accessoriesProfitMargin').on('input', function() {
+        validateField($(this), digitPattern);
+    });
+
+    $('#accessoriesQuantity').on('input', function() {
+        validateField($(this), digitPattern);
+    });
+
+
+    $('#accessoriesForm').on('input', function() {
+        if ($('#accessoriesDescription').hasClass('is-valid') &&
+            $('#accessoriesUnitPriceSell').hasClass('is-valid') &&
+            $('#accessoriesUnitPriceBuy').hasClass('is-valid') &&
+            $('#accessoriesExpectedProfit').hasClass('is-valid') &&
+            $('#accessoriesProfitMargin').hasClass('is-valid') &&
+            $('#accessoriesQuantity').hasClass('is-valid') &&
+            $('#accessoriesVerities').val() !== null &&
+            $('#accessoriesSupplierCode').val() !== null &&
+            $('#accessoriesPicture').val() !== ''){
+            accessoriesButtonsHandle(true);
+        } else {
+            accessoriesButtonsHandle(false);
+        }
+    });
+    $("#accessoriesDeleteButton").click(function (e) {
+        Swal.fire({
+            title: "Do you want to delete " + $("#accessoriesDescription").val() + "?",
+            showDenyButton: true,
+            showCancelButton: true,
+            denyButtonText: `Delete`,
+            confirmButtonText: "Don't  Delete",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire("Accessories is not deleted", "", "info");
+            } else if (result.isDenied) {
+                try {
+                    const accessoriesCode = $("#accessoriesCode").val();
+                    const refreshToken = localStorage.getItem('refreshToken');
+                    $.ajax({
+                        type: "DELETE",
+                        url: "http://localhost:8080/helloShoes/api/v1/accessories/" + accessoriesCode,
+                        headers: {
+                            "Authorization": "Bearer " + refreshToken
+                        },
+                        contentType: "application/json",
+                        success: function (response) {
+                            Swal.fire({
+                                title: "Success!",
+                                text: "Accessories has been deleted successfully!",
+                                icon: "success"
+                            });
+                            $("#accessoriesCloseButton").click();
+                            loadAccessories();
+                        },
+                        error: function (xhr, status, error) {
+                            console.error('Something Error');
+                        }
+                    });
+                }catch (error) {
+                    console.error("Error creating Customer object:", error);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: error.responseText,
+                    });
+                }
+            }
+        });
+    });
 });
 
 function accessoriesButtonsHandle(enable) {
@@ -83,7 +204,8 @@ async function saveAccessories(accessories) {
             text: response.accessoriesDescription + " has been saved successfully!",
             icon: "success"
         });
-        $("#itemCloseButton").click();
+        $("#accessoriesCloseButton").click();
+        loadAccessories();
     } catch (error) {
         console.error(error);
         Swal.fire({
@@ -118,6 +240,7 @@ const loadAccessories = () => {
             console.error('Something Error');
         }
     });
+
 };
 
 function addRowAccessory(accessoriesCode, accessoriesDescription, unitPriceSell, unitPriceBuy, quantity, accessoriesVerities, supplierCode) {
@@ -169,4 +292,51 @@ async function searchAccessories(accessoriesCode) {
             text: "Item not found!",
         });
     }
+
 }
+
+async function updateAccessories(Accessories, accessoriesCode) {
+    try {
+        const refreshToken = localStorage.getItem('refreshToken');
+        const response = await $.ajax({
+            type: "PUT",
+            url: "http://localhost:8080/helloShoes/api/v1/accessories/" + accessoriesCode,
+            headers: {
+                "Authorization": "Bearer " + refreshToken
+            },
+            data: JSON.stringify(Accessories),
+            contentType: "application/json"
+        });
+        $("#accessoriesCloseButton").click();
+        loadAccessories();
+        Swal.fire({
+            title: "Success!",
+            text: Accessories.accessoriesDescription + " has been update successfully!",
+            icon: "success"
+        });
+        loadEmployee();
+    } catch (error) {
+        console.error(error);
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error.responseText,
+        });
+    }
+}
+
+function clearAccessoriesFields() {
+    $('#accessoriesDescription').val('').removeClass('is-valid is-invalid');
+    $('#accessoriesPicture').val('').removeClass('is-valid is-invalid');
+    $('#accessoriesUnitPriceSell').val('').removeClass('is-valid is-invalid');
+    $('#accessoriesUnitPriceBuy').val('').removeClass('is-valid is-invalid');
+    $('#accessoriesExpectedProfit').val('').removeClass('is-valid is-invalid');
+    $('#accessoriesProfitMargin').val('').removeClass('is-valid is-invalid');
+    $('#accessoriesQuantity').val('').removeClass('is-valid is-invalid');
+    $('#accessoriesVerities').val('').removeClass('is-valid is-invalid');
+    $('#accessoriesSupplierCode').val('').removeClass('is-valid is-invalid');
+    $('#accessoriesSupplierName').val('').removeClass('is-valid is-invalid');
+    $('#accessoriesImagePrv').attr('src', '').hide();
+    accessoriesButtonsHandle(false);
+}
+
