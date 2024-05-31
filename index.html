@@ -191,99 +191,137 @@
     <!-- Navbar -->
 </header>
 
-<main style="margin-top: 60px;">
-    <div class="container pt-5" id="dashboard">
-        <h2 class="mb-4">Dashboard</h2>
-        <div class="row">
-            <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-4">
-                <div class="card widget-card border-light shadow-sm">
-                    <div class="card-body p-4">
-                        <div class="row">
-                            <div class="col-8">
-                                <h5 class="card-title widget-card-title mb-3">Total Sales</h5>
-                                <h4 class="card-subtitle text-body-secondary m-0" id="totalSalesAmount">$6,820</h4>
-                            </div>
-                            <div class="col-4">
-                                <div class="d-flex justify-content-end">
-                                    <div class="lh-1 text-white bg-info rounded-circle p-3 d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-truck fs-4"></i>
+<main style="margin-top: 60px;" >
+    <div class="p-2">
+            <div class="container pt-5" id="dashboard">
+                <h2 class="mb-4">Dashboard</h2>
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-4">
+                        <div class="card widget-card border-light shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <h5 class="card-title widget-card-title mb-3">Total Sales</h5>
+                                        <h4 class="card-subtitle text-body-secondary m-0" id="totalSalesAmount">$6,820</h4>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="d-flex justify-content-end">
+                                            <div class="lh-1 text-white bg-info rounded-circle p-3 d-flex align-items-center justify-content-center">
+                                                <i class="bi bi-truck fs-4"></i>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="d-flex align-items-center mt-3">
-                                    <span class="lh-1 me-3 bg-danger-subtle text-danger rounded-circle p-1 d-flex align-items-center justify-content-center">
-                                         <i class="bi bi-arrow-right-short bsb-rotate-45"></i>
-                                    </span>
-                                    <div>
-                                        <p class="fs-7 mb-0">-9%</p>
-                                        <p class="fs-7 mb-0 text-secondary">since last week</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-4">
-                <div class="card widget-card border-light shadow-sm">
-                    <div class="card-body p-4">
-                        <div class="row">
-                            <div class="col-8">
-                                <h5 class="card-title widget-card-title mb-3">Total Profit</h5>
-                                <h4 class="card-subtitle text-body-secondary m-0" id="totalProfitAmount">$21,900</h4>
-                            </div>
-                            <div class="col-4">
-                                <div class="d-flex justify-content-end">
-                                    <div class="lh-1 text-white bg-info rounded-circle p-3 d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-currency-dollar fs-4"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="d-flex align-items-center mt-3">
-                                    <span class="lh-1 me-3 bg-success-subtle text-success rounded-circle p-1 d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-arrow-right-short bsb-rotate-n45"></i>
-                                    </span>
-                                    <div>
-                                        <p class="fs-7 mb-0">+26%</p>
-                                        <p class="fs-7 mb-0 text-secondary">since last week</p>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="d-flex align-items-center mt-3">
+                                            <span class="lh-1 me-3 bg-danger-subtle text-danger rounded-circle p-1 d-flex align-items-center justify-content-center">
+                                                 <i class="bi bi-arrow-right-short bsb-rotate-45"></i>
+                                            </span>
+                                            <div>
+                                                <p class="fs-7 mb-0">-9%</p>
+                                                <p class="fs-7 mb-0 text-secondary">since last week</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-4">
-                <div class="card widget-card border-light shadow-sm">
-                    <div class="card-body p-4">
-                        <div class="row">
-                            <div class="col-8">
-                                <h5 class="card-title widget-card-title mb-3">Most Sale Item QTY</h5>
-                                <h4 class="card-subtitle text-body-secondary m-0" id="mostSaleItemQTY">$6,820</h4>
-                            </div>
-                            <div class="col-4">
-                                <div class="d-flex justify-content-end">
-                                    <div class="lh-1 text-white bg-info rounded-circle p-3 d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-truck fs-4"></i>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-4">
+                        <div class="card widget-card border-light shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <h5 class="card-title widget-card-title mb-3">Total Profit</h5>
+                                        <h4 class="card-subtitle text-body-secondary m-0" id="totalProfitAmount">$21,900</h4>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="d-flex justify-content-end">
+                                            <div class="lh-1 text-white bg-info rounded-circle p-3 d-flex align-items-center justify-content-center">
+                                                <i class="bi bi-currency-dollar fs-4"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="d-flex align-items-center mt-3">
+                                            <span class="lh-1 me-3 bg-success-subtle text-success rounded-circle p-1 d-flex align-items-center justify-content-center">
+                                                <i class="bi bi-arrow-right-short bsb-rotate-n45"></i>
+                                            </span>
+                                            <div>
+                                                <p class="fs-7 mb-0">+26%</p>
+                                                <p class="fs-7 mb-0 text-secondary">since last week</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="d-flex align-items-center mt-3">
-                                    <span class="lh-1 me-3 bg-danger-subtle text-danger rounded-circle p-1 d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-arrow-right-short bsb-rotate-45"></i>
-                                    </span>
-                                    <div>
-                                        <p class="fs-7 mb-0">-9%</p>
-                                        <p class="fs-7 mb-0 text-secondary">since last week</p>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-4">
+                        <div class="card widget-card border-light shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <h5 class="card-title widget-card-title mb-3">Most Sale Item QTY</h5>
+                                        <h4 class="card-subtitle text-body-secondary m-0" id="mostSaleItemQTY">$6,820</h4>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="d-flex justify-content-end">
+                                            <div class="lh-1 text-white bg-info rounded-circle p-3 d-flex align-items-center justify-content-center">
+                                                <i class="bi bi-truck fs-4"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="d-flex align-items-center mt-3">
+                                            <span class="lh-1 me-3 bg-danger-subtle text-danger rounded-circle p-1 d-flex align-items-center justify-content-center">
+                                                <i class="bi bi-arrow-right-short bsb-rotate-45"></i>
+                                            </span>
+                                            <div>
+                                                <p class="fs-7 mb-0">-9%</p>
+                                                <p class="fs-7 mb-0 text-secondary">since last week</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3 row " >
+                    <div class="cl-12 col-md-12 col-lg-6 mb-4">
+                        <div class="card widget-card border-light shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5>Most Sailed Item</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <img src="https://t4.ftcdn.net/jpg/03/91/45/63/360_F_391456310_iYbpTyVcCgjhbcnCBn3Nb2veidPKyEfX.jpg"
+                                             alt="product Image" class="col-12 " id="mostSaleItemPicture">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cl-12 col-md-12 col-lg-6 mb-4">
+                        <div class="card widget-card border-light shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5>Sales</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <canvas id="myChart" class="equal-height" style="width:100%;max-width:700px"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -291,373 +329,871 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="mt-3 row " >
-            <div class="cl-12 col-md-12 col-lg-6 mb-4">
-                <div class="card widget-card border-light shadow-sm">
-                    <div class="card-body p-4">
-                        <div class="row">
-                            <div class="col-12">
-                                <h5>Most Sailed Item</h5>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 ">
-                                <img src="https://t4.ftcdn.net/jpg/03/91/45/63/360_F_391456310_iYbpTyVcCgjhbcnCBn3Nb2veidPKyEfX.jpg"
-                                     alt="product Image" class="col-12 " id="mostSaleItemPicture">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="cl-12 col-md-12 col-lg-6 mb-4">
-                <div class="card widget-card border-light shadow-sm">
-                    <div class="card-body p-4">
-                        <div class="row">
-                            <div class="col-12">
-                                <h5>Sales</h5>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <canvas id="myChart" class="equal-height" style="width:100%;max-width:700px"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container pt-5" id="sales">
-        <div class="row">
+            <div class="container pt-5" id="sales">
+                <div class="row">
 
-        </div>
-    </div>
-    <div class="container pt-5" id="suppliers">
-        <h2 class="mb-4">Supplier</h2>
-        <div class="row  border-light shadow-sm rounded-3 foamBackground" >
-            <div class="container p-4">
-                <div class="row ">
-                    <div class="col-12 col-lg-8">
-                        <div class="d-flex flex-wrap align-items-center">
-                            <div class="flex-grow-1 me-2 mb-2 mb-lg-0">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                </div>
+            </div>
+            <div class="container pt-5" id="suppliers">
+                <h2 class="mb-4">Supplier</h2>
+                <div class="row  border-light shadow-sm rounded-3 foamBackground" >
+                    <div class="container p-4">
+                        <div class="row ">
+                            <div class="col-12 col-lg-8">
+                                <div class="d-flex flex-wrap align-items-center">
+                                    <div class="flex-grow-1 me-2 mb-2 mb-lg-0">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                                        </div>
+                                    </div>
+                                    <div class="mb-2 mb-lg-0 me-2">
+                                        <button type="button" class="btn btn-success" id="addSupplierButton" data-bs-toggle="modal" data-bs-target="#supplierModel">Add Supplier</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="mb-2 mb-lg-0 me-2">
-                                <button type="button" class="btn btn-success" id="addSupplierButton" data-bs-toggle="modal" data-bs-target="#supplierModel">Add Supplier</button>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-12 p-4">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered" id="supplierTable">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Supplier Code</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Country</th>
+                                    <th scope="col">Mobile number</th>
+                                    <th scope="col">Landline number</th>
+                                    <th scope="col">Email</th>
+                                </tr>
+                                </thead>
+                                <tbody id="supplierTableBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal fade" id="supplierModel" tabindex="-1" aria-labelledby="supplierFoam" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content p-4">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="">Save Supplier</h5>
+                                <button type="button" class="btn-close" id="supplierCloseButton" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
+                            <form class="row g-3 needs-validation mt-3" novalidate id="supplierFoam">
+                                <div class="col-md-12" id="supplierCodeField">
+                                    <label for="supplierCode" class="form-label">Supplier Code</label>
+                                    <input type="text" class="form-control" id="supplierCode" disabled>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="supplierName" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="supplierName" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid name!
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mt-5  ms-3">
+                                    <div class="form-check">
+                                        <input type="radio" class="form-check-input" id="supplierInternational" name="supplierCategory" value="INTERNATIONAL" required>
+                                        <label class="form-check-label" for="supplierInternational">International</label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input type="radio" class="form-check-input" id="supplierLocal" name="supplierCategory" value="LOCAL" required>
+                                        <label class="form-check-label" for="supplierLocal" >Local</label>
+                                        <div class="invalid-feedback">Select Category! </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="supplierAddressNo" class="form-label">Address no</label>
+                                    <input type="text" class="form-control" id="supplierAddressNo" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid Address no!
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="supplierLane" class="form-label">Lane</label>
+                                    <input type="text" class="form-control" id="supplierLane" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid Lane!
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <label for="supplierMainCity" class="form-label">Main city</label>
+                                    <input type="text" class="form-control" id="supplierMainCity" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid Main city!
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <label for="supplierMainState" class="form-label">Main State</label>
+                                    <input type="text" class="form-control" id="supplierMainState" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid Main State!
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="supplierPostalCode" class="form-label">Postal Code</label>
+                                    <input type="number" class="form-control" id="supplierPostalCode" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid Postal Code!
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="SupplierCountry" class="form-label">Country</label>
+                                    <input type="text" class="form-control" id="SupplierCountry" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid Country!
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="supplierMobileNumber" class="form-label">Mobile Number</label>
+                                    <input type="number" class="form-control" id="supplierMobileNumber" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid Mobile number!
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="supplierLandlineNumber" class="form-label">Landline Number</label>
+                                    <input type="number" class="form-control" id="supplierLandlineNumber" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a Landline number!
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="supplierEmail" class="form-label">Email</label>
+                                    <input type="text" class="form-control" id="supplierEmail" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a Email!
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit" id="supplierSaveButton">Submit</button>
+                                    <button type="button" class="btn btn-warning" id="supplierUpdateButton">Update Supplier</button>
+                                    <button type="button" class="btn btn-danger" id="supplierDeleteButton">Delete Supplier</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-12 col-lg-12 p-4">
-                <div class="table-responsive">
-                    <table class="table table-hover table-bordered" id="supplierTable">
-                        <thead>
-                        <tr>
-                            <th scope="col">Supplier Code</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Country</th>
-                            <th scope="col">Mobile number</th>
-                            <th scope="col">Landline number</th>
-                            <th scope="col">Email</th>
-                        </tr>
-                        </thead>
-                        <tbody id="supplierTableBody">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </div>
-        <div class="modal fade" id="supplierModel" tabindex="-1" aria-labelledby="supplierFoam" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content p-4">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="">Save Supplier</h5>
-                        <button type="button" class="btn-close" id="supplierCloseButton" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form class="row g-3 needs-validation mt-3" novalidate id="supplierFoam">
-                        <div class="col-md-12" id="supplierCodeField">
-                            <label for="supplierCode" class="form-label">Supplier Code</label>
-                            <input type="text" class="form-control" id="supplierCode" disabled>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="supplierName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="supplierName" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid name!
-                            </div>
-                        </div>
-                        <div class="col-md-4 mt-5  ms-3">
-                            <div class="form-check">
-                                <input type="radio" class="form-check-input" id="supplierInternational" name="supplierCategory" value="INTERNATIONAL" required>
-                                <label class="form-check-label" for="supplierInternational">International</label>
-                            </div>
-                            <div class="form-check mb-3">
-                                <input type="radio" class="form-check-input" id="supplierLocal" name="supplierCategory" value="LOCAL" required>
-                                <label class="form-check-label" for="supplierLocal" >Local</label>
-                                <div class="invalid-feedback">Select Category! </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="supplierAddressNo" class="form-label">Address no</label>
-                            <input type="text" class="form-control" id="supplierAddressNo" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid Address no!
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="supplierLane" class="form-label">Lane</label>
-                            <input type="text" class="form-control" id="supplierLane" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid Lane!
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <label for="supplierMainCity" class="form-label">Main city</label>
-                            <input type="text" class="form-control" id="supplierMainCity" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid Main city!
-                            </div>
-                        </div>
-
-                        <div class="col-md-8">
-                            <label for="supplierMainState" class="form-label">Main State</label>
-                            <input type="text" class="form-control" id="supplierMainState" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid Main State!
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <label for="supplierPostalCode" class="form-label">Postal Code</label>
-                            <input type="number" class="form-control" id="supplierPostalCode" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid Postal Code!
-                            </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <label for="SupplierCountry" class="form-label">Country</label>
-                            <input type="text" class="form-control" id="SupplierCountry" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid Country!
-                            </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <label for="supplierMobileNumber" class="form-label">Mobile Number</label>
-                            <input type="number" class="form-control" id="supplierMobileNumber" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid Mobile number!
-                            </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <label for="supplierLandlineNumber" class="form-label">Landline Number</label>
-                            <input type="number" class="form-control" id="supplierLandlineNumber" required>
-                            <div class="invalid-feedback">
-                                Please provide a Landline number!
-                            </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <label for="supplierEmail" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="supplierEmail" required>
-                            <div class="invalid-feedback">
-                                Please provide a Email!
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <button class="btn btn-primary" type="submit" id="supplierSaveButton">Submit</button>
-                            <button type="button" class="btn btn-warning" id="supplierUpdateButton">Update Supplier</button>
-                            <button type="button" class="btn btn-danger" id="supplierDeleteButton">Delete Supplier</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container pt-5" id="customers">
-        <h2 class="mb-4">Customers</h2>
-        <div class="row  border-light shadow-sm rounded-3 foamBackground" >
-            <div class="container p-4">
-                <div class="row ">
-                    <div class="col-12 col-lg-8">
-                        <div class="d-flex flex-wrap align-items-center">
-                            <div class="flex-grow-1 me-2 mb-2 mb-lg-0">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search Name" aria-label="Search" aria-describedby="button-addon2" id="searchInput">
+            <div class="container pt-5" id="customers">
+                <h2 class="mb-4">Customers</h2>
+                <div class="row  border-light shadow-sm rounded-3 foamBackground" >
+                    <div class="container p-4">
+                        <div class="row ">
+                            <div class="col-12 col-lg-8">
+                                <div class="d-flex flex-wrap align-items-center">
+                                    <div class="flex-grow-1 me-2 mb-2 mb-lg-0">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Search Name" aria-label="Search" aria-describedby="button-addon2" id="searchInput">
+                                        </div>
+                                    </div>
+                                    <div class="mb-2 mb-lg-0 me-2">
+                                        <button type="button" class="btn btn-success" id="addCustomerButton" data-bs-toggle="modal" data-bs-target="#customerModal">Add Customer</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="mb-2 mb-lg-0 me-2">
-                                <button type="button" class="btn btn-success" id="addCustomerButton" data-bs-toggle="modal" data-bs-target="#customerModal">Add Customer</button>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-12 p-4">
+                        <div class="table-responsive">
+                        <table class="table table-hover table-bordered" id="customerTable">
+                            <thead>
+                            <tr>
+                                <th scope="col">Customer Code</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Join date</th>
+                                <th scope="col">Level</th>
+                                <th scope="col">Total points</th>
+                                <th scope="col">Date of birth</th>
+                                <th scope="col">City</th>
+                                <th scope="col">Contact No</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Recent purchased date</th>
+                            </tr>
+                            </thead>
+                            <tbody id="customerTableBody">
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="customerFormLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content p-4">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="customerFormLabel">Save Customer</h5>
+                                <button type="button" class="btn-close" id="customerFoamCloseButton" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form class="row g-3 needs-validation mt-3" id="customerFoam" novalidate>
+                                <div class="col-md-12" id="customerCodeField">
+                                    <label for="customerCode" class="form-label">Customer Code</label>
+                                    <input type="text" class="form-control" id="customerCode" disabled>
+                                </div>
+                            <div class="col-md-12">
+                                <label for="customerName" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="customerName" required minlength="2" maxlength="100">
+                                <div class="invalid-feedback">
+                                    Please provide a valid name
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="genderS" class="form-label">Gender</label>
+                                <select class="form-select" id="genderS" required>
+                                    <option selected disabled value="">Gender</option>
+                                    <option value="MALE">Male</option>
+                                    <option value="FEMALE">Female</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a gender.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="joinDate" class="form-label">Join Date</label>
+                                <input type="date" class="form-control" id="joinDate" required>
+                                <div class="invalid-feedback">
+                                    Join date must be in the past or present.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="level" class="form-label">Level</label>
+                                <select class="form-select" id="level"  disabled>
+                                    <option selected disabled value="NEW">new</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a level.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="totalPoints" class="form-label">Total Points</label>
+                                <input type="number" class="form-control" id="totalPoints" min="0" value="0" disabled >
+                                <div class="invalid-feedback">
+                                    Total points must be zero or positive.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="dob" class="form-label">Date of Birth</label>
+                                <input type="date" class="form-control" id="dob" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid date of birth.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="addressNo" class="form-label">Address No</label>
+                                <input type="text" class="form-control" id="addressNo" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid address number.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lane" class="form-label">Street</label>
+                                <input type="text" class="form-control" id="lane" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid street.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="mainCity" class="form-label">City</label>
+                                <input type="text" class="form-control" id="mainCity" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid city.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="mainState" class="form-label">State</label>
+                                <input type="text" class="form-control" id="mainState" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid state.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="postalCode" class="form-label">Postal Code</label>
+                                <input type="number" class="form-control" id="postalCode" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid postal code.
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="contactNumber" class="form-label">Contact Number</label>
+                                <input type="number" class="form-control" id="contactNumber" required pattern="^\+?[0-9\-\\s]+$">
+                                <div class="invalid-feedback">
+                                    Please provide a valid contact number.
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="customerEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="customerEmail" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid email address.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="recentPurchaseDate" class="form-label">Recent Purchase Date</label>
+                                <input type="datetime-local" class="form-control" id="recentPurchaseDate" disabled>
+                                <div class="invalid-feedback">
+                                    Please provide a valid recent purchase date.
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary" type="submit" id="customerSaveSubmit">Submit</button>
+                                <button type="button" class="btn btn-warning " id="updateCustomerButton">Update Customer</button>
+                                <button type="button" class="btn btn-danger  ms-3" id="deleteCustomerButton">Delete Customer</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="container pt-5" id="employee">
+                <h2 class="mb-4">Employee</h2>
+                <div class="row  border-light shadow-sm rounded-3 foamBackground" >
+                            <div class="col-12 col-lg-8 mt-3">
+                                <div class="d-flex flex-wrap align-items-center">
+                                    <div class="flex-grow-1 me-2 mb-2 mb-lg-0">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                                        </div>
+                                    </div>
+                                    <div class="mb-2 mb-lg-0 me-2">
+                                        <button type="button" class="btn btn-success" id="addEmployeeButton" data-bs-toggle="modal" data-bs-target="#employeeModal">Add Employee</button>
+                                    </div>
+                                </div>
+                            </div>
+                    <div class="col-12 col-lg-12 p-4">
+                        <div class="table-responsive">
+                        <table class="table table-hover table-bordered" id="employeeTable">
+                            <thead>
+                            <tr>
+                                <th scope="col">Employee Code</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Civil Status</th>
+                                <th scope="col">Designation</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Date of Birth</th>
+                                <th scope="col">Joined Date</th>
+                                <th scope="col">Attached Branch</th>
+                                <th scope="col">Main City</th>
+                                <th scope="col">Contact Number</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Guardian Name</th>
+                                <th scope="col">Guardian Contact</th>
+                            </tr>
+                            </thead>
+                            <tbody id="employeeTableBody">
+                            </tbody>
+                        </table>
+                        </div>
+                        </div>
+                    </div>
+
+                    <hr class="border-5 border-top border-black" />
+                <div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="employeeFormLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content p-4">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="employeeFormLabel">Save Employee</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="employeeCloseButton"></button>
+                            </div>
+                            <form class="row g-3 needs-validation mt-3 " id="employeeFoam" novalidate>
+                                <div class="col-md-12 d-flex align-items-center justify-content-center">
+                                    <img id="employeeProfilePicturePreview" src="" alt="Profile Picture" style="display:none; height: 250px">
+                                </div>
+                                <div class="col-md-12" id="employeeCodeField">
+                                    <label for="employeeCode" class="form-label">Employee Code</label>
+                                    <input type="text" class="form-control" id="employeeCode" disabled>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="employeeName" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="employeeName" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid name.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="employeeProfilePicture" class="form-label" >Profile Picture</label>
+                                    <input type="file" class="form-control" id="employeeProfilePicture" accept="image/*">
+
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="employeeGender" class="form-label">Gender</label>
+                                    <select class="form-select" id="employeeGender" required>
+                                        <option selected disabled value="">Choose...</option>
+                                        <option value="MALE">Male</option>
+                                        <option value="FEMALE">Female</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a valid gender.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="employeeCivilStatus" class="form-label">Civil Status</label>
+                                    <input type="text" class="form-control" id="employeeCivilStatus" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid civil status.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="employeeDesignation" class="form-label">Designation</label>
+                                    <input type="text" class="form-control" id="employeeDesignation" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid designation.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="employeeRole" class="form-label">Role</label>
+                                    <select class="form-select" id="employeeRole" required>
+                                        <option selected disabled value="">Choose...</option>
+                                        <option value="ADMIN">ADMIN</option>
+                                        <option value="USER">USER</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a valid role.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="employeeDob" class="form-label">Date of Birth</label>
+                                    <input type="date" class="form-control" id="employeeDob" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid date of birth.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="employeeJoinedDate" class="form-label">Joined Date</label>
+                                    <input type="date" class="form-control" id="employeeJoinedDate" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid joined date.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="employeeAttachedBranch" class="form-label">Attached Branch</label>
+                                    <input type="text" class="form-control" id="employeeAttachedBranch" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid attached branch.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="employeeAddressNo" class="form-label">Address No</label>
+                                    <input type="text" class="form-control" id="employeeAddressNo" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid address number.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="employeeLane" class="form-label">Lane</label>
+                                    <input type="text" class="form-control" id="employeeLane" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid lane.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="employeeMainCity" class="form-label">Main City</label>
+                                    <input type="text" class="form-control" id="employeeMainCity" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid main city.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="employeeMainState" class="form-label">Main State</label>
+                                    <input type="text" class="form-control" id="employeeMainState" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid main state.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="employeePostalCode" class="form-label">Postal Code</label>
+                                    <input type="number" class="form-control" id="employeePostalCode" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid postal code.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="employeeContactNumber" class="form-label">Contact Number</label>
+                                    <input type="number" class="form-control" id="employeeContactNumber" required pattern="^\+?[0-9\-\\s]+$">
+                                    <div class="invalid-feedback">
+                                        Please provide a valid contact number.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="employeeEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="employeeEmail" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid email address.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="employeeGuardianName" class="form-label">Guardian Name</label>
+                                    <input type="text" class="form-control" id="employeeGuardianName" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid guardian name.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="employeeGuardianContact" class="form-label">Guardian Contact</label>
+                                    <input type="number" class="form-control" id="employeeGuardianContact" required pattern="^\+?[0-9\-\\s]+$">
+                                    <div class="invalid-feedback">
+                                        Please provide a valid guardian contact number.
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit" id="employeeSaveButton">Submit</button>
+                                    <button type="button" class="btn btn-warning" id="employeeUpdateButton">Update Employee</button>
+                                    <button type="button" class="btn btn-danger" id="employeeDeleteButton">Delete Employee</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                </div>
+            <div class="container pt-5" id="inventory">
+                <h1>Inventory</h1>
+                <div class="row  border-light shadow-sm rounded-3 foamBackground" >
+                    <div class="col-12 col-lg-12 mt-3">
+                        <div class="d-flex flex-wrap align-items-center ">
+                            <div class="col-12 col-lg-8 mt-3 pb-4">
+                                <div class="mb-2 mb-lg-0 ">
+                                    <button type="button" class="btn btn-primary me-2" id="itemToggle" >Item</button>
+                                    <button type="button" class="btn btn-primary" id="accessoriesToggle">Accessories</button>
+                                </div>
+                            </div>
+                            <div id="itemSection" class="col-12">
+                                <h3>Item Section</h3>
+                            <div class="col-12 col-lg-6">
+                                <div class="d-flex flex-wrap align-items-center">
+                                    <div class="flex-grow-1 me-2 mb-2 mb-lg-0">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                                        </div>
+                                    </div>
+                                    <div class="mb-2 mb-lg-0 me-2">
+                                        <button type="button" class="btn btn-success" id="addItemButton" data-bs-toggle="modal" data-bs-target="#itemModal">Add Item</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 p-1 mt-3">
+                                <div class="table-responsive">
+                                <table class="table table-hover table-bordered" id="itemTable">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Item Code</th>
+                                        <th scope="col">Item Description</th>
+                                        <th scope="col">Item Category</th>
+                                        <th scope="col">Size</th>
+                                        <th scope="col">Unit Price Sell</th>
+                                        <th scope="col">Unit Price Buy</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Item Status</th>
+                                        <th scope="col">Supplier Code</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="itemTableBody">
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+                            </div>
+                            <div id="accessoriesSection" style="display: none" class="col-12">
+                                <h3>Accessories Section</h3>
+                            <div class="col-12 col-lg-6">
+                                <div class="d-flex flex-wrap align-items-center">
+                                    <div class="flex-grow-1 me-2 mb-2 mb-lg-0">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                                        </div>
+                                    </div>
+                                    <div class="mb-2 mb-lg-0 me-2">
+                                        <button type="button" class="btn btn-success" id="addAccessoriesButton" data-bs-toggle="modal" data-bs-target="#accessoriesModal">Add Accessories</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 p-1 mt-3">
+                                <div class="table-responsive">
+                                <table class="table table-hover table-bordered" id="accessoriesTable">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Accessories Code</th>
+                                        <th scope="col">Accessories Description</th>
+                                        <th scope="col">Unit Price Sell</th>
+                                        <th scope="col">Unit Price Buy</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Accessories Verities</th>
+                                        <th scope="col">Supplier Code</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="accessoriesTableBody">
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 col-lg-12 p-4">
-                <div class="table-responsive">
-                <table class="table table-hover table-bordered" id="customerTable">
-                    <thead>
-                    <tr>
-                        <th scope="col">Customer Code</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Gender</th>
-                        <th scope="col">Join date</th>
-                        <th scope="col">Level</th>
-                        <th scope="col">Total points</th>
-                        <th scope="col">Date of birth</th>
-                        <th scope="col">City</th>
-                        <th scope="col">Contact No</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Recent purchased date</th>
-                    </tr>
-                    </thead>
-                    <tbody id="customerTableBody">
-                    </tbody>
-                </table>
+                <div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="itemFormLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content p-4">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="itemFormLabel">Save Item</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="itemCloseButton"></button>
+                            </div>
+                            <form class="row g-3 needs-validation mt-3" id="itemForm" novalidate>
+                                <div class="col-md-12 d-flex align-items-center justify-content-center">
+                                    <img id="itemPicturePreview" src="" alt="item picture" style="display:none; height: 250px">
+                                </div>
+                                <div class="col-md-12" id="itemCodeField">
+                                    <label for="itemCode" class="form-label">Item Code</label>
+                                    <input type="text" class="form-control" id="itemCode" disabled>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="itemDescription" class="form-label">Item Description</label>
+                                    <input type="text" class="form-control" id="itemDescription" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid item description.
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="itemPicture" class="form-label">Item Picture</label>
+                                    <input type="file" class="form-control" id="itemPicture" accept="image/*">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="itemCategory" class="form-label">Item Category</label>
+                                    <input type="text" class="form-control" id="itemCategory" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid item category.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="itemSize" class="form-label">Size</label>
+                                    <input type="number" class="form-control" id="itemSize" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid size.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="unitPriceSell" class="form-label">Unit Price Sell</label>
+                                    <input type="number" step="0.01" class="form-control" id="unitPriceSell" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid unit price sell.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="unitPriceBuy" class="form-label">Unit Price Buy</label>
+                                    <input type="number" step="0.01" class="form-control" id="unitPriceBuy" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid unit price buy.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="expectedProfit" class="form-label">Expected Profit</label>
+                                    <input type="number" step="0.01" class="form-control" id="expectedProfit" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid expected profit.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="profitMargin" class="form-label">Profit Margin</label>
+                                    <input type="number" step="0.01" class="form-control" id="profitMargin" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid profit margin.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="quantity" class="form-label">Quantity</label>
+                                    <input type="number" class="form-control" id="quantity" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid quantity.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="itemStatus" class="form-label">Item Status</label>
+                                    <input type="text" class="form-control" id="itemStatus" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid item status.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="occasion" class="form-label">Occasion</label>
+                                    <select class="form-select" id="occasion" required>
+                                        <option selected disabled value="">Choose...</option>
+                                        <option value="FORMAL">Wedding</option>
+                                        <option value="CASUAL">Casual</option>
+                                        <option value="SPORTS">Sports</option>
+                                        <option value="INDUSTRIAL">Industrial</option>
+                                        <option value="OTHER">Other</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a valid occasion.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="verities" class="form-label">Verities</label>
+                                    <select class="form-select" id="verities" required>
+                                        <option selected disabled value="">Choose...</option>
+                                        <option value="HEEL">Heel</option>
+                                        <option value="FLAT">Flat</option>
+                                        <option value="WEDGES">Wedges</option>
+                                        <option value="FLIP_FLOP">Flip Flop</option>
+                                        <option value="SANDALS">Sandals</option>
+                                        <option value="SHOES">Shoes</option>
+                                        <option value="SLIPPER">Slipper</option>
+                                        <option value="OTHER">Other</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a valid verities.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="gender" class="form-label">Gender</label>
+                                    <select class="form-select" id="gender" required>
+                                        <option selected disabled value="">Choose...</option>
+                                        <option value="MALE">Male</option>
+                                        <option value="FEMALE">Female</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a valid gender.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="itemSupplierCode" class="form-label">Supplier Code</label>
+                                    <select class="form-select" id="itemSupplierCode" required>
+                                        <option selected disabled value="">Choose...</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid supplier code.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="itemSupplierName" class="form-label">Supplier Name</label>
+                                    <input type="text" class="form-control" id="itemSupplierName" readonly disabled>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit" id="itemSaveButton">Submit</button>
+                                    <button type="button" class="btn btn-warning" id="itemUpdateButton">Update Item</button>
+                                    <button type="button" class="btn btn-danger" id="itemDeleteButton">Delete Item</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="customerFormLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content p-4">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="customerFormLabel">Save Customer</h5>
-                        <button type="button" class="btn-close" id="customerFoamCloseButton" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form class="row g-3 needs-validation mt-3" id="customerFoam" novalidate>
-                        <div class="col-md-12" id="customerCodeField">
-                            <label for="customerCode" class="form-label">Customer Code</label>
-                            <input type="text" class="form-control" id="customerCode" disabled>
-                        </div>
-                    <div class="col-md-12">
-                        <label for="customerName" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="customerName" required minlength="2" maxlength="100">
-                        <div class="invalid-feedback">
-                            Please provide a valid name
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="genderS" class="form-label">Gender</label>
-                        <select class="form-select" id="genderS" required>
-                            <option selected disabled value="">Gender</option>
-                            <option value="MALE">Male</option>
-                            <option value="FEMALE">Female</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Please select a gender.
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="joinDate" class="form-label">Join Date</label>
-                        <input type="date" class="form-control" id="joinDate" required>
-                        <div class="invalid-feedback">
-                            Join date must be in the past or present.
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="level" class="form-label">Level</label>
-                        <select class="form-select" id="level"  disabled>
-                            <option selected disabled value="NEW">new</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Please select a level.
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="totalPoints" class="form-label">Total Points</label>
-                        <input type="number" class="form-control" id="totalPoints" min="0" value="0" disabled >
-                        <div class="invalid-feedback">
-                            Total points must be zero or positive.
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="dob" class="form-label">Date of Birth</label>
-                        <input type="date" class="form-control" id="dob" required>
-                        <div class="invalid-feedback">
-                            Please provide a valid date of birth.
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="addressNo" class="form-label">Address No</label>
-                        <input type="text" class="form-control" id="addressNo" required>
-                        <div class="invalid-feedback">
-                            Please provide a valid address number.
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="lane" class="form-label">Street</label>
-                        <input type="text" class="form-control" id="lane" required>
-                        <div class="invalid-feedback">
-                            Please provide a valid street.
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="mainCity" class="form-label">City</label>
-                        <input type="text" class="form-control" id="mainCity" required>
-                        <div class="invalid-feedback">
-                            Please provide a valid city.
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="mainState" class="form-label">State</label>
-                        <input type="text" class="form-control" id="mainState" required>
-                        <div class="invalid-feedback">
-                            Please provide a valid state.
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="postalCode" class="form-label">Postal Code</label>
-                        <input type="number" class="form-control" id="postalCode" required>
-                        <div class="invalid-feedback">
-                            Please provide a valid postal code.
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <label for="contactNumber" class="form-label">Contact Number</label>
-                        <input type="number" class="form-control" id="contactNumber" required pattern="^\+?[0-9\-\\s]+$">
-                        <div class="invalid-feedback">
-                            Please provide a valid contact number.
+                <div class="modal fade" id="accessoriesModal" tabindex="-1" aria-labelledby="accessoriesFormLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content p-4">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="accessoriesFormLabel">Save Accessories</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="accessoriesCloseButton"></button>
+                            </div>
+                            <form class="row g-3 needs-validation mt-3" id="accessoriesForm" novalidate>
+                                <div class="col-md-12 d-flex align-items-center justify-content-center">
+                                    <img id="accessoriesImagePrv" src="" alt="item picture" style="display:none; height: 250px">
+                                </div>
+                                <div class="col-md-12" id="accessoriesCodeFiled">
+                                    <label for="accessoriesCode" class="form-label">Accessories Code</label>
+                                    <input type="text" class="form-control" id="accessoriesCode" disabled>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="accessoriesDescription" class="form-label">Accessories Description</label>
+                                    <input type="text" class="form-control" id="accessoriesDescription" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid accessories description.
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="accessoriesPicture" class="form-label">Accessories Picture</label>
+                                    <input type="file" class="form-control" id="accessoriesPicture" accept="image/*">
+                                    <div class="invalid-feedback">
+                                        Please provide a valid accessories picture.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="accessoriesUnitPriceSell" class="form-label">Unit Price Sell</label>
+                                    <input type="number" step="0.01" class="form-control" id="accessoriesUnitPriceSell" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid unit price sell.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="accessoriesUnitPriceBuy" class="form-label">Unit Price Buy</label>
+                                    <input type="number" step="0.01" class="form-control" id="accessoriesUnitPriceBuy" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid unit price buy.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="accessoriesExpectedProfit" class="form-label">Expected Profit</label>
+                                    <input type="number" step="0.01" class="form-control" id="accessoriesExpectedProfit" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid expected profit.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="accessoriesProfitMargin" class="form-label">Profit Margin</label>
+                                    <input type="number" step="0.01" class="form-control" id="accessoriesProfitMargin" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid profit margin.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="accessoriesQuantity" class="form-label">Quantity</label>
+                                    <input type="number" class="form-control" id="accessoriesQuantity" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid quantity.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="accessoriesVerities" class="form-label">Accessories Verities</label>
+                                    <select class="form-select" id="accessoriesVerities" required>
+                                        <option selected disabled value="">Choose...</option>
+                                        <option value="SHOE_SHAMPOO">SHOE SHAMPOO</option>
+                                        <option value="POLISH_BLACK">POLISH BLACK</option>
+                                        <option value="POLISH_BROWN">POLISH BROWN</option>
+                                        <option value="POLISH_DARK_BROWN">POLISH DARK BROWN</option>
+                                        <option value="FULL_SOCKS">FULL SOCKS</option>
+                                        <option value="HALF_SOCKS">HALF SOCKS</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid accessories verities.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="accessoriesSupplierCode" class="form-label">Supplier Code</label>
+                                    <select class="form-select" id="accessoriesSupplierCode" required>
+                                        <option selected disabled value="">Choose...</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid supplier code.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="itemSupplierName" class="form-label">Supplier Name</label>
+                                    <input type="text" class="form-control" id="accessoriesSupplierName" readonly disabled>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit" id="accessoriesSaveButton">Submit</button>
+                                    <button type="button" class="btn btn-warning" id="accessoriesUpdateButton">Update Accessories</button>
+                                    <button type="button" class="btn btn-danger" id="accessoriesDeleteButton">Delete Accessories</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <label for="customerEmail" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="customerEmail" required>
-                        <div class="invalid-feedback">
-                            Please provide a valid email address.
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="recentPurchaseDate" class="form-label">Recent Purchase Date</label>
-                        <input type="datetime-local" class="form-control" id="recentPurchaseDate" disabled>
-                        <div class="invalid-feedback">
-                            Please provide a valid recent purchase date.
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <button class="btn btn-primary" type="submit" id="customerSaveSubmit">Submit</button>
-                        <button type="button" class="btn btn-warning " id="updateCustomerButton">Update Customer</button>
-                        <button type="button" class="btn btn-danger  ms-3" id="deleteCustomerButton">Delete Customer</button>
-                    </div>
-                </form>
                 </div>
+
             </div>
-        </div>
-
-
-    </div>
-    <div class="container pt-5" id="employee">
-        <h2 class="mb-4">Employee</h2>
-        <div class="row  border-light shadow-sm rounded-3 foamBackground" >
+            <div class="container pt-5" id="sale">
+                <h1>Sales</h1>
+                <div class="row  border-light shadow-sm rounded-3 foamBackground p-4">
                     <div class="col-12 col-lg-8 mt-3">
                         <div class="d-flex flex-wrap align-items-center">
                             <div class="flex-grow-1 me-2 mb-2 mb-lg-0">
@@ -666,631 +1202,97 @@
                                 </div>
                             </div>
                             <div class="mb-2 mb-lg-0 me-2">
-                                <button type="button" class="btn btn-success" id="addEmployeeButton" data-bs-toggle="modal" data-bs-target="#employeeModal">Add Employee</button>
+                                <button type="button" class="btn btn-success" id="placeOrder" data-bs-toggle="modal" data-bs-target="#orderModal">Place Order</button>
                             </div>
                         </div>
                     </div>
-            <div class="col-12 col-lg-12 p-4">
-                <div class="table-responsive">
-                <table class="table table-hover table-bordered" id="employeeTable">
-                    <thead>
-                    <tr>
-                        <th scope="col">Employee Code</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Gender</th>
-                        <th scope="col">Civil Status</th>
-                        <th scope="col">Designation</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Date of Birth</th>
-                        <th scope="col">Joined Date</th>
-                        <th scope="col">Attached Branch</th>
-                        <th scope="col">Main City</th>
-                        <th scope="col">Contact Number</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Guardian Name</th>
-                        <th scope="col">Guardian Contact</th>
-                    </tr>
-                    </thead>
-                    <tbody id="employeeTableBody">
-                    </tbody>
-                </table>
-                </div>
-                </div>
-            </div>
-
-            <hr class="border-5 border-top border-black" />
-        <div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="employeeFormLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content p-4">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="employeeFormLabel">Save Employee</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="employeeCloseButton"></button>
-                    </div>
-                    <form class="row g-3 needs-validation mt-3 " id="employeeFoam" novalidate>
-                        <div class="col-md-12 d-flex align-items-center justify-content-center">
-                            <img id="employeeProfilePicturePreview" src="" alt="Profile Picture" style="display:none; height: 250px">
-                        </div>
-                        <div class="col-md-12" id="employeeCodeField">
-                            <label for="employeeCode" class="form-label">Employee Code</label>
-                            <input type="text" class="form-control" id="employeeCode" disabled>
-                        </div>
-                        <div class="col-md-12">
-                            <label for="employeeName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="employeeName" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid name.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="employeeProfilePicture" class="form-label" >Profile Picture</label>
-                            <input type="file" class="form-control" id="employeeProfilePicture" accept="image/*">
-
-                        </div>
-                        <div class="col-md-6">
-                            <label for="employeeGender" class="form-label">Gender</label>
-                            <select class="form-select" id="employeeGender" required>
-                                <option selected disabled value="">Choose...</option>
-                                <option value="MALE">Male</option>
-                                <option value="FEMALE">Female</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid gender.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="employeeCivilStatus" class="form-label">Civil Status</label>
-                            <input type="text" class="form-control" id="employeeCivilStatus" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid civil status.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="employeeDesignation" class="form-label">Designation</label>
-                            <input type="text" class="form-control" id="employeeDesignation" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid designation.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="employeeRole" class="form-label">Role</label>
-                            <select class="form-select" id="employeeRole" required>
-                                <option selected disabled value="">Choose...</option>
-                                <option value="ADMIN">ADMIN</option>
-                                <option value="USER">USER</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid role.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="employeeDob" class="form-label">Date of Birth</label>
-                            <input type="date" class="form-control" id="employeeDob" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid date of birth.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="employeeJoinedDate" class="form-label">Joined Date</label>
-                            <input type="date" class="form-control" id="employeeJoinedDate" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid joined date.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="employeeAttachedBranch" class="form-label">Attached Branch</label>
-                            <input type="text" class="form-control" id="employeeAttachedBranch" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid attached branch.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="employeeAddressNo" class="form-label">Address No</label>
-                            <input type="text" class="form-control" id="employeeAddressNo" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid address number.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="employeeLane" class="form-label">Lane</label>
-                            <input type="text" class="form-control" id="employeeLane" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid lane.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="employeeMainCity" class="form-label">Main City</label>
-                            <input type="text" class="form-control" id="employeeMainCity" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid main city.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="employeeMainState" class="form-label">Main State</label>
-                            <input type="text" class="form-control" id="employeeMainState" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid main state.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="employeePostalCode" class="form-label">Postal Code</label>
-                            <input type="number" class="form-control" id="employeePostalCode" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid postal code.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="employeeContactNumber" class="form-label">Contact Number</label>
-                            <input type="number" class="form-control" id="employeeContactNumber" required pattern="^\+?[0-9\-\\s]+$">
-                            <div class="invalid-feedback">
-                                Please provide a valid contact number.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="employeeEmail" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="employeeEmail" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid email address.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="employeeGuardianName" class="form-label">Guardian Name</label>
-                            <input type="text" class="form-control" id="employeeGuardianName" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid guardian name.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="employeeGuardianContact" class="form-label">Guardian Contact</label>
-                            <input type="number" class="form-control" id="employeeGuardianContact" required pattern="^\+?[0-9\-\\s]+$">
-                            <div class="invalid-feedback">
-                                Please provide a valid guardian contact number.
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary" type="submit" id="employeeSaveButton">Submit</button>
-                            <button type="button" class="btn btn-warning" id="employeeUpdateButton">Update Employee</button>
-                            <button type="button" class="btn btn-danger" id="employeeDeleteButton">Delete Employee</button>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-        </div>
-    <div class="container pt-5" id="inventory">
-        <h1>Inventory</h1>
-        <div class="row  border-light shadow-sm rounded-3 foamBackground" >
-            <div class="col-12 col-lg-12 mt-3">
-                <div class="d-flex flex-wrap align-items-center ">
-                    <div class="col-12 col-lg-8 mt-3 pb-4">
-                        <div class="mb-2 mb-lg-0 ">
-                            <button type="button" class="btn btn-primary me-2" id="itemToggle" >Item</button>
-                            <button type="button" class="btn btn-primary" id="accessoriesToggle">Accessories</button>
-                        </div>
-                    </div>
-                    <div id="itemSection" class="col-12">
-                        <h3>Item Section</h3>
-                    <div class="col-12 col-lg-6">
-                        <div class="d-flex flex-wrap align-items-center">
-                            <div class="flex-grow-1 me-2 mb-2 mb-lg-0">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
-                                </div>
-                            </div>
-                            <div class="mb-2 mb-lg-0 me-2">
-                                <button type="button" class="btn btn-success" id="addItemButton" data-bs-toggle="modal" data-bs-target="#itemModal">Add Item</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 p-1 mt-3">
+                    <div class="col-12 col-lg-12 mt-3">
                         <div class="table-responsive">
-                        <table class="table table-hover table-bordered" id="itemTable">
+                        <table class="table table-hover table-bordered" id="orderTable">
                             <thead>
                             <tr>
-                                <th scope="col">Item Code</th>
-                                <th scope="col">Item Description</th>
-                                <th scope="col">Item Category</th>
-                                <th scope="col">Size</th>
-                                <th scope="col">Unit Price Sell</th>
-                                <th scope="col">Unit Price Buy</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Item Status</th>
-                                <th scope="col">Supplier Code</th>
+                                <th scope="col">Order Number</th>
+                                <th scope="col">Purchase Date</th>
+                                <th scope="col">Payment Method</th>
+                                <th scope="col">Total Price</th>
+                                <th scope="col">Customer Code</th>
+                                <th scope="col">Employee Code</th>
                             </tr>
                             </thead>
-                            <tbody id="itemTableBody">
+                            <tbody id="orderTableBody">
                             </tbody>
                         </table>
                         </div>
                     </div>
-                    </div>
-                    <div id="accessoriesSection" style="display: none" class="col-12">
-                        <h3>Accessories Section</h3>
-                    <div class="col-12 col-lg-6">
-                        <div class="d-flex flex-wrap align-items-center">
-                            <div class="flex-grow-1 me-2 mb-2 mb-lg-0">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                </div>
+                <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderFormLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content p-4">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="orderFormLabel">Save Order</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="orderCloseButton"></button>
+                            </div>
+                            <form class="row g-3 needs-validation mt-3" id="orderForm" novalidate>
+                                <div class="col-md-12" id="orderNoField">
+                                    <label for="orderNo" class="form-label">Order Number</label>
+                                    <input type="text" class="form-control" id="orderNo" disabled>
                                 </div>
-                            </div>
-                            <div class="mb-2 mb-lg-0 me-2">
-                                <button type="button" class="btn btn-success" id="addAccessoriesButton" data-bs-toggle="modal" data-bs-target="#accessoriesModal">Add Accessories</button>
-                            </div>
+                                <div class="col-md-6">
+                                    <label for="orderCustomerCode" class="form-label">Customer Code</label>
+                                    <select class="form-select" id="orderCustomerCode" required>
+                                        <option selected disabled value="">Choose...</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a valid customerCode.
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="purchaseDate" class="form-label">Purchase Date</label>
+                                    <input type="date" class="form-control" id="purchaseDate" required>
+                                    <div class="invalid-feedback">
+                                        Purchase date cannot be blank.
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="paymentMethod" class="form-label">Payment Method</label>
+                                    <input type="text" class="form-control" id="paymentMethod" required>
+                                    <div class="invalid-feedback">
+                                        Payment method cannot be blank.
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="totalPrice" class="form-label">Total Price</label>
+                                    <input type="number" class="form-control" id="totalPrice" required>
+                                    <div class="invalid-feedback">
+                                        Total price must be positive or zero.
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="orderItems" class="form-label">Order Items</label>
+                                    <textarea class="form-control" id="orderItems" required></textarea>
+                                    <div class="invalid-feedback">
+                                        Order items cannot be empty.
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="orderAccessories" class="form-label">Order Accessories</label>
+                                    <textarea class="form-control" id="orderAccessories" required></textarea>
+                                    <div class="invalid-feedback">
+                                        Order accessories cannot be empty.
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit" id="orderSaveButton">Submit</button>
+                                    <button type="button" class="btn btn-warning" id="orderUpdateButton">Update Order</button>
+                                    <button type="button" class="btn btn-danger" id="orderDeleteButton">Delete Order</button>
+                                </div>
+                            </form>
                         </div>
-                    </div>
-                    <div class="col-12 p-1 mt-3">
-                        <div class="table-responsive">
-                        <table class="table table-hover table-bordered" id="accessoriesTable">
-                            <thead>
-                            <tr>
-                                <th scope="col">Accessories Code</th>
-                                <th scope="col">Accessories Description</th>
-                                <th scope="col">Unit Price Sell</th>
-                                <th scope="col">Unit Price Buy</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Accessories Verities</th>
-                                <th scope="col">Supplier Code</th>
-                            </tr>
-                            </thead>
-                            <tbody id="accessoriesTableBody">
-                            </tbody>
-                        </table>
-                        </div>
-                    </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="itemFormLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content p-4">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="itemFormLabel">Save Item</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="itemCloseButton"></button>
-                    </div>
-                    <form class="row g-3 needs-validation mt-3" id="itemForm" novalidate>
-                        <div class="col-md-12 d-flex align-items-center justify-content-center">
-                            <img id="itemPicturePreview" src="" alt="item picture" style="display:none; height: 250px">
-                        </div>
-                        <div class="col-md-12" id="itemCodeField">
-                            <label for="itemCode" class="form-label">Item Code</label>
-                            <input type="text" class="form-control" id="itemCode" disabled>
-                        </div>
-                        <div class="col-md-12">
-                            <label for="itemDescription" class="form-label">Item Description</label>
-                            <input type="text" class="form-control" id="itemDescription" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid item description.
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <label for="itemPicture" class="form-label">Item Picture</label>
-                            <input type="file" class="form-control" id="itemPicture" accept="image/*">
-                        </div>
-                        <div class="col-md-12">
-                            <label for="itemCategory" class="form-label">Item Category</label>
-                            <input type="text" class="form-control" id="itemCategory" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid item category.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="itemSize" class="form-label">Size</label>
-                            <input type="number" class="form-control" id="itemSize" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid size.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="unitPriceSell" class="form-label">Unit Price Sell</label>
-                            <input type="number" step="0.01" class="form-control" id="unitPriceSell" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid unit price sell.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="unitPriceBuy" class="form-label">Unit Price Buy</label>
-                            <input type="number" step="0.01" class="form-control" id="unitPriceBuy" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid unit price buy.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="expectedProfit" class="form-label">Expected Profit</label>
-                            <input type="number" step="0.01" class="form-control" id="expectedProfit" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid expected profit.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="profitMargin" class="form-label">Profit Margin</label>
-                            <input type="number" step="0.01" class="form-control" id="profitMargin" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid profit margin.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="quantity" class="form-label">Quantity</label>
-                            <input type="number" class="form-control" id="quantity" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid quantity.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="itemStatus" class="form-label">Item Status</label>
-                            <input type="text" class="form-control" id="itemStatus" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid item status.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="occasion" class="form-label">Occasion</label>
-                            <select class="form-select" id="occasion" required>
-                                <option selected disabled value="">Choose...</option>
-                                <option value="FORMAL">Wedding</option>
-                                <option value="CASUAL">Casual</option>
-                                <option value="SPORTS">Sports</option>
-                                <option value="INDUSTRIAL">Industrial</option>
-                                <option value="OTHER">Other</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid occasion.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="verities" class="form-label">Verities</label>
-                            <select class="form-select" id="verities" required>
-                                <option selected disabled value="">Choose...</option>
-                                <option value="HEEL">Heel</option>
-                                <option value="FLAT">Flat</option>
-                                <option value="WEDGES">Wedges</option>
-                                <option value="FLIP_FLOP">Flip Flop</option>
-                                <option value="SANDALS">Sandals</option>
-                                <option value="SHOES">Shoes</option>
-                                <option value="SLIPPER">Slipper</option>
-                                <option value="OTHER">Other</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid verities.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="gender" class="form-label">Gender</label>
-                            <select class="form-select" id="gender" required>
-                                <option selected disabled value="">Choose...</option>
-                                <option value="MALE">Male</option>
-                                <option value="FEMALE">Female</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid gender.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="itemSupplierCode" class="form-label">Supplier Code</label>
-                            <select class="form-select" id="itemSupplierCode" required>
-                                <option selected disabled value="">Choose...</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please provide a valid supplier code.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="itemSupplierName" class="form-label">Supplier Name</label>
-                            <input type="text" class="form-control" id="itemSupplierName" readonly disabled>
-                        </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary" type="submit" id="itemSaveButton">Submit</button>
-                            <button type="button" class="btn btn-warning" id="itemUpdateButton">Update Item</button>
-                            <button type="button" class="btn btn-danger" id="itemDeleteButton">Delete Item</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="accessoriesModal" tabindex="-1" aria-labelledby="accessoriesFormLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content p-4">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="accessoriesFormLabel">Save Accessories</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="accessoriesCloseButton"></button>
-                    </div>
-                    <form class="row g-3 needs-validation mt-3" id="accessoriesForm" novalidate>
-                        <div class="col-md-12 d-flex align-items-center justify-content-center">
-                            <img id="accessoriesImagePrv" src="" alt="item picture" style="display:none; height: 250px">
-                        </div>
-                        <div class="col-md-12" id="accessoriesCodeFiled">
-                            <label for="accessoriesCode" class="form-label">Accessories Code</label>
-                            <input type="text" class="form-control" id="accessoriesCode" disabled>
-                        </div>
-                        <div class="col-md-12">
-                            <label for="accessoriesDescription" class="form-label">Accessories Description</label>
-                            <input type="text" class="form-control" id="accessoriesDescription" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid accessories description.
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <label for="accessoriesPicture" class="form-label">Accessories Picture</label>
-                            <input type="file" class="form-control" id="accessoriesPicture" accept="image/*">
-                            <div class="invalid-feedback">
-                                Please provide a valid accessories picture.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="accessoriesUnitPriceSell" class="form-label">Unit Price Sell</label>
-                            <input type="number" step="0.01" class="form-control" id="accessoriesUnitPriceSell" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid unit price sell.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="accessoriesUnitPriceBuy" class="form-label">Unit Price Buy</label>
-                            <input type="number" step="0.01" class="form-control" id="accessoriesUnitPriceBuy" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid unit price buy.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="accessoriesExpectedProfit" class="form-label">Expected Profit</label>
-                            <input type="number" step="0.01" class="form-control" id="accessoriesExpectedProfit" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid expected profit.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="accessoriesProfitMargin" class="form-label">Profit Margin</label>
-                            <input type="number" step="0.01" class="form-control" id="accessoriesProfitMargin" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid profit margin.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="accessoriesQuantity" class="form-label">Quantity</label>
-                            <input type="number" class="form-control" id="accessoriesQuantity" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid quantity.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="accessoriesVerities" class="form-label">Accessories Verities</label>
-                            <select class="form-select" id="accessoriesVerities" required>
-                                <option selected disabled value="">Choose...</option>
-                                <option value="SHOE_SHAMPOO">SHOE SHAMPOO</option>
-                                <option value="POLISH_BLACK">POLISH BLACK</option>
-                                <option value="POLISH_BROWN">POLISH BROWN</option>
-                                <option value="POLISH_DARK_BROWN">POLISH DARK BROWN</option>
-                                <option value="FULL_SOCKS">FULL SOCKS</option>
-                                <option value="HALF_SOCKS">HALF SOCKS</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please provide a valid accessories verities.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="accessoriesSupplierCode" class="form-label">Supplier Code</label>
-                            <select class="form-select" id="accessoriesSupplierCode" required>
-                                <option selected disabled value="">Choose...</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please provide a valid supplier code.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="itemSupplierName" class="form-label">Supplier Name</label>
-                            <input type="text" class="form-control" id="accessoriesSupplierName" readonly disabled>
-                        </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary" type="submit" id="accessoriesSaveButton">Submit</button>
-                            <button type="button" class="btn btn-warning" id="accessoriesUpdateButton">Update Accessories</button>
-                            <button type="button" class="btn btn-danger" id="accessoriesDeleteButton">Delete Accessories</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="container pt-5" id="sale">
-        <h1>Sales</h1>
-        <div class="row  border-light shadow-sm rounded-3 foamBackground p-4">
-            <div class="col-12 col-lg-8 mt-3">
-                <div class="d-flex flex-wrap align-items-center">
-                    <div class="flex-grow-1 me-2 mb-2 mb-lg-0">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
-                        </div>
-                    </div>
-                    <div class="mb-2 mb-lg-0 me-2">
-                        <button type="button" class="btn btn-success" id="placeOrder" data-bs-toggle="modal" data-bs-target="#orderModal">Place Order</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-12 mt-3">
-                <div class="table-responsive">
-                <table class="table table-hover table-bordered" id="orderTable">
-                    <thead>
-                    <tr>
-                        <th scope="col">Order Number</th>
-                        <th scope="col">Purchase Date</th>
-                        <th scope="col">Payment Method</th>
-                        <th scope="col">Total Price</th>
-                        <th scope="col">Customer Code</th>
-                        <th scope="col">Employee Code</th>
-                    </tr>
-                    </thead>
-                    <tbody id="orderTableBody">
-                    </tbody>
-                </table>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderFormLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content p-4">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="orderFormLabel">Save Order</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="orderCloseButton"></button>
-                    </div>
-                    <form class="row g-3 needs-validation mt-3" id="orderForm" novalidate>
-                        <div class="col-md-12" id="orderNoField">
-                            <label for="orderNo" class="form-label">Order Number</label>
-                            <input type="text" class="form-control" id="orderNo" disabled>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="orderCustomerCode" class="form-label">Customer Code</label>
-                            <select class="form-select" id="orderCustomerCode" required>
-                                <option selected disabled value="">Choose...</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid customerCode.
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <label for="purchaseDate" class="form-label">Purchase Date</label>
-                            <input type="date" class="form-control" id="purchaseDate" required>
-                            <div class="invalid-feedback">
-                                Purchase date cannot be blank.
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <label for="paymentMethod" class="form-label">Payment Method</label>
-                            <input type="text" class="form-control" id="paymentMethod" required>
-                            <div class="invalid-feedback">
-                                Payment method cannot be blank.
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <label for="totalPrice" class="form-label">Total Price</label>
-                            <input type="number" class="form-control" id="totalPrice" required>
-                            <div class="invalid-feedback">
-                                Total price must be positive or zero.
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <label for="orderItems" class="form-label">Order Items</label>
-                            <textarea class="form-control" id="orderItems" required></textarea>
-                            <div class="invalid-feedback">
-                                Order items cannot be empty.
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <label for="orderAccessories" class="form-label">Order Accessories</label>
-                            <textarea class="form-control" id="orderAccessories" required></textarea>
-                            <div class="invalid-feedback">
-                                Order accessories cannot be empty.
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary" type="submit" id="orderSaveButton">Submit</button>
-                            <button type="button" class="btn btn-warning" id="orderUpdateButton">Update Order</button>
-                            <button type="button" class="btn btn-danger" id="orderDeleteButton">Delete Order</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
 
 
+            </div>
     </div>
 
 
