@@ -80,3 +80,42 @@ async function saveAccessories(accessories) {
         });
     }
 }
+const loadAccessories = () => {
+    const refreshToken = localStorage.getItem('refreshToken');
+
+    $('#accessoriesTableBody').empty();
+    $.ajax({
+        type:"GET",
+        url: "http://localhost:8080/helloShoes/api/v1/accessories",
+        headers: {
+            "Authorization": "Bearer " + refreshToken
+        },
+        contentType: "application/json",
+
+        success: function (response) {
+
+            console.log(response)
+            response.map((accessories, index) => {
+                console.log(accessories)
+                addRowAccessory(accessories.accessoriesCode, accessories.accessoriesDescription, accessories.unitPriceSell, accessories.unitPriceBuy, accessories.quantity, accessories.accessoriesVerities, accessories.supplierCode)
+            });
+
+        },
+        error: function (xhr, status, error) {
+            console.error('Something Error');
+        }
+    });
+};
+
+function addRowAccessory(accessoriesCode, accessoriesDescription, unitPriceSell, unitPriceBuy, quantity, accessoriesVerities, supplierCode) {
+    var newRow = $('<tr>');
+    newRow.append($('<td>').text(accessoriesCode));
+    newRow.append($('<td>').text(accessoriesDescription));
+    newRow.append($('<td>').text(unitPriceSell));
+    newRow.append($('<td>').text(unitPriceBuy));
+    newRow.append($('<td>').text(quantity));
+    newRow.append($('<td>').text(accessoriesVerities));
+    newRow.append($('<td>').text(supplierCode));
+
+    $('#accessoriesTableBody').append(newRow);
+}
