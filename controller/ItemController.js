@@ -143,7 +143,7 @@ $(document).ready(function() {
                                 icon: "success"
                             });
                             $("#itemCloseButton").click();
-                            loadEmployee();
+                            loadItem();
                         },
                         error: function (xhr, status, error) {
                             console.error('Something Error');
@@ -200,10 +200,10 @@ $(document).ready(function() {
             $('#quantity').hasClass('is-valid') &&
             $('#itemStatus').hasClass('is-valid') &&
             $('#itemPicture').val() !== '' &&
-            $('#occasion').val() !== '' &&
-            $('#verities').val() !== '' &&
-            $('#gender').val() !== '' &&
-            $('#itemSupplierCode').val() !== '' ) {
+            $('#occasion').val() !== null &&
+            $('#verities').val() !== null &&
+            $('#gender').val() !== null &&
+            $('#itemSupplierCode').val() !== null ) {
             itemButtonsHandle(true);
         } else {
             itemButtonsHandle(false);
@@ -234,6 +234,7 @@ async function saveItem(item) {
             icon: "success"
         });
         $("#itemCloseButton").click();
+        loadItem()
     } catch (error) {
         console.error(error);
         Swal.fire({
@@ -440,12 +441,13 @@ async function updateItem(item, itemId) {
             contentType: "application/json"
         });
         $("#itemCloseButton").click();
+        loadItem()
         Swal.fire({
             title: "Success!",
             text: item.itemDescription + " has been update successfully!",
             icon: "success"
         });
-        loadEmployee();
+        loadItem();
     } catch (error) {
         console.error(error);
         Swal.fire({
