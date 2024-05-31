@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    // itemSaveButtonsHandle(false);
+    itemButtonsHandle(false);
     $("#addItemButton").click(function (e) {
         $("#itemSaveButton").show();
         $("#itemUpdateButton").hide();
@@ -141,7 +141,7 @@ $(document).ready(function() {
                                 text: "Item has been deleted successfully!",
                                 icon: "success"
                             });
-                            $("#employeeCloseButton").click();
+                            $("#itemCloseButton").click();
                             loadEmployee();
                         },
                         error: function (xhr, status, error) {
@@ -159,13 +159,61 @@ $(document).ready(function() {
             }
         });
     });
+
+    $('#itemDescription').on('input', function() {
+        validateField($(this), namePattern);
+    });
+    $('#itemCategory').on('input', function() {
+        validateField($(this), namePattern);
+    });
+    $('#itemSize').on('input', function() {
+        validateField($(this), digitPattern);
+    });
+    $('#unitPriceSell').on('input', function() {
+        validateField($(this), digitPattern);
+    });
+    $('#unitPriceBuy').on('input', function() {
+        validateField($(this), digitPattern);
+    });
+    $('#expectedProfit').on('input', function() {
+        validateField($(this), digitPattern);
+    });
+    $('#profitMargin').on('input', function() {
+        validateField($(this), digitPattern);
+    });
+    $('#quantity').on('input', function() {
+        validateField($(this), digitPattern);
+    });
+    $('#itemStatus').on('input', function() {
+        validateField($(this), namePattern);
+    });
+
+    $('#itemForm').on('input', function() {
+        if ($('#itemDescription').hasClass('is-valid') &&
+            $('#itemCategory').hasClass('is-valid') &&
+            $('#itemSize').hasClass('is-valid') &&
+            $('#unitPriceSell').hasClass('is-valid') &&
+            $('#unitPriceBuy').hasClass('is-valid') &&
+            $('#expectedProfit').hasClass('is-valid') &&
+            $('#profitMargin').hasClass('is-valid') &&
+            $('#quantity').hasClass('is-valid') &&
+            $('#itemStatus').hasClass('is-valid') &&
+            $('#itemPicture').val() !== '' &&
+            $('#occasion').val() !== '' &&
+            $('#verities').val() !== '' &&
+            $('#gender').val() !== '' &&
+            $('#itemSupplierCode').val() !== '' ) {
+            itemButtonsHandle(true);
+        } else {
+            itemButtonsHandle(false);
+        }
+    });
+    $('#itemCloseButton').on('click', function() {
+        itemClearFields();
+    });
 });
-function itemSaveButtonsHandle(status) {
-    if (status) {
-        $("#itemSaveButton").removeClass('disabled');
-    }else {
-        $("#itemSaveButton").addClass('disabled');
-    }
+function itemButtonsHandle(enable) {
+    $('#itemSaveButton').prop('disabled', !enable);
 }
 async function saveItem(item) {
     try {
@@ -348,7 +396,7 @@ async function updateItem(item, itemId) {
             data: JSON.stringify(item),
             contentType: "application/json"
         });
-        $("#supplierCloseButton").click();
+        $("#itemCloseButton").click();
         Swal.fire({
             title: "Success!",
             text: item.itemDescription + " has been update successfully!",
@@ -364,3 +412,24 @@ async function updateItem(item, itemId) {
         });
     }
 }
+
+function itemClearFields() {
+    $('#itemDescription').val('').removeClass('is-valid is-invalid');
+    $('#itemCategory').val('').removeClass('is-valid is-invalid');
+    $('#itemSize').val('').removeClass('is-valid is-invalid');
+    $('#unitPriceSell').val('').removeClass('is-valid is-invalid');
+    $('#unitPriceBuy').val('').removeClass('is-valid is-invalid');
+    $('#expectedProfit').val('').removeClass('is-valid is-invalid');
+    $('#profitMargin').val('').removeClass('is-valid is-invalid');
+    $('#quantity').val('').removeClass('is-valid is-invalid');
+    $('#itemStatus').val('').removeClass('is-valid is-invalid');
+    $('#itemPicture').val('').removeClass('is-valid is-invalid');
+    $('#occasion').val('').removeClass('is-valid is-invalid');
+    $('#verities').val('').removeClass('is-valid is-invalid');
+    $('#gender').val('').removeClass('is-valid is-invalid');
+    $('#itemSupplierCode').val('').removeClass('is-valid is-invalid');
+    $('#itemSupplierName').val('').removeClass('is-valid is-invalid');
+    $('#itemPicturePreview').attr('src', '').hide();
+    itemButtonsHandle(false);
+}
+
