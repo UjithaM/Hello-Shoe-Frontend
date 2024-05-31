@@ -7,7 +7,7 @@ const cityPattern = /^[A-Za-z\s]+$/;            // Letters and spaces
 const statePattern = /^[A-Za-z\s]+$/;           // Letters and spaces
 const postalCodePattern = /^\d{5}(-\d{4})?$/;   // 5 digits or 5+4 digits (US ZIP code)
 const phonePattern = /^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/; // Phone number (US format)
-
+const digitPattern = /^\d+$/;
 
 $(document).ready(function() {
     $("#customerSaveSubmit").addClass('disabled');
