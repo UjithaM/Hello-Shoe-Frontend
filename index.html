@@ -144,7 +144,7 @@
 
 <header>
     <!-- Sidebar -->
-    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar  bg-white">
         <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
                 <a href="#dashboard" class="list-group-item list-group-item-action py-2 ripple active" aria-current="true">
@@ -173,8 +173,8 @@
         <!-- Container wrapper -->
         <div class="container-fluid">
             <!-- Toggle button -->
-            <button data-mdb-button-init class="navbar-toggler" type="button" data-mdb-collapse-init
-                    data-mdb-target="#sidebarMenu"
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#sidebarMenu"
                     aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
@@ -185,51 +185,6 @@
                      loading="lazy"/>
             </a>
 
-            <!-- Right links -->
-            <ul class="navbar-nav ms-auto d-flex flex-row">
-                <!-- Notification dropdown -->
-                <li class="nav-item dropdown">
-                    <a data-mdb-dropdown-init class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#"
-                       id="navbarDropdownMenu"
-                       role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-bell"></i>
-                        <span class="badge rounded-pill badge-notification bg-danger">1</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                        <li>
-                            <a class="dropdown-item" href="#">Some news</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Another news</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </li>
-                    </ul>
-                </li>
-
-
-                <!-- Avatar -->
-                <li class="nav-item dropdown">
-                    <a data-mdb-dropdown-init class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center"
-                       href="#"
-                       id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp" class="rounded-circle"
-                             height="22" alt="Avatar" loading="lazy"/>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                        <li>
-                            <a class="dropdown-item" href="#">My profile</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Settings</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Logout</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
         </div>
         <!-- Container wrapper -->
     </nav>
@@ -246,7 +201,7 @@
                         <div class="row">
                             <div class="col-8">
                                 <h5 class="card-title widget-card-title mb-3">Total Sales</h5>
-                                <h4 class="card-subtitle text-body-secondary m-0">$6,820</h4>
+                                <h4 class="card-subtitle text-body-secondary m-0" id="totalSalesAmount">$6,820</h4>
                             </div>
                             <div class="col-4">
                                 <div class="d-flex justify-content-end">
@@ -278,7 +233,7 @@
                         <div class="row">
                             <div class="col-8">
                                 <h5 class="card-title widget-card-title mb-3">Total Profit</h5>
-                                <h4 class="card-subtitle text-body-secondary m-0">$21,900</h4>
+                                <h4 class="card-subtitle text-body-secondary m-0" id="totalProfitAmount">$21,900</h4>
                             </div>
                             <div class="col-4">
                                 <div class="d-flex justify-content-end">
@@ -310,7 +265,7 @@
                         <div class="row">
                             <div class="col-8">
                                 <h5 class="card-title widget-card-title mb-3">Most Sale Item QTY</h5>
-                                <h4 class="card-subtitle text-body-secondary m-0">$6,820</h4>
+                                <h4 class="card-subtitle text-body-secondary m-0" id="mostSaleItemQTY">$6,820</h4>
                             </div>
                             <div class="col-4">
                                 <div class="d-flex justify-content-end">
@@ -349,7 +304,7 @@
                         <div class="row">
                             <div class="col-12 ">
                                 <img src="https://t4.ftcdn.net/jpg/03/91/45/63/360_F_391456310_iYbpTyVcCgjhbcnCBn3Nb2veidPKyEfX.jpg"
-                                     alt="product Image" class="col-12 ">
+                                     alt="product Image" class="col-12 " id="mostSaleItemPicture">
                             </div>
                         </div>
                     </div>
@@ -399,23 +354,25 @@
             </div>
 
             <div class="col-12 col-lg-12 p-4">
-                <table class="table table-hover table-bordered" id="supplierTable">
-                    <thead>
-                    <tr>
-                        <th scope="col">Supplier Code</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Country</th>
-                        <th scope="col">Mobile number</th>
-                        <th scope="col">Landline number</th>
-                        <th scope="col">Email</th>
-                    </tr>
-                    </thead>
-                    <tbody id="supplierTableBody">
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered" id="supplierTable">
+                        <thead>
+                        <tr>
+                            <th scope="col">Supplier Code</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Country</th>
+                            <th scope="col">Mobile number</th>
+                            <th scope="col">Landline number</th>
+                            <th scope="col">Email</th>
+                        </tr>
+                        </thead>
+                        <tbody id="supplierTableBody">
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <hr class="border-5 border-top border-black" />
+
         </div>
         <div class="modal fade" id="supplierModel" tabindex="-1" aria-labelledby="supplierFoam" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -547,6 +504,7 @@
                 </div>
             </div>
             <div class="col-12 col-lg-12 p-4">
+                <div class="table-responsive">
                 <table class="table table-hover table-bordered" id="customerTable">
                     <thead>
                     <tr>
@@ -566,8 +524,8 @@
                     <tbody id="customerTableBody">
                     </tbody>
                 </table>
+                </div>
             </div>
-            <hr class="border-5 border-top border-black" />
         </div>
         <div class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="customerFormLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -713,6 +671,7 @@
                         </div>
                     </div>
             <div class="col-12 col-lg-12 p-4">
+                <div class="table-responsive">
                 <table class="table table-hover table-bordered" id="employeeTable">
                     <thead>
                     <tr>
@@ -735,6 +694,7 @@
                     <tbody id="employeeTableBody">
                     </tbody>
                 </table>
+                </div>
                 </div>
             </div>
 
@@ -923,6 +883,7 @@
                         </div>
                     </div>
                     <div class="col-12 p-1 mt-3">
+                        <div class="table-responsive">
                         <table class="table table-hover table-bordered" id="itemTable">
                             <thead>
                             <tr>
@@ -940,6 +901,7 @@
                             <tbody id="itemTableBody">
                             </tbody>
                         </table>
+                        </div>
                     </div>
                     </div>
                     <div id="accessoriesSection" style="display: none" class="col-12">
@@ -957,6 +919,7 @@
                         </div>
                     </div>
                     <div class="col-12 p-1 mt-3">
+                        <div class="table-responsive">
                         <table class="table table-hover table-bordered" id="accessoriesTable">
                             <thead>
                             <tr>
@@ -972,6 +935,7 @@
                             <tbody id="accessoriesTableBody">
                             </tbody>
                         </table>
+                        </div>
                     </div>
                     </div>
                 </div>
@@ -1224,6 +1188,108 @@
                 </div>
             </div>
         </div>
+
+    </div>
+    <div class="container pt-5" id="sale">
+        <h1>Sales</h1>
+        <div class="row  border-light shadow-sm rounded-3 foamBackground p-4">
+            <div class="col-12 col-lg-8 mt-3">
+                <div class="d-flex flex-wrap align-items-center">
+                    <div class="flex-grow-1 me-2 mb-2 mb-lg-0">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                        </div>
+                    </div>
+                    <div class="mb-2 mb-lg-0 me-2">
+                        <button type="button" class="btn btn-success" id="placeOrder" data-bs-toggle="modal" data-bs-target="#orderModal">Place Order</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-12 mt-3">
+                <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="orderTable">
+                    <thead>
+                    <tr>
+                        <th scope="col">Order Number</th>
+                        <th scope="col">Purchase Date</th>
+                        <th scope="col">Payment Method</th>
+                        <th scope="col">Total Price</th>
+                        <th scope="col">Customer Code</th>
+                        <th scope="col">Employee Code</th>
+                    </tr>
+                    </thead>
+                    <tbody id="orderTableBody">
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderFormLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content p-4">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="orderFormLabel">Save Order</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="orderCloseButton"></button>
+                    </div>
+                    <form class="row g-3 needs-validation mt-3" id="orderForm" novalidate>
+                        <div class="col-md-12" id="orderNoField">
+                            <label for="orderNo" class="form-label">Order Number</label>
+                            <input type="text" class="form-control" id="orderNo" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="orderCustomerCode" class="form-label">Customer Code</label>
+                            <select class="form-select" id="orderCustomerCode" required>
+                                <option selected disabled value="">Choose...</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a valid customerCode.
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="purchaseDate" class="form-label">Purchase Date</label>
+                            <input type="date" class="form-control" id="purchaseDate" required>
+                            <div class="invalid-feedback">
+                                Purchase date cannot be blank.
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="paymentMethod" class="form-label">Payment Method</label>
+                            <input type="text" class="form-control" id="paymentMethod" required>
+                            <div class="invalid-feedback">
+                                Payment method cannot be blank.
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="totalPrice" class="form-label">Total Price</label>
+                            <input type="number" class="form-control" id="totalPrice" required>
+                            <div class="invalid-feedback">
+                                Total price must be positive or zero.
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="orderItems" class="form-label">Order Items</label>
+                            <textarea class="form-control" id="orderItems" required></textarea>
+                            <div class="invalid-feedback">
+                                Order items cannot be empty.
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="orderAccessories" class="form-label">Order Accessories</label>
+                            <textarea class="form-control" id="orderAccessories" required></textarea>
+                            <div class="invalid-feedback">
+                                Order accessories cannot be empty.
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit" id="orderSaveButton">Submit</button>
+                            <button type="button" class="btn btn-warning" id="orderUpdateButton">Update Order</button>
+                            <button type="button" class="btn btn-danger" id="orderDeleteButton">Delete Order</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 
