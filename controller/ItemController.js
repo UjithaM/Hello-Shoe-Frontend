@@ -74,6 +74,46 @@ $(document).ready(function() {
         searchItem(rowData[0]);
         $('#itemModal').modal('show');
     });
+    $("#itemUpdateButton").click(function (e) {
+        const itemCode = $("#itemCode").val();
+        const itemDescription = $("#itemDescription").val();
+        if (base64StringItemImage === '') {
+            base64StringItemImage = $("#itemPicturePreview").attr("src");
+        }
+        const itemPicture = base64StringItemImage;
+        const itemCategory = $("#itemCategory").val();
+        const itemSize = $("#itemSize").val();
+        const unitPriceSell = $("#unitPriceSell").val();
+        const unitPriceBuy = $("#unitPriceBuy").val();
+        const expectedProfit = $("#expectedProfit").val();
+        const profitMargin = $("#profitMargin").val();
+        const quantity = $("#quantity").val();
+        const itemStatus = $("#itemStatus").val();
+        const occasion = $("#occasion").val();
+        const verities = $("#verities").val();
+        const gender = $("#gender").val();
+        const itemSupplierCode = $("#itemSupplierCode").val();
+
+        const itemDTO = new ItemDTO(
+            itemCode,
+            itemDescription,
+            itemPicture,
+            itemCategory,
+            itemSize,
+            unitPriceSell,
+            unitPriceBuy,
+            expectedProfit,
+            profitMargin,
+            quantity,
+            itemStatus,
+            occasion,
+            verities,
+            gender,
+            itemSupplierCode
+        );
+        console.log(itemDTO);
+        updateItem(itemDTO, itemCode);
+    });
 
 });
 function itemSaveButtonsHandle(status) {
@@ -252,4 +292,31 @@ async function searchItem(itemId) {
         });
     }
 }
-
+async function updateItem(item, itemId) {
+    try {
+        const refreshToken = localStorage.getItem('refreshToken');
+        const response = await $.ajax({
+            type: "PUT",
+            url: "http://localhost:8080/helloShoes/api/v1/item/" + itemId,
+            headers: {
+                "Authorization": "Bearer " + refreshToken
+            },
+            data: JSON.stringify(item),
+            contentType: "application/json"
+        });
+        $("#supplierCloseButton").click();
+        Swal.fire({
+            title: "Success!",
+            text: item.itemDescription + " has been update successfully!",
+            icon: "success"
+        });
+        loadEmployee();
+    } catch (error) {
+        console.error(error);
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error.responseText,
+        });
+    }
+}
