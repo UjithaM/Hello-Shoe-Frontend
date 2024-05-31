@@ -47,6 +47,19 @@ $(document).ready(function() {
         console.log(accessoriesDTO);
         saveAccessories(accessoriesDTO);
     });
+    $('#accessoriesTableBody').on('click', 'tr', function() {
+        var rowData = [];
+        $("#accessoriesSaveButton").hide();
+        $("#accessoriesUpdateButton").show();
+        $("#accessoriesDeleteButton").show();
+        $("#accessoriesCodeFiled").show();
+        $(this).find('td').each(function() {
+            rowData.push($(this).text());
+        });
+
+        searchAccessories(rowData[0]);
+        $('#accessoriesModal').modal('show');
+    });
 });
 
 function accessoriesButtonsHandle(enable) {
@@ -118,4 +131,42 @@ function addRowAccessory(accessoriesCode, accessoriesDescription, unitPriceSell,
     newRow.append($('<td>').text(supplierCode));
 
     $('#accessoriesTableBody').append(newRow);
+}
+
+async function searchAccessories(accessoriesCode) {
+    const refreshToken = localStorage.getItem('refreshToken');
+    getSuppliersAndSetSupplierName();
+    try {
+        const response = await $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/helloShoes/api/v1/accessories/" + accessoriesCode,
+            headers: {
+                "Authorization": "Bearer " + refreshToken
+            },
+            contentType: "application/json"
+        });
+        $("#accessoriesCode").val(response.accessoriesCode);
+        $("#accessoriesDescription").val(response.accessoriesDescription);
+
+        if (response.accessoriesPicture) {
+            $("#accessoriesImagePrv").attr("src", response.accessoriesPicture).show();
+        } else {
+            $("#accessoriesImagePrv").hide();
+        }
+
+        $("#accessoriesUnitPriceSell").val(response.unitPriceSell);
+        $("#accessoriesUnitPriceBuy").val(response.unitPriceBuy);
+        $("#accessoriesExpectedProfit").val(response.expectedProfit);
+        $("#accessoriesProfitMargin").val(response.profitMargin);
+        $("#accessoriesQuantity").val(response.quantity);
+        $("#accessoriesVerities").val(response.accessoriesVerities);
+        $("#accessoriesSupplierCode").val(response.supplierCode);
+    } catch (error) {
+        console.error("Request failed:", error);
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Item not found!",
+        });
+    }
 }
