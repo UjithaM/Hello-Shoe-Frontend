@@ -252,11 +252,15 @@ async function getSuppliersAndSetSupplierName() {
         },
         success: function(data) {
             $('#itemSupplierCode').empty();
+            $('#accessoriesSupplierCode').empty();
+
 
             $('#itemSupplierCode').append('<option selected disabled value="">Choose...</option>');
+            $('#accessoriesSupplierCode').append('<option selected disabled value="">Choose...</option>');
 
             data.forEach(function(supplier) {
                 $('#itemSupplierCode').append('<option value="' + supplier.supplierCode + '">' + supplier.supplierCode + '</option>');
+                $('#accessoriesSupplierCode').append('<option value="' + supplier.supplierCode + '">' + supplier.supplierCode + '</option>');
             });
 
             $('#itemSupplierCode').change(function() {
@@ -277,6 +281,26 @@ async function getSuppliersAndSetSupplierName() {
                 // Set the supplier name input field
                 $('#itemSupplierName').val(selectedSupplierName);
             });
+
+            $('#accessoriesSupplierCode').change(function() {
+                if (data === null || data.length === 0) {
+                    getSuppliersAndSetSupplierName();
+                }
+                var selectedSupplierCode = $(this).val();
+                var selectedSupplierName = "";
+
+                data.forEach(function(supplier) {
+
+                    if (supplier.supplierCode === selectedSupplierCode) {
+                        selectedSupplierName = supplier.name;
+                        return false;
+                    }
+                });
+
+                // Set the supplier name input field
+                $('#itemSupplierName').val(selectedSupplierName);
+                $('#accessoriesSupplierName').val(selectedSupplierName);
+            });
             $('#itemSupplierCode').on('click', function() {
                 if (data === null || data.length === 0) {
                     getSuppliersAndSetSupplierName();
@@ -294,6 +318,25 @@ async function getSuppliersAndSetSupplierName() {
 
                 // Set the supplier name input field
                 $('#itemSupplierName').val(selectedSupplierName);
+            });
+            $('#accessoriesSupplierCode').on('click', function() {
+                if (data === null || data.length === 0) {
+                    getSuppliersAndSetSupplierName();
+                }
+                var selectedSupplierCode = $(this).val();
+                var selectedSupplierName = "";
+
+                data.forEach(function(supplier) {
+
+                    if (supplier.supplierCode === selectedSupplierCode) {
+                        selectedSupplierName = supplier.name;
+                        return false;
+                    }
+                });
+
+                // Set the supplier name input field
+                $('#itemSupplierName').val(selectedSupplierName);
+                $('#accessoriesSupplierName').val(selectedSupplierName);
             });
         },
         error: function(xhr, status, error) {
