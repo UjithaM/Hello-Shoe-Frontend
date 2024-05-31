@@ -21,8 +21,9 @@ $(document).ready(function() {
             });
         }
     });
-    $('#itemLink').click(async function () {
+    $('#inventoryLink').click(async function () {
         loadItem()
+        loadAccessories()
     })
 
     $("#itemSaveButton").click(function (e) {
@@ -361,7 +362,6 @@ const loadItem = () => {
 
             console.log(response)
             response.map((item, index) => {
-                console.log(item)
                 addRowItem(item.itemCode, item.itemDescription, item.itemCategory, item.size, item.unitPriceSell, item.unitPriceBuy, item.quantity, item.itemStatus, item.supplierCode);
             });
 
