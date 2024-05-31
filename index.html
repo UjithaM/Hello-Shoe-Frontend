@@ -160,7 +160,7 @@
                 <a href="#employee" id="employeeLink" class="list-group-item list-group-item-action py-2 ripple">
                     <i class="fas fa-user fa-fw me-3"></i><span>Employee</span>
                 </a>
-                <a href="#inventory" id="itemLink" class="list-group-item list-group-item-action py-2 ripple"><i
+                <a href="#inventory" id="inventoryLink" class="list-group-item list-group-item-action py-2 ripple"><i
                         class="fas fa-warehouse fa-fw me-3"></i><span>Inventory</span>
                 </a>
             </div>
@@ -1131,7 +1131,10 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="accessoriesCloseButton"></button>
                     </div>
                     <form class="row g-3 needs-validation mt-3" id="accessoriesForm" novalidate>
-                        <div class="col-md-12">
+                        <div class="col-md-12 d-flex align-items-center justify-content-center">
+                            <img id="accessoriesImagePrv" src="" alt="item picture" style="display:none; height: 250px">
+                        </div>
+                        <div class="col-md-12" id="accessoriesCodeFiled">
                             <label for="accessoriesCode" class="form-label">Accessories Code</label>
                             <input type="text" class="form-control" id="accessoriesCode" disabled>
                         </div>
@@ -1186,17 +1189,31 @@
                         </div>
                         <div class="col-md-6">
                             <label for="accessoriesVerities" class="form-label">Accessories Verities</label>
-                            <input type="text" class="form-control" id="accessoriesVerities" required>
+                            <select class="form-select" id="accessoriesVerities" required>
+                                <option selected disabled value="">Choose...</option>
+                                <option value="SHOE_SHAMPOO">SHOE SHAMPOO</option>
+                                <option value="POLISH_BLACK">POLISH BLACK</option>
+                                <option value="POLISH_BROWN">POLISH BROWN</option>
+                                <option value="POLISH_DARK_BROWN">POLISH DARK BROWN</option>
+                                <option value="FULL_SOCKS">FULL SOCKS</option>
+                                <option value="HALF_SOCKS">HALF SOCKS</option>
+                            </select>
                             <div class="invalid-feedback">
                                 Please provide a valid accessories verities.
                             </div>
                         </div>
                         <div class="col-md-6">
                             <label for="accessoriesSupplierCode" class="form-label">Supplier Code</label>
-                            <input type="text" class="form-control" id="accessoriesSupplierCode" required>
+                            <select class="form-select" id="accessoriesSupplierCode" required>
+                                <option selected disabled value="">Choose...</option>
+                            </select>
                             <div class="invalid-feedback">
                                 Please provide a valid supplier code.
                             </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="itemSupplierName" class="form-label">Supplier Name</label>
+                            <input type="text" class="form-control" id="accessoriesSupplierName" readonly disabled>
                         </div>
                         <div class="col-12">
                             <button class="btn btn-primary" type="submit" id="accessoriesSaveButton">Submit</button>
