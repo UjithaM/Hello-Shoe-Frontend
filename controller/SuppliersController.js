@@ -364,6 +364,7 @@ async function updateSupplier(supplier, supplierId) {
 function clearSupplierFields() {
     console.log("Clearing fields");
     $("#supplierFoam").get(0).reset();
+    $('#supplierFoam').find('.is-invalid, .is-valid').removeClass('is-invalid is-valid');
     supplierButtonsHandle(false);
 }
 

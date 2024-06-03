@@ -326,17 +326,9 @@ async function updateAccessories(Accessories, accessoriesCode) {
 }
 
 function clearAccessoriesFields() {
-    $('#accessoriesDescription').val('').removeClass('is-valid is-invalid');
-    $('#accessoriesPicture').val('').removeClass('is-valid is-invalid');
-    $('#accessoriesUnitPriceSell').val('').removeClass('is-valid is-invalid');
-    $('#accessoriesUnitPriceBuy').val('').removeClass('is-valid is-invalid');
-    $('#accessoriesExpectedProfit').val('').removeClass('is-valid is-invalid');
-    $('#accessoriesProfitMargin').val('').removeClass('is-valid is-invalid');
-    $('#accessoriesQuantity').val('').removeClass('is-valid is-invalid');
-    $('#accessoriesVerities').val('').removeClass('is-valid is-invalid');
-    $('#accessoriesSupplierCode').val('').removeClass('is-valid is-invalid');
-    $('#accessoriesSupplierName').val('').removeClass('is-valid is-invalid');
     $('#accessoriesImagePrv').attr('src', '').hide();
+    $("#accessoriesForm").get(0).reset();
+    $('#accessoriesForm').find('.is-invalid, .is-valid').removeClass('is-invalid is-valid');
     accessoriesButtonsHandle(false);
 }
 

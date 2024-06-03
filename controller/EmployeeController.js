@@ -420,24 +420,8 @@ async function searchEmployee(employeeId) {
 }
 
 function employeeClearFields() {
-    $('#employeeName').val('').removeClass('is-valid is-invalid');
-    $('#employeeCivilStatus').val('').removeClass('is-valid is-invalid');
-    $('#employeeDesignation').val('').removeClass('is-valid is-invalid');
-    $('#employeeAttachedBranch').val('').removeClass('is-valid is-invalid');
-    $('#employeeAddressNo').val('').removeClass('is-valid is-invalid');
-    $('#employeeLane').val('').removeClass('is-valid is-invalid');
-    $('#employeeMainCity').val('').removeClass('is-valid is-invalid');
-    $('#employeeMainState').val('').removeClass('is-valid is-invalid');
-    $('#employeePostalCode').val('').removeClass('is-valid is-invalid');
-    $('#employeeContactNumber').val('').removeClass('is-valid is-invalid');
-    $('#employeeEmail').val('').removeClass('is-valid is-invalid');
-    $('#employeeGuardianName').val('').removeClass('is-valid is-invalid');
-    $('#employeeGuardianContact').val('').removeClass('is-valid is-invalid');
-    $('#employeeProfilePicture').val('').removeClass('is-valid is-invalid');
-    $('#employeeDob').val('').removeClass('is-valid is-invalid');
-    $('#employeeJoinedDate').val('').removeClass('is-valid is-invalid');
-    $('#employeeRole').val('').removeClass('is-valid is-invalid');
-    $('#employeeGender').val('').removeClass('is-valid is-invalid');
+    $('#employeeFoam').find('.is-invalid, .is-valid').removeClass('is-invalid is-valid');
+    $("#employeeFoam").get(0).reset();
     $('#employeeProfilePicturePreview').attr('src', '').hide();
     employeeButtonsHandle(false);
 }

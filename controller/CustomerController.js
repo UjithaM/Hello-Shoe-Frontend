@@ -446,6 +446,7 @@ function submitButtonHandle(status) {
 
 function clearFields() {
     $('#customerFoam').get(0).reset();
+    $('#customerFoam').find('.is-invalid, .is-valid').removeClass('is-invalid is-valid');
     submitButtonHandle(false);
 }
 
