@@ -30,11 +30,11 @@ $(document).ready(function () {
             $('#cartTableBody tr').each(function () {
                 const currentItemCode = $(this).find('td:eq(0)').text();
                 if (currentItemCode === itemCode) {
-                    const currentQTY = parseInt($(this).find('td:eq(2)').text(), 10);
+                    const currentQTY = parseInt($(this).find('td:eq(3)').text(), 10);
                     const newQTY = currentQTY + itemQTY;
                     const itemQTYStock = parseInt($('#orderItemStock').val(), 10);
                     if (newQTY <= itemQTYStock) {
-                        $(this).find('td:eq(2)').text(newQTY);
+                        $(this).find('td:eq(3)').text(newQTY);
                         $(this).find('td:eq(4)').text(newQTY * itemPrice);
                     } else {
                         Swal.fire({
@@ -51,8 +51,8 @@ $(document).ready(function () {
                 const row = '<tr>' +
                     '<td>' + itemCode + '</td>' +
                     '<td>' + itemDescription + '</td>' +
-                    '<td>' + itemQTY + '</td>' +
                     '<td>' + itemPrice + '</td>' +
+                    '<td>' + itemQTY + '</td>' +
                     '<td>' + itemTotal + '</td>' +
                     '<td><button class="btn btn-danger btn-sm" id="removeRow">Remove</button></td>' +
                     '</tr>';
