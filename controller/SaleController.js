@@ -21,6 +21,7 @@ $(document).ready(function () {
     $('#addCartButton').on('click', function (e) {
         if (checkValid()) {
             const itemCode = $('#orderItemCode').val();
+            const itemImage = $('#orderItemPrev').attr('src');
             const itemDescription = $('#orderItemDescription').val();
             const itemQTY = parseInt($('#orderItemQTY').val(), 10);
             const itemPrice = parseFloat($('#orderItemPrice').val());
@@ -31,13 +32,13 @@ $(document).ready(function () {
             let enoughStock = true;
 
             $('#cartTableBody tr').each(function () {
-                const currentItemCode = $(this).find('td:eq(0)').text();
+                const currentItemCode = $(this).find('td:eq(1)').text();
                 if (currentItemCode === itemCode) {
-                    const currentQTY = parseInt($(this).find('td:eq(3)').text(), 10);
+                    const currentQTY = parseInt($(this).find('td:eq(4)').text(), 10);
                     const newQTY = currentQTY + itemQTY;
                     if (newQTY <= itemQTYStock) {
-                        $(this).find('td:eq(3)').text(newQTY);
-                        $(this).find('td:eq(4)').text(newQTY * itemPrice);
+                        $(this).find('td:eq(4)').text(newQTY);
+                        $(this).find('td:eq(5)').text(newQTY * itemPrice);
                     } else {
                         Swal.fire({
                             icon: "error",
@@ -57,6 +58,7 @@ $(document).ready(function () {
 
             if (!itemExists) {
                 const row = '<tr>' +
+                    '<td><img src="' + itemImage + '" alt="' + itemDescription + '" style="width:50px;height:50px;"></td>' +
                     '<td>' + itemCode + '</td>' +
                     '<td>' + itemDescription + '</td>' +
                     '<td>' + itemPrice + '</td>' +
@@ -73,6 +75,8 @@ $(document).ready(function () {
             $('#orderItemQTY').val('');
             $('#orderItemQTY').val('').removeClass('is-valid');
             $('#orderItemPrice').val('');
+            $('#orderItemPrev').hide();
+            calculateNetTotal();
         }
     });
 
@@ -95,6 +99,7 @@ async function searchForItemId(itemCode) {
         });
 
         $('#orderItemDescription').val(itemResponse.itemDescription);
+        $("#orderItemPrev").attr("src", itemResponse.itemPicture).show();
         $('#orderItemStock').val(itemResponse.quantity);
         $('#orderItemPrice').val(itemResponse.unitPriceSell);
 
@@ -110,10 +115,12 @@ async function searchForItemId(itemCode) {
             });
 
             $('#orderItemDescription').val(accessoriesResponse.accessoriesDescription);
+            $("#orderItemPrev").attr("src", accessoriesResponse.accessoriesPicture).show();
             $('#orderItemStock').val(accessoriesResponse.quantity);
             $('#orderItemPrice').val(accessoriesResponse.unitPriceSell);
         } catch (e) {
             $('#orderItemDescription').val("");
+            $("#orderItemPrev").hide();
             $('#orderItemStock').val("");
             $('#orderItemPrice').val("");
             console.log(e);
