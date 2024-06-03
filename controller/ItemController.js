@@ -459,21 +459,8 @@ async function updateItem(item, itemId) {
 }
 
 function itemClearFields() {
-    $('#itemDescription').val('').removeClass('is-valid is-invalid');
-    $('#itemCategory').val('').removeClass('is-valid is-invalid');
-    $('#itemSize').val('').removeClass('is-valid is-invalid');
-    $('#unitPriceSell').val('').removeClass('is-valid is-invalid');
-    $('#unitPriceBuy').val('').removeClass('is-valid is-invalid');
-    $('#expectedProfit').val('').removeClass('is-valid is-invalid');
-    $('#profitMargin').val('').removeClass('is-valid is-invalid');
-    $('#quantity').val('').removeClass('is-valid is-invalid');
-    $('#itemStatus').val('').removeClass('is-valid is-invalid');
-    $('#itemPicture').val('').removeClass('is-valid is-invalid');
-    $('#occasion').val('').removeClass('is-valid is-invalid');
-    $('#verities').val('').removeClass('is-valid is-invalid');
-    $('#gender').val('').removeClass('is-valid is-invalid');
-    $('#itemSupplierCode').val('').removeClass('is-valid is-invalid');
-    $('#itemSupplierName').val('').removeClass('is-valid is-invalid');
+    $("#itemForm").get(0).reset();
+    $('#itemForm').find('.is-invalid, .is-valid').removeClass('is-invalid is-valid');
     $('#itemPicturePreview').attr('src', '').hide();
     itemButtonsHandle(false);
 }
