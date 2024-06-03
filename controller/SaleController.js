@@ -26,13 +26,15 @@ $(document).ready(function () {
             const itemPrice = parseFloat($('#orderItemPrice').val());
             const itemTotal = itemQTY * itemPrice;
 
+            const itemQTYStock = parseInt($('#orderItemStock').val(), 10);
             let itemExists = false;
+            let enoughStock = true;
+
             $('#cartTableBody tr').each(function () {
                 const currentItemCode = $(this).find('td:eq(0)').text();
                 if (currentItemCode === itemCode) {
                     const currentQTY = parseInt($(this).find('td:eq(3)').text(), 10);
                     const newQTY = currentQTY + itemQTY;
-                    const itemQTYStock = parseInt($('#orderItemStock').val(), 10);
                     if (newQTY <= itemQTYStock) {
                         $(this).find('td:eq(3)').text(newQTY);
                         $(this).find('td:eq(4)').text(newQTY * itemPrice);
@@ -42,10 +44,16 @@ $(document).ready(function () {
                             title: "Oops...",
                             text: "Not enough Stock!",
                         });
+                        enoughStock = false;
+                        return false; 
                     }
                     itemExists = true;
                 }
             });
+
+            if (!enoughStock) {
+                return; 
+            }
 
             if (!itemExists) {
                 const row = '<tr>' +
@@ -67,6 +75,7 @@ $(document).ready(function () {
             $('#orderItemPrice').val('');
         }
     });
+
 
     $('#cartTableBody').on('click', '#removeRow', function () {
         $(this).closest('tr').remove();
