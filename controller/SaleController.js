@@ -86,6 +86,20 @@ $(document).ready(function () {
     });
 });
 
+function calculateNetTotal() {
+    let netTotal = 0;
+    $('#cartTableBody tr').each(function () {
+        const itemTotalText = $(this).find('td:eq(5)').text();
+        const itemTotal = parseFloat(itemTotalText);
+        if (!isNaN(itemTotal)) {
+            netTotal += itemTotal;
+        }
+    });
+
+    $('#subtotal').text(netTotal.toFixed(2)); 
+}
+
+
 async function searchForItemId(itemCode) {
     const refreshToken = localStorage.getItem('refreshToken');
     try {
