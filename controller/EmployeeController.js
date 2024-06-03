@@ -67,6 +67,15 @@ $(document).ready(function() {
     });
     $('#employeeLink').click(async function () {
         loadEmployee();
+        if (checkUserHaveAdminPermission(localStorage.getItem('refreshToken'))) {
+            $("#addEmployeeButton").show();
+            $("#employeeUpdateButton").show();
+            $("#employeeDeleteButton").show();
+        }else {
+            $("#addEmployeeButton").hide();
+            $("#employeeUpdateButton").hide();
+            $("#employeeDeleteButton").hide();
+        }
     })
     $("#employeeUpdateButton").click(function (e) {
         const employeeCode = $("#employeeCode").val();
@@ -126,9 +135,16 @@ $(document).ready(function() {
     $('#employeeTable tbody').on('click', 'tr', function() {
         var rowData = [];
         $("#employeeSaveButton").hide();
-        $("#employeeUpdateButton").show();
-        $("#employeeDeleteButton").show();
         $("#employeeCodeField").show();
+        if (checkUserHaveAdminPermission(localStorage.getItem('refreshToken'))) {
+            $("#addEmployeeButton").show();
+            $("#employeeUpdateButton").show();
+            $("#employeeDeleteButton").show();
+        }else {
+            $("#addEmployeeButton").hide();
+            $("#employeeUpdateButton").hide();
+            $("#employeeDeleteButton").hide();
+        }
         $(this).find('td').each(function() {
             rowData.push($(this).text());
         });

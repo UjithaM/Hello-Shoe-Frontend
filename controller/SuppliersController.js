@@ -46,6 +46,15 @@ $(document).ready(function() {
 
     $('#supplierLink').click(async function () {
         loadSuppliers();
+        if (checkUserHaveAdminPermission(localStorage.getItem('refreshToken'))) {
+            $("#addSupplierButton").show();
+            $("#supplierUpdateButton").show();
+            $("#supplierDeleteButton").show();
+        }else {
+            $("#addSupplierButton").hide();
+            $("#supplierUpdateButton").hide();
+            $("#supplierDeleteButton").hide();
+        }
     })
     
     $('#supplierName').on('input', function() {
@@ -121,9 +130,16 @@ $(document).ready(function() {
     $('#supplierTable tbody').on('click', 'tr', function() {
         var rowData = [];
         $("#supplierSaveButton").hide();
-        $("#supplierUpdateButton").show();
-        $("#supplierDeleteButton").show();
         $("#supplierCodeField").show();
+        if (checkUserHaveAdminPermission(localStorage.getItem('refreshToken'))) {
+            $("#addSupplierButton").show();
+            $("#supplierUpdateButton").show();
+            $("#supplierDeleteButton").show();
+        }else {
+            $("#addSupplierButton").hide();
+            $("#supplierUpdateButton").hide();
+            $("#supplierDeleteButton").hide();
+        }
         $(this).find('td').each(function() {
             rowData.push($(this).text());
         });
@@ -216,7 +232,9 @@ $(document).ready(function() {
 
     });
 
-    $("#supplierCloseButton").click(clearSupplierFields());
+    $("#supplierCloseButton").on('click', function() {
+        clearSupplierFields();
+    });
 });
 async function saveSupplier(supplier) {
     try {
