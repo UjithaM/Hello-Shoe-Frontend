@@ -1,6 +1,10 @@
 $(document).ready(function () {
     'use strict';
-
+    
+    $("#placeOrder").on('click', function (e) {
+        orderLoadCustomers();
+    });
+    
     $('#orderItemCode').on('keyup', function (e) {
         const itemCode = $(this).val();
         if (itemCode.length > 7) {
@@ -149,4 +153,42 @@ function checkValid() {
         return true;
     }
     return false;
+}
+
+function orderLoadCustomers() {
+    const refreshToken = localStorage.getItem('refreshToken');
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/helloShoes/api/v1/customer",
+        headers: {
+            "Authorization": "Bearer " + refreshToken
+        },
+        success: function(data) {
+            $('#orderCustomerCode').empty();
+
+            $('#orderCustomerCode').append('<option selected disabled value="">Choose...</option>');
+            
+            data.forEach(function(customer) {
+                $('#orderCustomerCode').append('<option value="' + customer.customerCode + '">' + customer.customerCode + '</option>');
+            });
+            $('#orderCustomerCode').change(function() {
+                if (data === null || data.length === 0) {
+                    orderLoadCustomers();
+                }
+                var selectedCustomerCode = $(this).val();
+                var selectedCustomerName = "";
+
+                data.forEach(function(customer) {
+
+                    if (customer.customerCode === selectedCustomerCode) {
+                        selectedCustomerName = customer .name;
+                        return false;
+                    }
+                });
+
+                // Set the supplier name input field
+                $('#orderCustomerName').val(selectedCustomerName);
+            });
+        }
+    });
 }
