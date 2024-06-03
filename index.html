@@ -503,7 +503,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                     </div>
                     <div class="col-12 col-lg-12 p-4">
                         <div class="table-responsive">
                         <table class="table table-hover table-bordered" id="customerTable">
@@ -1177,7 +1177,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="itemSupplierName" class="form-label">Supplier Name</label>
+                                    <label for="accessoriesSupplierName" class="form-label">Supplier Name</label>
                                     <input type="text" class="form-control" id="accessoriesSupplierName" readonly disabled>
                                 </div>
                                 <div class="col-12">
@@ -1232,70 +1232,106 @@
                                 <h5 class="modal-title" id="orderFormLabel">Save Order</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="orderCloseButton"></button>
                             </div>
-                            <form class="row g-3 needs-validation mt-3" id="orderForm" novalidate>
-                                <div class="col-md-12" id="orderNoField">
-                                    <label for="orderNo" class="form-label">Order Number</label>
-                                    <input type="text" class="form-control" id="orderNo" disabled>
+                            <div class="row " >
+                                <div class="col-12 col-lg-4  foamBackground">
+                                    <form class=" row g-3 needs-validation mt-3" id="orderForm" novalidate>
+                                        <div class="col-6" >
+                                            <div>
+                                                <label for="orderItemCode" class="form-label">Item Id</label>
+                                                <input type="text" class="form-control" placeholder="Enter item Code" id="orderItemCode">
+                                                <div class="invalid-feedback">
+                                                    Please provide a valid Item Id.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-8">
+                                            <div>
+                                                <label for="orderItemDescription" class="form-label">Item Name</label>
+                                                <input type="text" class="form-control" id="orderItemDescription" readonly>
+                                                <div class="invalid-feedback">
+                                                    Please provide a valid item Description.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div>
+                                                <label for="orderItemStock" class="form-label"> stock QTY</label>
+                                                <input type="text" class="form-control" id="orderItemStock" readonly>
+                                                <div class="invalid-feedback">
+                                                    Please provide a valid QTY.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div>
+                                                <label for="orderItemPrice" class="form-label">Price</label>
+                                                <input type="text" class="form-control" id="orderItemPrice" readonly>
+                                                <div class="invalid-feedback">
+                                                    Please provide a valid QTY.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div>
+                                                <label for="orderItemQTY" class="form-label">QTY</label>
+                                                <input type="number" placeholder="Enter Item QTY" class="form-control" id="orderItemQTY" >
+                                                <div class="invalid-feedback">
+                                                    Please provide a valid QTY.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="button" class="col-12 btn btn-success mb-3" id="addCartButton">Add to Cart</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="orderCustomerCode" class="form-label">Customer Code</label>
-                                    <select class="form-select" id="orderCustomerCode" required>
-                                        <option selected disabled value="">Choose...</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        Please select a valid customerCode.
+                                <div class="col-12 col-lg-8   foamBackground">
+                                    <div class=table-responsive>
+                                        <table class="table table-hover  mt-4 cart-table">
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th>Item Code</th>
+                                                <th>Item Name</th>
+                                                <th>Price</th>
+                                                <th>Quantity</th>
+                                                <th>Total</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="cartTableBody">
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <label for="purchaseDate" class="form-label">Purchase Date</label>
-                                    <input type="date" class="form-control" id="purchaseDate" required>
-                                    <div class="invalid-feedback">
-                                        Purchase date cannot be blank.
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-lg-8  foamBackground">
+                                    <div class="row">
+                                        <h5 class="mt-2">Customer info</h5>
+                                        <div class="col-12 col-lg-6">
+                                            <label for="orderCustomerCode" class="form-label">Customer Code</label>
+                                            <select class="form-select" id="orderCustomerCode" required>
+                                                <option selected disabled value="">Choose...</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid customer code.
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                            <label for="orderCustomerName" class="form-label">Customer Name</label>
+                                            <input type="text" class="form-control" id="orderCustomerName" readonly disabled>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <label for="paymentMethod" class="form-label">Payment Method</label>
-                                    <input type="text" class="form-control" id="paymentMethod" required>
-                                    <div class="invalid-feedback">
-                                        Payment method cannot be blank.
-                                    </div>
+                                <div class="col-12 col-lg-4">
+
                                 </div>
-                                <div class="col-md-12">
-                                    <label for="totalPrice" class="form-label">Total Price</label>
-                                    <input type="number" class="form-control" id="totalPrice" required>
-                                    <div class="invalid-feedback">
-                                        Total price must be positive or zero.
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <label for="orderItems" class="form-label">Order Items</label>
-                                    <textarea class="form-control" id="orderItems" required></textarea>
-                                    <div class="invalid-feedback">
-                                        Order items cannot be empty.
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <label for="orderAccessories" class="form-label">Order Accessories</label>
-                                    <textarea class="form-control" id="orderAccessories" required></textarea>
-                                    <div class="invalid-feedback">
-                                        Order accessories cannot be empty.
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary" type="submit" id="orderSaveButton">Submit</button>
-                                    <button type="button" class="btn btn-warning" id="orderUpdateButton">Update Order</button>
-                                    <button type="button" class="btn btn-danger" id="orderDeleteButton">Delete Order</button>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
     </div>
-
-
 </main>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -1313,6 +1349,7 @@
 <script src="controller/InventoryController.js"></script>
 <script src="controller/ItemController.js"></script>
 <script src="controller/AccessoriesController.js"></script>
+<script src="controller/SaleController.js"></script>
 <script src="dto/CustomerDTO.js"></script>
 <script src="dto/SupplierDTO.js"></script>
 <script src="dto/EmployeeDTO.js"></script>
