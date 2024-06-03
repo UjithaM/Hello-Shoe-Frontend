@@ -48,8 +48,14 @@ $(document).ready(function () {
     $("#dashboard").css("display", "none");
 });
 
+function checkUserHaveAdminPermission(refreshToken) {
+    const arrayToken = refreshToken.split('.');
 
+    const tokenPayload = JSON.parse(atob(arrayToken[1]));
 
+    const role = tokenPayload.role[0].authority;
+    return role === 'ROLE_ADMIN';
+}
 
 
 
