@@ -127,35 +127,51 @@ async function searchForItemId(itemCode) {
             contentType: "application/json"
         });
 
-        $('#orderItemDescription').val(itemResponse.itemDescription);
-        $("#orderItemPrev").attr("src", itemResponse.itemPicture).show();
-        $('#orderItemStock').val(itemResponse.quantity);
-        $('#orderItemPrice').val(itemResponse.unitPriceSell);
+    if (!validateItemCode(itemCode) && !validateAccessoryCode(itemCode)) {
+        clearItemDetails();
+        return;
+    }
 
+    const url = validateItemCode(itemCode)
+        ? `http://localhost:8080/helloShoes/api/v1/item/${itemCode}`
+        : `http://localhost:8080/helloShoes/api/v1/accessories/${itemCode}`;
+
+    try {
+        const response = await $.ajax({
+            type: "GET",
+            url: url,
+            headers: {
+                "Authorization": "Bearer " + refreshToken
+            },
+            contentType: "application/json"
+        });
+
+        updateItemDetails(response);
     } catch (e) {
-        try {
-            const accessoriesResponse = await $.ajax({
-                type: "GET",
-                url: "http://localhost:8080/helloShoes/api/v1/accessories/" + itemCode,
-                headers: {
-                    "Authorization": "Bearer " + refreshToken
-                },
-                contentType: "application/json"
-            });
-
-            $('#orderItemDescription').val(accessoriesResponse.accessoriesDescription);
-            $("#orderItemPrev").attr("src", accessoriesResponse.accessoriesPicture).show();
-            $('#orderItemStock').val(accessoriesResponse.quantity);
-            $('#orderItemPrice').val(accessoriesResponse.unitPriceSell);
-        } catch (e) {
-            $('#orderItemDescription').val("");
-            $("#orderItemPrev").hide();
-            $('#orderItemStock').val("");
-            $('#orderItemPrice').val("");
-            console.log(e);
-        }
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `${validateItemCode(itemCode) ? 'Item' : 'Accessory'} not found!`
+        });
+        console.log(e);
+        clearItemDetails();
     }
 }
+
+function updateItemDetails(response) {
+    $('#orderItemDescription').val(response.itemDescription || response.accessoriesDescription);
+    $("#orderItemPrev").attr("src", response.itemPicture || response.accessoriesPicture).show();
+    $('#orderItemStock').val(response.quantity);
+    $('#orderItemPrice').val(response.unitPriceSell);
+}
+
+function clearItemDetails() {
+    $('#orderItemDescription').val("");
+    $("#orderItemPrev").hide();
+    $('#orderItemStock').val("");
+    $('#orderItemPrice').val("");
+}
+
 
 function checkValid() {
     const itemQTY = parseInt($('#orderItemQTY').val(), 10);
@@ -202,4 +218,22 @@ function orderLoadCustomers() {
             });
         }
     });
+}
+
+async function placeOrder() {
+    const paymentMethod = $('#paymentMethod').val();
+    const totalPrice = $('#subtotal').text();
+
+}
+
+function validateItemCode(itemCode) {
+    var pattern = /^(M|W)\d+(F|C|I|S)(H|F|W|FF|SD|S|SL)\d{5}$/;
+
+    return pattern.test(itemCode);
+}
+
+function validateAccessoryCode(accessoryCode) {
+    var pattern = /^(SHMP|POLB|POLBR|POLDBR|SOF|SOH)\d{5}$/;
+
+    return pattern.test(accessoryCode);
 }
