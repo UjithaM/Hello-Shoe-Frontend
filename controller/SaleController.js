@@ -97,6 +97,7 @@ $(document).ready(function () {
 
     $('#cartTableBody').on('click', '#removeRow', function () {
         $(this).closest('tr').remove();
+        calculateNetTotal();
     });
 });
 
