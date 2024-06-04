@@ -1,9 +1,19 @@
 $(document).ready(function () {
     'use strict';
-    
+    $('.cashPaymentDetails').hide();
     $("#placeOrder").on('click', function (e) {
         orderLoadCustomers();
     });
+   
+    $("#paymentMethod").on('change', function (e) {
+        const paymentMethod = $(this).val();
+        if (paymentMethod === 'CARD') {
+            $('.cashPaymentDetails').hide();
+        } else {
+            $('.cashPaymentDetails').show();
+        }
+    });
+   
     
     $('#orderItemCode').on('keyup', function (e) {
         const itemCode = $(this).val();
