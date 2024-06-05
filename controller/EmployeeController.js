@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    employeeButtonsHandle(true);
+    employeeButtonsHandle(false);
     $("#addEmployeeButton").click(function (e) {
         $("#employeeSaveButton").show();
         $("#employeeUpdateButton").hide();
