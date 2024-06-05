@@ -13,6 +13,19 @@ $(document).ready(function () {
             $('.cashPaymentDetails').show();
         }
     });
+
+    $('#customer_paid_btn').on('click', function (e) {
+        const paidAmount = parseFloat($('#customer_paid_amount').val());
+        const netTotal = parseFloat($('#subtotal').text());
+        const balance = paidAmount - netTotal;
+        if (balance < 0) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Insufficient amount!",
+            });
+        }else $('#balance').text(balance.toFixed(2));
+    });
    
     
     $('#orderItemCode').on('keyup', function (e) {
