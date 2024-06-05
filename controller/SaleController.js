@@ -99,6 +99,10 @@ $(document).ready(function () {
         $(this).closest('tr').remove();
         calculateNetTotal();
     });
+
+    $('#checkOutButton').on('click', function (e) {
+        placeOrder();
+    });
 });
 
 function calculateNetTotal() {
@@ -117,15 +121,6 @@ function calculateNetTotal() {
 
 async function searchForItemId(itemCode) {
     const refreshToken = localStorage.getItem('refreshToken');
-    try {
-        const itemResponse = await $.ajax({
-            type: "GET",
-            url: "http://localhost:8080/helloShoes/api/v1/item/" + itemCode,
-            headers: {
-                "Authorization": "Bearer " + refreshToken
-            },
-            contentType: "application/json"
-        });
 
     if (!validateItemCode(itemCode) && !validateAccessoryCode(itemCode)) {
         clearItemDetails();
@@ -221,10 +216,60 @@ function orderLoadCustomers() {
 }
 
 async function placeOrder() {
+    const purchaseDate = new Date().toISOString();
     const paymentMethod = $('#paymentMethod').val();
-    const totalPrice = $('#subtotal').text();
+    const totalPrice = parseFloat($('#subtotal').text());
+    let orderItems = [];
+    let orderAccessories = [];
+    const customerCode = $('#orderCustomerCode').val();
+    const employeeCode = localStorage.getItem('employeeCode');
+
+    $('#cartTableBody tr').each(function () {
+        const itemCode = $(this).find('td:eq(1)').text();
+        const quantity = parseInt($(this).find('td:eq(4)').text(), 10);
+        if (validateItemCode(itemCode)) {
+            const orderItemDTO = new OrderItemDTO(itemCode, quantity);
+            orderItems.push(orderItemDTO);
+        } else {
+            const orderAccessoriesDTO = new OrderAccessoriesDTO(itemCode, quantity);
+            orderAccessories.push(orderAccessoriesDTO);
+        }
+    });
+
+
+
+    const orderDTO = new OrderDTO(0, purchaseDate, paymentMethod, totalPrice, orderItems, orderAccessories, customerCode, employeeCode);
+
+    console.log(orderDTO);
+
+    try {
+        const refreshToken = localStorage.getItem('refreshToken');
+        const response = await $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/helloShoes/api/v1/order",
+            headers: {
+                "Authorization": "Bearer " + refreshToken
+            },
+            data: JSON.stringify(orderDTO),
+            contentType: "application/json"
+        });
+        $("#orderCloseButton").click();
+        Swal.fire({
+            title: "Success!",
+            text: "Order has been added successfully!",
+            icon: "success"
+        });
+    } catch (error) {
+        console.error(error);
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error.responseText,
+        });
+    }
 
 }
+
 
 function validateItemCode(itemCode) {
     var pattern = /^(M|W)\d+(F|C|I|S)(H|F|W|FF|SD|S|SL)\d{5}$/;
