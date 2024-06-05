@@ -47,6 +47,7 @@ $("#signInButton").click(async function (event) {
 
                              localStorage.setItem('accessToken', accessToken);
                              localStorage.setItem('refreshToken', refreshToken);
+                             localStorage.setItem('employeeCode', response.employeeCode);
 
                              $('#sign_section').fadeOut('slow', function () {
                                  $("#dashboard").css("display", "block");
@@ -59,7 +60,7 @@ $("#signInButton").click(async function (event) {
                              Swal.fire({
                                  icon: "error",
                                  title: "Oops...",
-                                 text: error.responseText,
+                                 text: "Your Password or Email is invalid!",
                              });
                          }
                          
@@ -106,6 +107,3 @@ $("#signInButton").click(async function (event) {
 
 });
 
-function hashPassword(password) {
-    return sha256(password);
-}
