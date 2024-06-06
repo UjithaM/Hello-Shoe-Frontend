@@ -4,14 +4,25 @@ $(document).ready(function () {
     $("#placeOrder").on('click', function (e) {
         orderLoadCustomers();
     });
+
+    $('#salesLink').click(async function () {
+        loadOrder();
+    });
    
     $("#paymentMethod").on('change', function (e) {
         const paymentMethod = $(this).val();
         if (paymentMethod === 'CARD') {
             $('.cashPaymentDetails').hide();
+            $('#cardModal').modal('show');
+            $('#orderModal').modal('hide');
+
         } else {
             $('.cashPaymentDetails').show();
         }
+    });
+
+    $("#payNow").on('change', function (e) {
+
     });
 
     $('#customer_paid_btn').on('click', function (e) {
@@ -116,7 +127,55 @@ $(document).ready(function () {
     $('#checkOutButton').on('click', function (e) {
         placeOrder();
     });
+
+    $('#payNow').on('click', function (e) {
+        Swal.fire({
+            title: "Success!",
+            text: "payment Successful !",
+            icon: "success"
+        });
+        $('#orderModal').modal('show');
+        $('#cardModal').modal('hide');
+        $("#paymentForm").get(0).reset();
+    });
+
 });
+
+const loadOrder = () => {
+    const refreshToken = localStorage.getItem('refreshToken');
+
+    $('#orderTableBody').empty();
+    $.ajax({
+        type:"GET",
+        url: "http://localhost:8080/helloShoes/api/v1/order",
+        headers: {
+            "Authorization": "Bearer " + refreshToken
+        },
+        contentType: "application/json",
+
+        success: function (response) {
+            response.forEach(function (order) {
+                addRow(order.orderNo, formatDate(order.purchaseDate), order.paymentMethod, order.totalPrice, order.customerCode, order.employeeCode);
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error('Something Error');
+        }
+    });
+
+};
+
+function addRow(orderNumber, purchaseDate, paymentMethod, totalPrice, customerCode, employeeCode) {
+    var newRow = $('<tr>');
+    newRow.append($('<td>').text(orderNumber));
+    newRow.append($('<td>').text(purchaseDate));
+    newRow.append($('<td>').text(paymentMethod));
+    newRow.append($('<td>').text(totalPrice));
+    newRow.append($('<td>').text(customerCode));
+    newRow.append($('<td>').text(employeeCode));
+
+    $('#orderTableBody').append(newRow);
+}
 
 function calculateNetTotal() {
     let netTotal = 0;
