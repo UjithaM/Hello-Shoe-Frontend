@@ -41,7 +41,7 @@ $(document).ready(function() {
         const verities = $("#verities").val();
         const gender = $("#gender").val();
         const itemSupplierCode = $("#itemSupplierCode").val();
-        
+
         const itemDTO = new ItemDTO(
             0,
             itemDescription,
@@ -212,6 +212,18 @@ $(document).ready(function() {
     $('#itemCloseButton').on('click', function() {
         itemClearFields();
     });
+
+    $('#sortSelector').on('change', function() {
+        if ($(this).val() === 'price') {
+            sortByPrice();
+        } else if ($(this).val() === 'name') {
+            sortByName();
+        }else if ($(this).val() === 'gender') {
+            sortByGender();
+        } else if ($(this).val() === 'Occasion') {
+            sortByOccasion();
+        }
+    });
 });
 function itemButtonsHandle(enable) {
     $('#itemSaveButton').prop('disabled', !enable);
@@ -352,7 +364,7 @@ const loadItem = () => {
 
     $('#itemTableBody').empty();
     $.ajax({
-        type:"GET",
+        type: "GET",
         url: "http://localhost:8080/helloShoes/api/v1/item",
         headers: {
             "Authorization": "Bearer " + refreshToken
@@ -360,32 +372,43 @@ const loadItem = () => {
         contentType: "application/json",
 
         success: function (response) {
-
-            console.log(response)
-            response.map((item, index) => {
-                addRowItem(item.itemCode, item.itemDescription, item.itemCategory, item.size, item.unitPriceSell, item.unitPriceBuy, item.quantity, item.itemStatus, item.supplierCode);
+            console.log(response);
+            $('#itemTableBody').empty();
+            response.map((item) => {
+                addRowItem(
+                    item.itemCode,
+                    item.itemDescription,
+                    item.size,
+                    item.unitPriceSell,
+                    item.quantity,
+                    item.gender,
+                    item.occasion,
+                    item.itemStatus,
+                    item.supplierCode
+                );
             });
-
         },
         error: function (xhr, status, error) {
-            console.error('Something Error');
+            console.error('Something went wrong');
         }
     });
 };
-function addRowItem(itemCode, itemDescription, itemCategory, size, unitPriceSell, unitPriceBuy, quantity, itemStatus, supplierCode) {
+
+function addRowItem(itemCode, itemDescription, size, price, quantity, gender, occasion, itemStatus, supplierCode) {
     var newRow = $('<tr>');
     newRow.append($('<td>').text(itemCode));
     newRow.append($('<td>').text(itemDescription));
-    newRow.append($('<td>').text(itemCategory));
     newRow.append($('<td>').text(size));
-    newRow.append($('<td>').text(unitPriceSell));
-    newRow.append($('<td>').text(unitPriceBuy));
+    newRow.append($('<td>').text(price));
     newRow.append($('<td>').text(quantity));
+    newRow.append($('<td>').text(gender));
+    newRow.append($('<td>').text(occasion));
     newRow.append($('<td>').text(itemStatus));
     newRow.append($('<td>').text(supplierCode));
 
     $('#itemTableBody').append(newRow);
 }
+
 async function searchItem(itemId) {
     const refreshToken = localStorage.getItem('refreshToken');
     getSuppliersAndSetSupplierName();
@@ -465,3 +488,56 @@ function itemClearFields() {
     itemButtonsHandle(false);
 }
 
+function sortByPrice() {
+    const rows = $('#itemTableBody tr').get();
+    rows.sort(function (a, b) {
+        const A = parseFloat($(a).find('td').eq(3).text());
+        const B = parseFloat($(b).find('td').eq(3).text());
+        return A - B;
+    });
+    $.each(rows, function (index, row) {
+        console.log(row);
+        $('#itemTableBody').append(row);
+    });
+}
+
+
+function sortByName() {
+    const rows = $('#itemTableBody tr').get();
+    rows.sort(function (a, b) {
+        const A = $(a).find('td').eq(1).text().toUpperCase();
+        const B = $(b).find('td').eq(1).text().toUpperCase();
+        console.log(A, B);
+        return (A < B) ? -1 : (A > B) ? 1 : 0;
+    });
+    $.each(rows, function (index, row) {
+        $('#itemTableBody').append(row);
+    });
+}
+
+
+function sortByGender() {
+    const rows = $('#itemTableBody tr').get();
+    rows.sort(function (a, b) {
+        const A = $(a).find('td').eq(5).text().toUpperCase().includes("FEMALE") ? 1 : 0;
+        const B = $(b).find('td').eq(5).text().toUpperCase().includes("FEMALE") ? 1 : 0;
+        console.log(A, B);
+        return B - A;
+    });
+    $.each(rows, function (index, row) {
+        $('#itemTableBody').append(row);
+    });
+}
+
+function sortByOccasion() {
+    const rows = $('#itemTableBody tr').get();
+    rows.sort(function (a, b) {
+        const A = $(a).find('td').eq(6).text().toUpperCase().includes("CASUAL") ? 1 : 0;
+        const B = $(b).find('td').eq(6).text().toUpperCase().includes("CASUAL") ? 1 : 0;
+        console.log(A, B);
+        return B - A;
+    });
+    $.each(rows, function (index, row) {
+        $('#itemTableBody').append(row);
+    });
+}

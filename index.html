@@ -881,6 +881,16 @@
                                     <div class="mb-2 mb-lg-0 me-2">
                                         <button type="button" class="btn btn-success" id="addItemButton" data-bs-toggle="modal" data-bs-target="#itemModal">Add Item</button>
                                     </div>
+                                    <label for="sortSelector">Sort by:  </label>
+                                    <div class="ms-2">
+                                        <select id="sortSelector" class="form-select">
+                                            <option disabled selected>#</option>
+                                            <option value="name">Name</option>
+                                            <option value="price">Price</option>
+                                            <option value="gender">Gender</option>
+                                            <option value="Occasion">Occasion</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-12 p-1 mt-3">
@@ -890,11 +900,11 @@
                                     <tr>
                                         <th scope="col">Item Code</th>
                                         <th scope="col">Item Description</th>
-                                        <th scope="col">Item Category</th>
                                         <th scope="col">Size</th>
-                                        <th scope="col">Unit Price Sell</th>
-                                        <th scope="col">Unit Price Buy</th>
+                                        <th scope="col">Price</th>
                                         <th scope="col">Quantity</th>
+                                        <th scope="col">Gender</th>
+                                        <th scope="col">Occasion</th>
                                         <th scope="col">Item Status</th>
                                         <th scope="col">Supplier Code</th>
                                     </tr>
