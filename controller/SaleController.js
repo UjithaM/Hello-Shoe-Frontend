@@ -133,7 +133,53 @@ $(document).ready(function () {
     });
 
     $('#checkOutButton').on('click', function (e) {
-        placeOrder();
+        const paymentMethod = $('#paymentMethod').val();
+        const totalPrice = parseFloat($('#subtotal').text());
+        let orderItems = [];
+        let orderAccessories = [];
+        const customerCode = $('#orderCustomerCode').val();
+        const employeeCode = localStorage.getItem('employeeCode');
+
+        $('#cartTableBody tr').each(function () {
+            const itemCode = $(this).find('td:eq(1)').text();
+            const quantity = parseInt($(this).find('td:eq(4)').text(), 10);
+            if (validateItemCode(itemCode)) {
+                const orderItemDTO = new OrderItemDTO(itemCode, quantity);
+                orderItems.push(orderItemDTO);
+            } else {
+                const orderAccessoriesDTO = new OrderAccessoriesDTO(itemCode, quantity);
+                orderAccessories.push(orderAccessoriesDTO);
+            }
+        });
+        if (paymentMethod !== ''){
+            if (orderItems.length !== 0 || orderAccessories.length !== 0) {
+                  if (customerCode !== '') {
+                      placeOrder();
+                  }else {
+                      $('#orderCustomerCode').removeClass('is-valid').addClass('is-invalid');
+                      Swal.fire({
+                          icon: "error",
+                          title: "Oops...",
+                          text: "Please select a customer!",
+                      });
+                  }
+            }else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Please add an item to the cart!",
+                });
+            }
+        }else {
+            $('#paymentMethod').removeClass('is-valid').addClass('is-invalid');
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please select a payment method!",
+            });
+        }
+        
+        
     });
 
     $('#payNow').on('click', function (e) {
@@ -151,6 +197,16 @@ $(document).ready(function () {
 
     $('#cardNumber').on('input', function() {
         validateField($(this), cardNumberPattern);
+    });
+    $('#paymentMethod').on('change', function() {
+        if ($(this).val() !== '') {
+            $(this).removeClass('is-invalid').addClass('is-valid');
+        }
+    });
+    $('#orderCustomerCode').on('change', function() {
+        if ($(this).val() !== '') {
+            $(this).removeClass('is-invalid').addClass('is-valid');
+        }
     });
 
     $('#cardName').on('input', function() {
@@ -208,6 +264,8 @@ $(document).ready(function () {
             addCartButtonHandle(false);
         }
     });
+
+
 });
 
 const loadOrder = () => {
@@ -427,4 +485,9 @@ function validateAccessoryCode(accessoryCode) {
 function addCartButtonHandle(status) {
     if (status) $("#addCartButton").removeClass('disabled');
     else $("#addCartButton").addClass('disabled');
+}
+
+function checkOutButtonHandle(status) {
+    if (status) $("#checkOutButton").removeClass('disabled');
+    else $("#checkOutButton").addClass('disabled');
 }
