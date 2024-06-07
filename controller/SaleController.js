@@ -8,6 +8,7 @@ const zipPattern = /^\d{5,10}$/;
 $(document).ready(function () {
     'use strict';
     $('.cashPaymentDetails').hide();
+    addCartButtonHandle(false);
     $("#placeOrder").on('click', function (e) {
         orderLoadCustomers();
     });
@@ -56,7 +57,7 @@ $(document).ready(function () {
     $('#orderItemQTY').on('keyup', function (e) {
         const itemQTY = parseInt($(this).val(), 10);
         const itemQTYStock = parseInt($('#orderItemStock').val(), 10);
-        if (isNaN(itemQTY) || itemQTY > itemQTYStock || itemQTY === '') {
+        if (isNaN(itemQTY) || itemQTY > itemQTYStock || itemQTY === '' || itemQTY < 1) { 
             $('#orderItemQTY').removeClass('is-valid').addClass('is-invalid');
         } else {
             $('#orderItemQTY').removeClass('is-invalid').addClass('is-valid');
@@ -182,6 +183,29 @@ $(document).ready(function () {
             $('#payNow').removeClass('disabled');
         } else {
             $('#payNow').addClass('disabled');
+        }
+    });
+
+    $('#orderItemCode').on('input', function() {
+        const value = $(this).val();
+        if (value.startsWith("M") || value.startsWith("W")) {
+            validateField($(this), /^(M|W)\d+(F|C|I|S)(H|F|W|FF|SD|S|SL)\d{5}$/);
+        } else {
+            validateField($(this), /^(SHMP|POLB|POLBR|POLDBR|SOF|SOH)\d{5}$/);
+        }
+    });
+
+    $('#orderItemQTY').on('input', function() {
+        const qtyPattern = /^[1-9]\d*$/;
+        validateField($(this), qtyPattern);
+    });
+    
+    $('#cartForm').on('input', function () {
+        if ($('#orderItemCode').hasClass('is-valid') &&
+            $('#orderItemQTY').hasClass('is-valid')) {
+            addCartButtonHandle(true);
+        } else {
+            addCartButtonHandle(false);
         }
     });
 });
@@ -398,4 +422,9 @@ function validateAccessoryCode(accessoryCode) {
     var pattern = /^(SHMP|POLB|POLBR|POLDBR|SOF|SOH)\d{5}$/;
 
     return pattern.test(accessoryCode);
+}
+
+function addCartButtonHandle(status) {
+    if (status) $("#addCartButton").removeClass('disabled');
+    else $("#addCartButton").addClass('disabled');
 }
