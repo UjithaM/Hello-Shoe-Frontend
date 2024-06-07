@@ -1,3 +1,10 @@
+const cardNumberPattern = /^\d{13,19}$/;
+const cardNamePattern = /^[a-zA-Z\s]+$/;
+const expiryMonthPattern = /^(0?[1-9]|1[012])$/;
+const expiryYearPattern = /^\d{2}$/;
+const cvvPattern = /^\d{3,4}$/;
+const zipPattern = /^\d{5,10}$/;
+
 $(document).ready(function () {
     'use strict';
     $('.cashPaymentDetails').hide();
@@ -139,6 +146,44 @@ $(document).ready(function () {
         $("#paymentForm").get(0).reset();
     });
 
+    $('#payNow').addClass('disabled');
+
+    $('#cardNumber').on('input', function() {
+        validateField($(this), cardNumberPattern);
+    });
+
+    $('#cardName').on('input', function() {
+        validateField($(this), cardNamePattern);
+    });
+
+    $('#expiryMonth').on('input', function() {
+        validateField($(this), expiryMonthPattern);
+    });
+
+    $('#expiryYear').on('input', function() {
+        validateField($(this), expiryYearPattern);
+    });
+
+    $('#CVV').on('input', function() {
+        validateField($(this), cvvPattern);
+    });
+
+    $('#zip').on('input', function() {
+        validateField($(this), zipPattern);
+    });
+
+    $('#paymentForm').on('input', function() {
+        if ($('#cardNumber').hasClass('is-valid') &&
+            $('#cardName').hasClass('is-valid') &&
+            $('#expiryMonth').hasClass('is-valid') &&
+            $('#expiryYear').hasClass('is-valid') &&
+            $('#CVV').hasClass('is-valid') &&
+            $('#zip').hasClass('is-valid')) {
+            $('#payNow').removeClass('disabled');
+        } else {
+            $('#payNow').addClass('disabled');
+        }
+    });
 });
 
 const loadOrder = () => {
