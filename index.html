@@ -1245,6 +1245,15 @@
                             <div class="row " >
                                 <div class="col-12 col-lg-4  ">
                                     <form class=" row g-3 needs-validation mt-3" id="cartForm" novalidate>
+                                        <div class="col-12" id="orderCodeField">
+                                            <div>
+                                                <label for="orderCode" class="form-label">Order Code</label>
+                                                <input type="text" class="form-control" id="orderCode" disabled>
+                                                <div class="invalid-feedback">
+                                                    Please provide a valid code.
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-6" >
                                             <div>
                                                 <label for="orderItemCode" class="form-label">Item Id</label>
@@ -1347,6 +1356,10 @@
                                                 Please select a valid payment method.
                                             </div>
                                         </div>
+                                        <div class="col-6 ">
+                                            <label for="orderDate">order Place Date</label>
+                                            <input type="date" class="form-control" id="orderDate" readonly disabled>
+                                        </div>
                                         </form>
                                     </div>
                                 </div>
@@ -1405,6 +1418,7 @@
                                                 <div class="row my-4">
                                                     <div class="col-12" id="buttonWrapper">
                                                         <button type="button" class="col-12 btn btn-success" id="checkOutButton">Checkout</button>
+                                                        <button type="button" class="col-12 btn btn-warning" id="refund">Refund</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1516,6 +1530,7 @@
 <script src="dto/OrderDTO.js"></script>
 <script src="dto/OrderAccessoriesDTO.js"></script>
 <script src="dto/OrderItemDTO.js"></script>
+<script src="dto/RefundDTO.js"></script>
 
 
 </body>

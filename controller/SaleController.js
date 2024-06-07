@@ -8,9 +8,13 @@ const zipPattern = /^\d{5,10}$/;
 $(document).ready(function () {
     'use strict';
     $('.cashPaymentDetails').hide();
+    $('#refund').hide();
     addCartButtonHandle(false);
     $("#placeOrder").on('click', function (e) {
         orderLoadCustomers();
+        $("#orderCodeField").hide();
+        $("#orderDate").hide();
+
     });
 
     $('#salesLink').click(async function () {
@@ -134,11 +138,9 @@ $(document).ready(function () {
 
     $('#checkOutButton').on('click', function (e) {
         const paymentMethod = $('#paymentMethod').val();
-        const totalPrice = parseFloat($('#subtotal').text());
         let orderItems = [];
         let orderAccessories = [];
         const customerCode = $('#orderCustomerCode').val();
-        const employeeCode = localStorage.getItem('employeeCode');
 
         $('#cartTableBody tr').each(function () {
             const itemCode = $(this).find('td:eq(1)').text();
@@ -191,6 +193,60 @@ $(document).ready(function () {
         $('#orderModal').modal('show');
         $('#cardModal').modal('hide');
         $("#paymentForm").get(0).reset();
+    });
+
+    $('#refund').on('click', async function (e) {
+        const orderNo = $('#orderCode').val();
+        const purchaseDate = $('#orderDate').val();
+        const nowDate = new Date();
+        const refundResponse = "nothing";
+        const employeeCode = localStorage.getItem('employeeCode');
+
+        nowDate.setDate(nowDate.getDate() - 3);
+
+        const RefundDto = new RefundDTO(0, refundResponse, new Date().toISOString(), orderNo, employeeCode);
+
+        let canRefund = false;
+        if (new Date(purchaseDate) >= nowDate) {
+            canRefund = true;
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Cannot refund after 3 days of purchase!",
+            });
+        }
+        if (canRefund) {
+            try {
+                const refreshToken = localStorage.getItem('refreshToken');
+                const response = await $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8080/helloShoes/api/v1/refund",
+                    headers: {
+                        "Authorization": "Bearer " + refreshToken
+                    },
+                    data: JSON.stringify(RefundDto),
+                    contentType: "application/json"
+                });
+                $("#customerFoamCloseButton").click();
+                Swal.fire({
+                    title: "Success!",
+                    text: orderNo + " has been refunded successfully!",
+                    icon: "success"
+                });
+                loadCustomers();
+            } catch (error) {
+                console.error(error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: error.responseText,
+                });
+            }
+
+        }
+
+
     });
 
     $('#payNow').addClass('disabled');
@@ -265,7 +321,22 @@ $(document).ready(function () {
         }
     });
 
+    $('#orderTableBody').on('click', 'tr', function() {
+        var rowData = [];
+        $("#checkOutButton").hide();
+        $("#addCartButton").hide();
+        $("#refund").show();
+        $("#orderCode").show();
+        $("#orderDate").show();
 
+        orderLoadCustomers();
+        $(this).find('td').each(function() {
+            rowData.push($(this).text());
+        });
+
+        orderSearch(rowData[0]);
+        $('#orderModal').modal('show');
+    });
 });
 
 const loadOrder = () => {
@@ -491,3 +562,96 @@ function checkOutButtonHandle(status) {
     if (status) $("#checkOutButton").removeClass('disabled');
     else $("#checkOutButton").addClass('disabled');
 }
+async function orderSearch(orderCode) {
+    const refreshToken = localStorage.getItem('refreshToken');
+    try {
+        const data = await $.ajax({
+            type: "GET",
+            url: `http://localhost:8080/helloShoes/api/v1/order/${orderCode}`,
+            headers: {
+                "Authorization": `Bearer ${refreshToken}`
+            }
+        });
+
+        $('#orderCustomerCode').val(data.customerCode);
+        $('#paymentMethod').val(data.paymentMethod);
+        $('#orderCode').val(data.orderNo);
+        $("#subtotal").text(data.totalPrice);
+        $("#orderDate").val(formatDate(data.purchaseDate));
+
+        console.log(data.totalPrice);
+
+        if (data.orderItems) {
+            for (const orderItem of data.orderItems) {
+                const item = await searchForItemIdRefund(orderItem.itemCode);
+                updateItemDetailsF(item);
+            }
+        }
+
+        if (data.orderAccessories) {
+            for (const orderAccessory of data.orderAccessories) {
+                const item = await searchForItemIdRefund(orderAccessory.accessoriesCode);
+                updateItemDetailsF(item);
+            }
+        }
+    } catch (error) {
+        console.error("Error fetching order:", error);
+        alert("An error occurred while fetching the order. Please try again.");
+    }
+}
+
+async function searchForItemIdRefund(itemCode) {
+    const refreshToken = localStorage.getItem('refreshToken');
+
+    if (!validateItemCode(itemCode) && !validateAccessoryCode(itemCode)) {
+        clearItemDetails();
+        return;
+    }
+
+    const url = validateItemCode(itemCode)
+        ? `http://localhost:8080/helloShoes/api/v1/item/${itemCode}`
+        : `http://localhost:8080/helloShoes/api/v1/accessories/${itemCode}`;
+
+    try {
+        return await $.ajax({
+            type: "GET",
+            url: url,
+            headers: {
+                "Authorization": "Bearer " + refreshToken
+            },
+            contentType: "application/json"
+        });
+    } catch (e) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `${validateItemCode(itemCode) ? 'Item' : 'Accessory'} not found!`
+        });
+        console.log(e);
+        clearItemDetails();
+    }
+}
+
+function updateItemDetailsF(item) {
+    if (!item) return;
+
+    const itemImage = item.itemPicture || item.accessoriesPicture;
+    const itemCode = item.itemCode || item.accessoriesCode;
+    const itemDescription = item.itemDescription || item.accessoriesDescription;
+    const itemPrice = item.unitPriceSell ;
+    const itemQTY = item.quantity;
+    const itemTotal = itemPrice * itemQTY;
+
+    const row = '<tr>' +
+        '<td><img src="' + itemImage + '" alt="' + itemDescription + '" style="width:50px;height:50px;"></td>' +
+        '<td>' + itemCode + '</td>' +
+        '<td>' + itemDescription + '</td>' +
+        '<td>' + itemPrice + '</td>' +
+        '<td>' + itemQTY + '</td>' +
+        '<td>' + itemTotal + '</td>' +
+        '<td><button class="btn btn-danger btn-sm" id="removeRow">Remove</button></td>' +
+        '</tr>';
+    $('#cartTableBody').append(row);
+}
+
+
