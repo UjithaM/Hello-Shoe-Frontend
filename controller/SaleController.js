@@ -155,16 +155,7 @@ $(document).ready(function () {
         });
         if (paymentMethod !== ''){
             if (orderItems.length !== 0 || orderAccessories.length !== 0) {
-                  if (customerCode !== '') {
-                      placeOrder();
-                  }else {
-                      $('#orderCustomerCode').removeClass('is-valid').addClass('is-invalid');
-                      Swal.fire({
-                          icon: "error",
-                          title: "Oops...",
-                          text: "Please select a customer!",
-                      });
-                  }
+                placeOrder();
             }else {
                 Swal.fire({
                     icon: "error",
